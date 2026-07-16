@@ -1,4 +1,6 @@
-export const activitiesByDay = {
+import { activityPhotoManifest, addPhotoMetadata } from './photo-manifest.js';
+
+const activityRecordsByDay = {
   5: [
     {
       id: "lak-lake-paddle",
@@ -175,3 +177,10 @@ export const activitiesByDay = {
     },
   ],
 };
+
+export const activitiesByDay = Object.fromEntries(
+	Object.entries(activityRecordsByDay).map(([day, activities]) => [
+		day,
+		addPhotoMetadata(activities, activityPhotoManifest)
+	])
+);

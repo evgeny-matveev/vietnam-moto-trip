@@ -1,6 +1,7 @@
 <script>
 	import ArrowLeftIcon from '@lucide/svelte/icons/arrow-left';
 	import ExternalLinkIcon from '@lucide/svelte/icons/external-link';
+	import PhotoGallery from '$lib/components/PhotoGallery.svelte';
 	import { Badge } from '$lib/components/ui/badge/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { Separator } from '$lib/components/ui/separator/index.js';
@@ -36,6 +37,13 @@
 		<h2 class="text-2xl font-medium tracking-tight">{place.name}</h2>
 		<p class="text-muted-foreground leading-relaxed">{place.whyWorthIt}</p>
 	</div>
+
+	<PhotoGallery
+		photos={place.photos}
+		photoFallback={place.photoFallback}
+		entityName={place.name}
+		galleryId={`place-details-${place.id}`}
+	/>
 
 	<Separator />
 

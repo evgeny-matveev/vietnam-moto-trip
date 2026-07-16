@@ -5,14 +5,13 @@
 	import WavesIcon from '@lucide/svelte/icons/waves';
 	import ActivityRecommendations from '$lib/components/ActivityRecommendations.svelte';
 	import CreatorResources from '$lib/components/CreatorResources.svelte';
+	import PlacePreviewList from '$lib/components/PlacePreviewList.svelte';
 	import RouteDownloads from '$lib/components/RouteDownloads.svelte';
 	import StayRecommendations from '$lib/components/StayRecommendations.svelte';
 	import { Badge } from '$lib/components/ui/badge/index.js';
 	import { Separator } from '$lib/components/ui/separator/index.js';
-	import { placeCategories } from '$lib/data/places.js';
 
 	let { day, places = [], onSelectPlace, onSelectStay } = $props();
-	const categoryById = new Map(placeCategories.map((category) => [category.id, category]));
 </script>
 
 <article class="space-y-5" aria-live="polite">
@@ -80,18 +79,7 @@
 	{#if places.length}
 		<div class="space-y-2">
 			<h3 class="text-sm font-medium">Места на карте</h3>
-			<div class="flex flex-wrap gap-2">
-				{#each places as place}
-					<button
-						type="button"
-						onclick={() => onSelectPlace?.(place.id)}
-						class="hover:bg-muted focus-visible:ring-ring inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-left text-xs outline-none focus-visible:ring-3"
-					>
-						<span class="font-emoji text-sm" aria-hidden="true">{categoryById.get(place.category)?.symbol}</span>
-						{place.name}
-					</button>
-				{/each}
-			</div>
+			<PlacePreviewList {places} {onSelectPlace} />
 		</div>
 	{/if}
 

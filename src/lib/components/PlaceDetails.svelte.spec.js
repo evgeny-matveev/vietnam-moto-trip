@@ -14,6 +14,23 @@ const place = {
   accessNote: "Use an established operator.",
   seasonNote: "Cancel when marine warnings make the bay unsuitable.",
   sources: [{ label: "Official Nha Trang guide", url: "https://vietnam.travel/example" }],
+  photos: [
+    {
+      src: "/images/places/nha-trang-beach/1.webp",
+      alt: "Hòn Mun photo 1",
+      credit: { label: "Photo source", url: "https://example.com/photo-1" },
+    },
+    {
+      src: "/images/places/nha-trang-beach/2.webp",
+      alt: "Hòn Mun photo 2",
+      credit: { label: "Photo source", url: "https://example.com/photo-2" },
+    },
+    {
+      src: "/images/places/nha-trang-beach/3.webp",
+      alt: "Hòn Mun photo 3",
+      credit: { label: "Photo source", url: "https://example.com/photo-3" },
+    },
+  ],
 };
 
 describe("PlaceDetails", () => {
@@ -22,6 +39,14 @@ describe("PlaceDetails", () => {
     render(PlaceDetails, { place, onBack });
 
     await expect.element(page.getByRole("heading", { name: "Hòn Mun" })).toBeVisible();
+    await expect.element(page.getByRole("heading", { name: "Как выглядит место" })).toBeVisible();
+    await expect.element(page.getByRole("img", { name: "Hòn Mun photo 1" })).toHaveAttribute("loading", "eager");
+    await expect
+      .element(page.getByRole("link", { name: /Источник фото: Photo source/ }))
+      .toHaveAttribute("href", "https://example.com/photo-1");
+    await page.getByRole("button", { name: "Открыть фото 2: Hòn Mun" }).click();
+    await expect.element(page.getByRole("dialog").getByRole("img", { name: "Hòn Mun photo 2" })).toBeVisible();
+    await page.getByRole("dialog").getByRole("button", { name: "Закрыть галерею" }).click();
     await expect.element(page.getByText("4–6 ч").first()).toBeVisible();
     await expect.element(page.getByText(/Cancel when marine warnings/)).toBeVisible();
     await expect

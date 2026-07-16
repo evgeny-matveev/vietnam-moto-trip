@@ -1,3 +1,5 @@
+import { addPhotoMetadata, placePhotoManifest } from './photo-manifest.js';
+
 const official = {
   daNang: "https://vietnam.travel/things-to-do/around-marble-mountains",
   hoiAn: "https://vietnam.travel/places-to-go/central-vietnam/hoi-an",
@@ -33,7 +35,7 @@ export const placeCategories = [
 
 const source = (label, url) => [{ label, url }];
 
-export const places = [
+const placeRecords = [
   {
     id: "marble-mountains",
     name: "Ngũ Hành Sơn (Нгуханьшон, Мраморные горы)",
@@ -641,6 +643,8 @@ export const places = [
     sources: source("Туристический портал Quảng Ngãi (Куангнгая)", official.quangNgai),
   },
 ];
+
+export const places = addPhotoMetadata(placeRecords, placePhotoManifest);
 
 const placeById = new Map(places.map((place) => [place.id, place]));
 

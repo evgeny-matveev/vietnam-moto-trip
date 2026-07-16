@@ -23,6 +23,11 @@ const hikingDay = {
       summary: "A guide-led high-energy alternative to hiking.",
       condition: "Choose one and replace the mountain hike when conditions are safe.",
       sources: [{ label: "Operator details", url: "https://example.com/activity" }],
+			photos: [],
+			photoFallback: {
+				label: "Посмотреть фото в Google Images",
+				url: "https://example.com/activity-photos",
+			},
     },
   ],
   stops: ["Primary: Lang Biang trail", "Shorter: Đa Phú hills"],
@@ -115,5 +120,34 @@ describe("DayDetails", () => {
     await expect
       .element(page.getByRole("link", { name: /Operator details/ }))
       .toHaveAttribute("href", "https://example.com/activity");
+		await expect
+			.element(page.getByRole("link", { name: "Посмотреть фото в Google Images" }))
+			.toHaveAttribute("href", "https://example.com/activity-photos");
   });
+
+	it("shows compact map-place preview cards with an explicit detail action", async () => {
+		const onSelectPlace = vi.fn();
+		render(DayDetails, {
+			day: hikingDay,
+			places: [
+				{
+					id: "test-place",
+					name: "Test waterfall",
+					category: "waterfall",
+					visitMinutes: [30, 45],
+					detourKm: 2,
+					photos: [],
+					photoFallback: {
+						label: "Посмотреть фото в Google Images",
+						url: "https://example.com/place-photos",
+					},
+				}
+			],
+			onSelectPlace,
+		});
+
+		await expect.element(page.getByRole("heading", { name: "Места на карте" })).toBeVisible();
+		await page.getByRole("button", { name: "Открыть место" }).click();
+		expect(onSelectPlace).toHaveBeenCalledWith("test-place");
+	});
 });

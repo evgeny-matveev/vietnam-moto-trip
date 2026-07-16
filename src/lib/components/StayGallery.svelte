@@ -18,9 +18,9 @@
 			{/each}
 		</div>
 	{:else}
-		<section class="space-y-2" aria-labelledby="stay-gallery-title">
+		<section class="space-y-2" aria-labelledby={`stay-gallery-${stay.id}-title`}>
 			<div class="flex items-baseline justify-between gap-3">
-				<h3 id="stay-gallery-title" class="text-sm font-medium">Как выглядит место</h3>
+				<h3 id={`stay-gallery-${stay.id}-title`} class="text-sm font-medium">Как выглядит место</h3>
 				<span class="text-muted-foreground text-xs">{stay.photos.length} фото</span>
 			</div>
 

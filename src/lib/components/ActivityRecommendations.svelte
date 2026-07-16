@@ -1,5 +1,6 @@
 <script>
 	import ExternalLinkIcon from '@lucide/svelte/icons/external-link';
+	import PhotoPreview from '$lib/components/PhotoPreview.svelte';
 
 	let { activities = [] } = $props();
 </script>
@@ -14,6 +15,12 @@
 		<div class="grid gap-2 sm:grid-cols-2">
 			{#each activities as activity}
 				<article class="rounded-lg border p-3">
+					<PhotoPreview
+						photos={activity.photos}
+						photoFallback={activity.photoFallback}
+						entityName={activity.name}
+						galleryId={`activity-${activity.id}`}
+					/>
 					<div class="flex items-start gap-2">
 						<span class="font-emoji mt-0.5 text-base leading-none" aria-hidden="true">{activity.symbol}</span>
 						<div class="min-w-0">

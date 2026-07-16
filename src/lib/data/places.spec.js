@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import {
   filterPlacesByCategory,
   placeCategories,
@@ -39,6 +41,23 @@ describe("places", () => {
       for (const source of place.sources) {
         expect(source.label.length, place.id).toBeGreaterThan(2);
         expect(() => new URL(source.url), `${place.id}: ${source.url}`).not.toThrow();
+      }
+
+      const hasLocalGallery = place.photos.length === 3;
+      const hasExternalPhotoFallback = place.photos.length === 0 && place.photoFallback;
+      expect(hasLocalGallery || hasExternalPhotoFallback, place.id).toBeTruthy();
+
+      if (hasLocalGallery) {
+        expect(place).not.toHaveProperty("photoFallback");
+        for (const photo of place.photos) {
+          expect(photo.alt.length, place.id).toBeGreaterThan(10);
+          expect(existsSync(join(process.cwd(), "static", photo.src)), photo.src).toBe(true);
+          expect(() => new URL(photo.credit.url), `${place.id}: ${photo.credit.url}`).not.toThrow();
+          expect(photo.credit.url.startsWith("https://"), place.id).toBe(true);
+        }
+      } else {
+        expect(() => new URL(place.photoFallback.url), place.id).not.toThrow();
+        expect(place.photoFallback.url.startsWith("https://"), place.id).toBe(true);
       }
     }
   });
