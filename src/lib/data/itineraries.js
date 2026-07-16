@@ -1,4 +1,5 @@
 import { dayResources } from "./day-resources.js";
+import { staysByDay } from "./stays.js";
 
 export const sources = {
   seasonalForecast:
@@ -346,6 +347,7 @@ const dayDefinitions = [
 const days = dayDefinitions.map((day) => ({
   ...day,
   creatorResources: dayResources[day.day] ?? [],
+  stayPlan: staysByDay[day.day],
 }));
 
 export const itinerary = {
@@ -354,6 +356,13 @@ export const itinerary = {
   description:
     "One relaxed 12-day line: climb to Măng Đen, ride south through the highlands to Đà Lạt, spend full days hiking and in Nha Trang, then come home on the quieter coast.",
   distance: "approximately 1,650–1,800 km",
+  atAGlance: [
+    "≈1,750 km",
+    "avg. 175 km / 5 hr",
+    "max. 250 km / 7 hr",
+    "Đà Lạt mountain hike",
+    "full Nha Trang day",
+  ],
   days,
   season: {
     window: "Late September–early October 2026",

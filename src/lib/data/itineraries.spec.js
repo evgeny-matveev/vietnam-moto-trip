@@ -22,6 +22,29 @@ function distanceKm([longitudeA, latitudeA], [longitudeB, latitudeB]) {
 }
 
 describe("the relaxed itinerary", () => {
+  it("keeps the compact route figures aligned with the day estimates", () => {
+    const ridingDays = itinerary.days.filter((day) => day.routeFile);
+    const range = (value) => value.match(/\d+/g).map(Number);
+    const distanceRanges = ridingDays.map((day) => range(day.distance));
+    const timeRanges = ridingDays.map((day) => range(day.rideTime));
+    const midpoint = ([minimum, maximum]) => (minimum + maximum) / 2;
+    const totalDistance = distanceRanges.reduce((sum, values) => sum + midpoint(values), 0);
+    const totalTime = timeRanges.reduce((sum, values) => sum + midpoint(values), 0);
+
+    expect(itinerary.atAGlance).toEqual([
+      "≈1,750 km",
+      "avg. 175 km / 5 hr",
+      "max. 250 km / 7 hr",
+      "Đà Lạt mountain hike",
+      "full Nha Trang day",
+    ]);
+    expect(Math.round(totalDistance / 50) * 50).toBe(1750);
+    expect(Math.round(totalDistance / ridingDays.length)).toBe(175);
+    expect(Math.round(totalTime / ridingDays.length)).toBe(5);
+    expect(Math.max(...distanceRanges.map((values) => values.at(-1)))).toBe(250);
+    expect(Math.max(...timeRanges.map((values) => values.at(-1)))).toBe(7);
+  });
+
   it("contains exactly 12 sequential days and all four day kinds", () => {
     expect(itinerary.days).toHaveLength(12);
     expect(itinerary.days.map((day) => day.day)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);

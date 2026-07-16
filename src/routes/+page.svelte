@@ -81,12 +81,22 @@
 <div
 	class="mx-auto flex max-w-[1500px] flex-col gap-4 px-4 py-4 sm:px-6 lg:px-8 xl:h-[calc(100dvh-49px)] xl:min-h-0 xl:overflow-hidden xl:pt-4 xl:pb-6"
 >
-	<header class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-5">
+	<header class="flex flex-col gap-1 xl:flex-row xl:items-baseline xl:justify-between xl:gap-5">
 		<div class="flex min-w-0 items-baseline gap-3">
 			<p class="text-muted-foreground shrink-0 text-xs font-medium tracking-wide uppercase">12-day route</p>
 			<h1 class="truncate text-xl font-medium tracking-tight sm:text-2xl">Highlands south, coast home</h1>
 		</div>
-		<p class="text-muted-foreground shrink-0 text-sm">≈ 1,650–1,800 km · hike + Nha Trang rest day</p>
+		<ul
+			aria-label="Route at a glance"
+			class="text-muted-foreground flex min-w-0 flex-wrap items-baseline gap-x-1.5 text-sm xl:flex-nowrap xl:justify-end"
+		>
+			{#each itinerary.atAGlance as fact, index}
+				<li class="flex items-baseline gap-1.5 whitespace-nowrap">
+					<span>{fact}</span>
+					{#if index < itinerary.atAGlance.length - 1}<span aria-hidden="true">·</span>{/if}
+				</li>
+			{/each}
+		</ul>
 	</header>
 
 	<section aria-label="Map controls" class="rounded-lg border px-3 py-2.5">
