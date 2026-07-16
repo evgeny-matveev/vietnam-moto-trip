@@ -103,15 +103,17 @@ Take one coffee stop. Elephant Waterfall is optional and should be attempted onl
 
 ## Day 6 — Đà Lạt hiking day
 
-Leave the scooters and luggage parked. These are alternative days, not a checklist:
+Leave the scooters and luggage parked. These are alternatives, not a checklist:
 
-- **Lang Biang:** the substantial choice, roughly 9 km with 650–700 m of ascent.
-- **Đa Phú:** a shorter ridge and pine-hill option, best with clear early or late light.
-- **Tuyền Lâm:** the gentlest choice, using pine lanes and lakeside paths.
+- **Lang Biang summit — hard:** [AllTrails](https://www.alltrails.com/trail/vietnam/lam-d-ng/lang-biang-mountain), [Komoot](https://www.komoot.com/tour/984411688) and [Wikiloc](https://www.wikiloc.com/hiking-trails/up-to-the-highest-mountain-of-southern-vietnam-lang-biang-21739028) recordings put the normal outing around 9.5–11.5 km with roughly 680–710 m of ascent. Use 9.7 km, 685 m and 4–4.5 hours as the planning figure. The trail is rocky with a steep final climb; buy the required entry ticket and do not start in rain.
+- **Đa Phú hills — moderate:** [AllTrails describes](https://www.alltrails.com/trail/vietnam/lam-d-ng/da-phu-hills-trail) a 4 km out-and-back route with 195 m of ascent. Allow 1.5–2 hours for the steep, sometimes rocky opening and the open ridge. There is little shade, so early morning is more useful than midday.
+- **Xuân Hương Lake — easy:** [Komoot’s city loop](https://www.komoot.com/smarttour/10230102) is about 7 km with 50 m of ascent and takes roughly 1 hour 50 minutes. It is the reliable paved recovery walk when the high ridges are hidden by cloud.
+- **Bidoup–Núi Bà forest walk — guided:** the [park’s official one-day programme](https://bidoupnuiba.gov.vn/dich-vu/tour-tuyen-du-lich-sinh-thai/tuyen-langbiang-1-ngay/) runs roughly 08:00–15:00 from its visitor area 36 km from Đà Lạt. Pre-book the walk and transport; the focus is forest and K’Ho interpretation rather than a summit.
+- **Tuyền Lâm — short fallback only:** use signed lake and pine-forest paths that are confirmed open locally. Do not navigate the complete west-lake or race course from an old GPX: the [official UTMB route page](https://vietnamhighlands.utmb.world/races/10Ktuyenlam) says its 11.3 km course crosses private land and should not be attempted without the organised event.
 
-Choose after seeing the morning cloud, rain and group energy. After Lang Biang, keep the rest of the day empty.
+Choose after seeing the morning cloud, rain and group energy. Download the selected map before leaving town and carry water, grip footwear and a light rain layer. After Lang Biang or the guided park walk, keep the rest of the day empty.
 
-**If weather turns:** Leave exposed trails immediately in thunder. Persistent rain turns this into a recovery day around Tuyền Lâm, cafés and the city.
+**If weather turns:** Leave exposed trails immediately in thunder. In persistent rain, use the paved Xuân Hương loop only if conditions are comfortable, or turn the day into café time and recovery.
 
 ## Day 7 — Đà Lạt to Nha Trang
 

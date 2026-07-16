@@ -278,10 +278,18 @@ export const places = [
     coordinates: [108.4406, 12.0473],
     whyWorthIt:
       "The substantial hiking choice: a real summit objective above the Langbiang Plateau.",
-    visitMinutes: [240, 330],
+    visitMinutes: [240, 270],
     detourKm: 12,
-    seasonNote: "Choose only after checking cloud, rain and current trail access.",
-    sources: source("Vietnam Tourism — Đà Lạt", official.daLat),
+    accessNote:
+      "The normal out-and-back is about 9.7 km with 685 m ascent. Entry is ticketed; expect rocky ground and a steep final climb.",
+    seasonNote: "Do not start in rain; the steep upper trail becomes slippery.",
+    sources: [
+      {
+        label: "AllTrails route",
+        url: "https://www.alltrails.com/trail/vietnam/lam-d-ng/lang-biang-mountain",
+      },
+      { label: "Komoot recording", url: "https://www.komoot.com/tour/984411688" },
+    ],
   },
   {
     id: "da-phu",
@@ -290,10 +298,18 @@ export const places = [
     coordinates: [108.37, 12.0],
     whyWorthIt:
       "A shorter pine-hill walk with open views, suitable when the summit day feels too ambitious.",
-    visitMinutes: [120, 180],
+    visitMinutes: [90, 120],
     detourKm: 10,
-    accessNote: "The last approach includes a narrow unsealed lane; walk from below if it is wet.",
-    sources: source("Đà Lạt tourism portal", official.daPhu),
+    accessNote:
+      "Plan on about 4 km and 195 m ascent. The opening is steep and sometimes rocky; the ridge has little shade.",
+    seasonNote: "Best early in clear weather; walk from below if the unsealed approach is wet.",
+    sources: [
+      {
+        label: "AllTrails route",
+        url: "https://www.alltrails.com/trail/vietnam/lam-d-ng/da-phu-hills-trail",
+      },
+      { label: "Đà Lạt tourism portal", url: official.daPhu },
+    ],
   },
   {
     id: "tuyen-lam",
@@ -301,10 +317,18 @@ export const places = [
     category: "nature",
     coordinates: [108.4251, 11.8908],
     whyWorthIt:
-      "Pine-framed water and gentle lanes provide the low-effort alternative to a summit hike.",
+      "Pine-framed water and short signed paths provide a low-effort alternative to a summit hike.",
     visitMinutes: [90, 180],
     detourKm: 8,
-    sources: source("Vietnam Tourism — Đà Lạt", official.daLat),
+    accessNote:
+      "Confirm a short route locally. Do not follow the full west-lake or UTMB GPX independently: sections cross private land and may be unsafe outside an organised event.",
+    sources: [
+      { label: "Vietnam Tourism — Đà Lạt", url: official.daLat },
+      {
+        label: "UTMB route access warning",
+        url: "https://vietnamhighlands.utmb.world/races/10Ktuyenlam",
+      },
+    ],
   },
   {
     id: "bidoup",

@@ -125,23 +125,55 @@ const dayDefinitions = [
     day: 6,
     title: "Đà Lạt hiking day",
     summary:
-      "A full day off the scooters with one substantial summit and two lighter alternatives.",
+      "A full day off the scooters with a hard summit, a short open ridge, an easy city loop and an official guided forest walk.",
     roads: "No intercity riding",
     distance: "4–10 km walking",
-    rideTime: "3–6 hr on foot",
+    rideTime: "1.5–6 hr on foot",
     kind: "hike",
     mapAnchor: [108.4406, 12.0473],
-    roadCharacter: "No luggage or mileage target; choose the walk after seeing the morning cloud.",
+    roadCharacter:
+      "No luggage or mileage target; choose after seeing the morning cloud and confirming same-day trail access.",
     placeIds: ["lang-biang", "da-phu", "tuyen-lam"],
     stops: [
-      "Substantial: Lang Biang, roughly 9 km and 650–700 m ascent",
-      "Shorter: Đa Phú hills, best early or late in the day",
-      "Gentle: Tuyền Lâm pine lanes and lakeside paths",
-      "Leave the second half of the day empty after the longer hike",
+      "Hard — Lang Biang summit: 9.7 km out and back, about 685 m ascent and 4–4.5 hours. Expect rocky ground and a steep final climb; buy the required entry ticket and do not start in rain.",
+      "Moderate — Đa Phú hills: 4 km out and back with about 195 m ascent. Allow 1.5–2 hours for the steep, sometimes rocky opening and exposed ridge; go early for cooler air and clearer light.",
+      "Easy — Xuân Hương Lake loop: about 7 km, 50 m ascent and 1 hour 50 minutes on accessible city paths. This is the reliable recovery walk when the high ridges are in cloud.",
+      "Guided — Bidoup–Núi Bà official day walk: pre-book the park’s forest programme and transport, 36 km from Đà Lạt. It normally runs about 08:00–15:00 and focuses on forest and K’Ho interpretation rather than a summit.",
+      "Tuyền Lâm fallback: use only short signed lake and pine-forest paths confirmed open locally. Do not follow the full west-lake or race GPX independently; published routes cross private land and may be unsafe outside an organised event.",
     ],
-    note: "These are alternatives. The day succeeds when the group chooses the walk that fits the actual conditions.",
+    note: "Choose one option, download its map before leaving town and carry water, grip footwear and a light rain layer. Leave the rest of the day empty after Lang Biang or the guided park walk.",
     weatherFallback:
-      "Abandon exposed trails in thunder or persistent rain; use Tuyền Lâm, cafés and an unstructured recovery day instead.",
+      "Leave exposed trails immediately in thunder. In persistent rain, use the paved Xuân Hương loop only if conditions are comfortable, or turn the day into café time and recovery.",
+    sources: [
+      {
+        label: "AllTrails — Lang Biang",
+        url: "https://www.alltrails.com/trail/vietnam/lam-d-ng/lang-biang-mountain",
+      },
+      {
+        label: "Komoot — Lang Biang recording",
+        url: "https://www.komoot.com/tour/984411688",
+      },
+      {
+        label: "Wikiloc — Lang Biang loop",
+        url: "https://www.wikiloc.com/hiking-trails/up-to-the-highest-mountain-of-southern-vietnam-lang-biang-21739028",
+      },
+      {
+        label: "AllTrails — Đa Phú",
+        url: "https://www.alltrails.com/trail/vietnam/lam-d-ng/da-phu-hills-trail",
+      },
+      {
+        label: "Komoot — Xuân Hương loop",
+        url: "https://www.komoot.com/smarttour/10230102",
+      },
+      {
+        label: "Bidoup–Núi Bà official day walk",
+        url: "https://bidoupnuiba.gov.vn/dich-vu/tour-tuyen-du-lich-sinh-thai/tuyen-langbiang-1-ngay/",
+      },
+      {
+        label: "UTMB — Tuyền Lâm access warning",
+        url: "https://vietnamhighlands.utmb.world/races/10Ktuyenlam",
+      },
+    ],
   },
   {
     day: 7,

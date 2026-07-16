@@ -36,6 +36,14 @@ describe("the relaxed itinerary", () => {
 
     expect(hikingDay.routeFile).toBeUndefined();
     expect(hikingDay.roads).toBe("No intercity riding");
+    expect(hikingDay.stops.join(" ")).toMatch(/Lang Biang summit.*9\.7 km.*685 m/i);
+    expect(hikingDay.stops.join(" ")).toMatch(/Đa Phú hills.*4 km.*195 m/i);
+    expect(hikingDay.stops.join(" ")).toMatch(/Xuân Hương Lake loop.*7 km.*50 m/i);
+    expect(hikingDay.stops.join(" ")).toMatch(/Bidoup–Núi Bà official day walk/i);
+    expect(hikingDay.stops.join(" ")).toMatch(/private land/i);
+    expect(hikingDay.sources.map((source) => source.label).join(" ")).toMatch(/AllTrails/i);
+    expect(hikingDay.sources.map((source) => source.label).join(" ")).toMatch(/Komoot/i);
+    expect(hikingDay.sources.map((source) => source.label).join(" ")).toMatch(/Wikiloc/i);
     expect(restDay.routeFile).toBeUndefined();
     expect(restDay.title).toContain("Nha Trang");
     expect(restDay.roads).toContain("Nha Trang base");
