@@ -5,6 +5,7 @@
 	import WavesIcon from '@lucide/svelte/icons/waves';
 	import CreatorResources from '$lib/components/CreatorResources.svelte';
 	import RouteDownloads from '$lib/components/RouteDownloads.svelte';
+	import StayRecommendations from '$lib/components/StayRecommendations.svelte';
 	import { Badge } from '$lib/components/ui/badge/index.js';
 	import { Separator } from '$lib/components/ui/separator/index.js';
 	import { placeCategories } from '$lib/data/places.js';
@@ -90,6 +91,8 @@
 			</div>
 		</div>
 	{/if}
+
+	<StayRecommendations stayPlan={day.stayPlan} />
 
 	<CreatorResources resources={day.creatorResources} />
 

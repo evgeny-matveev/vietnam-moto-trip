@@ -2,6 +2,7 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { itinerary } from "./itineraries.js";
 import { getPlace } from "./places.js";
+import { validateStayPlan } from "./stays.js";
 
 const routesDirectory = "static/routes";
 
@@ -138,6 +139,31 @@ describe("the relaxed itinerary", () => {
         expect(resource.url).toMatch(/^https:\/\/www\.youtube\.com\/watch\?v=/);
       }
     }
+  });
+
+  it("gives every day three six-person stay choices in the requested order", () => {
+    for (const day of itinerary.days) {
+      expect(validateStayPlan(day.stayPlan), `Day ${day.day} stay plan`).toBe(true);
+      expect(day.stayPlan.location.length).toBeGreaterThan(2);
+      expect(day.stayPlan.note.length).toBeGreaterThan(10);
+
+      for (const stay of day.stayPlan.stays) {
+        expect(stay.name.length).toBeGreaterThan(5);
+        expect(stay.priceUsd).toMatch(/^\$/);
+        expect(stay.priceVnd).toMatch(/VND$/);
+        expect(stay.setup).toMatch(/six|6/i);
+        expect(stay.why.length).toBeGreaterThan(20);
+        expect(stay.url).toMatch(/^https:\/\//);
+      }
+    }
+  });
+
+  it("keeps the two-night city stays as single bookings", () => {
+    expect(itinerary.days[4].stayPlan.note).toMatch(/Nights 5 and 6/i);
+    expect(itinerary.days[5].stayPlan.note).toMatch(/Second night/i);
+    expect(itinerary.days[6].stayPlan.note).toMatch(/Nights 7 and 8/i);
+    expect(itinerary.days[7].stayPlan.note).toMatch(/Second night/i);
+    expect(itinerary.days[11].stayPlan.note).toMatch(/Optional post-trip night/i);
   });
 
   it("contains no removed route or variant content", () => {
