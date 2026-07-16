@@ -20,6 +20,8 @@ describe("places", () => {
       expect(category).not.toHaveProperty("color");
     }
 
+    expect(placeCategories.find((category) => category.id === "nature")?.symbol).toBe("🍄︎");
+
     for (const place of places) {
       expect(place.id).toMatch(/^[a-z0-9-]+$/);
       expect(categoryIds.has(place.category), place.id).toBe(true);
@@ -38,6 +40,30 @@ describe("places", () => {
         expect(source.label.length, place.id).toBeGreaterThan(2);
         expect(() => new URL(source.url), `${place.id}: ${source.url}`).not.toThrow();
       }
+    }
+  });
+
+  it("groups coasts, beaches and hot-mineral places as natural landmarks", () => {
+    const naturalLandmarkIds = [
+      "an-bang",
+      "cua-dai",
+      "phu-ninh-lake",
+      "hon-chong",
+      "mud-baths",
+      "nha-trang-beach",
+      "dai-lanh",
+      "mui-dien",
+      "ganh-da-dia",
+      "o-loan",
+      "ghenh-rang",
+      "eo-gio",
+      "sa-huynh",
+      "my-khe-quang-ngai",
+      "ba-lang-an",
+    ];
+
+    for (const id of naturalLandmarkIds) {
+      expect(places.find((place) => place.id === id)?.category, id).toBe("nature");
     }
   });
 

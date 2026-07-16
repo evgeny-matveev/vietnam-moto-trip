@@ -25,7 +25,7 @@ const official = {
 export const placeCategories = [
   { id: "waterfall", label: "Waterfalls", symbol: "💧︎" },
   { id: "park", label: "Parks & reserves", symbol: "🌲︎" },
-  { id: "nature", label: "Natural landmarks", symbol: "🏞︎" },
+  { id: "nature", label: "Natural landmarks", symbol: "🍄︎" },
   { id: "viewpoint", label: "Views & peaks", symbol: "⛰︎" },
   { id: "culture", label: "Culture & spiritual", symbol: "🛕︎" },
   { id: "history", label: "History & monuments", symbol: "🏛︎" },
@@ -71,7 +71,7 @@ export const places = [
   {
     id: "cua-dai",
     name: "Cửa Đại coast",
-    category: "viewpoint",
+    category: "nature",
     coordinates: [108.3572, 15.9032],
     whyWorthIt: "The estuary marks the point where Hội An countryside opens onto the coastal road.",
     visitMinutes: [15, 45],
@@ -91,11 +91,11 @@ export const places = [
   },
   {
     id: "phu-ninh-lake",
-    name: "Phú Ninh Lake",
+    name: "Phú Ninh Lake & hot mineral water",
     category: "nature",
     coordinates: [108.464, 15.4969],
     whyWorthIt:
-      "A forest-ringed reservoir with 32 islands and enough quiet water and shoreline to make the overnight feel like a destination, not a transit stop.",
+      "A forest-ringed reservoir with 32 islands, quiet shoreline and hot-mineral bathing near the lake.",
     visitMinutes: [120, 240],
     detourKm: 0,
     accessNote:
@@ -365,7 +365,7 @@ export const places = [
   {
     id: "hon-chong",
     name: "Hòn Chồng",
-    category: "viewpoint",
+    category: "nature",
     coordinates: [109.203, 12.273],
     whyWorthIt:
       "A compact granite headland with open bay and island views on the city’s north edge.",
@@ -386,8 +386,8 @@ export const places = [
   },
   {
     id: "mud-baths",
-    name: "Nha Trang mud baths",
-    category: "culture",
+    name: "Nha Trang hot mineral mud baths",
+    category: "nature",
     coordinates: [109.177, 12.279],
     whyWorthIt:
       "Warm mineral pools and mud bathing make a strong poor-weather or recovery-day choice.",
@@ -435,7 +435,7 @@ export const places = [
   {
     id: "mui-dien",
     name: "Mũi Điện and Bãi Môn",
-    category: "viewpoint",
+    category: "nature",
     coordinates: [109.4491, 12.8939],
     whyWorthIt: "A lighthouse stairway rises above a secluded beach near Vietnam’s eastern edge.",
     visitMinutes: [90, 150],
@@ -475,7 +475,7 @@ export const places = [
   {
     id: "ghenh-rang",
     name: "Ghềnh Ráng",
-    category: "viewpoint",
+    category: "nature",
     coordinates: [109.215, 13.744],
     whyWorthIt:
       "A headland park above Quy Nhơn with rock coves and a wide view back along the city beach.",
@@ -508,7 +508,7 @@ export const places = [
   {
     id: "eo-gio",
     name: "Eo Gió",
-    category: "viewpoint",
+    category: "nature",
     coordinates: [109.295, 13.89],
     whyWorthIt: "A wind-cut inlet and cliff walk beside the fishing village of Nhơn Lý.",
     visitMinutes: [60, 90],
@@ -571,7 +571,7 @@ export const places = [
   {
     id: "ba-lang-an",
     name: "Bà Làng An cape",
-    category: "viewpoint",
+    category: "nature",
     coordinates: [108.9439, 15.2353],
     whyWorthIt: "A volcanic-rock cape with fishing hamlets and an open view toward Lý Sơn.",
     visitMinutes: [45, 90],

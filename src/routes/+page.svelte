@@ -17,6 +17,7 @@
 	let selectedNumber = $state(0);
 	let selectedPlaceId = $state(null);
 	let activeCategoryIds = $state(placeCategories.map((category) => category.id));
+	let focusStrip = null;
 	let detailsPanel = null;
 	let previousDetailsScroll = 0;
 	let selectedDay = $derived(
@@ -33,11 +34,19 @@
 		if (detailsPanel) detailsPanel.scrollTop = top;
 	}
 
+	async function revealFocus(number) {
+		await tick();
+		focusStrip
+			?.querySelector(`[data-focus="${number}"]`)
+			?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+	}
+
 	function selectDay(number) {
 		selectedNumber = number;
 		selectedPlaceId = null;
 		previousDetailsScroll = 0;
 		void moveDetailsTo(0);
+		void revealFocus(number);
 	}
 
 	function selectPlace(id) {
@@ -49,10 +58,6 @@
 	function backToDay() {
 		selectedPlaceId = null;
 		void moveDetailsTo(previousDetailsScroll);
-	}
-
-	function changeFocus(event) {
-		selectDay(Number(event.currentTarget.value));
 	}
 
 	function toggleCategory(id) {
@@ -85,20 +90,38 @@
 	</header>
 
 	<section aria-label="Map controls" class="rounded-lg border px-3 py-2.5">
-		<div class="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between">
-			<label class="flex min-w-0 flex-1 items-center gap-2 text-sm font-medium sm:max-w-xl">
-				<span class="shrink-0">Show</span>
-				<select
-					value={selectedNumber}
-					onchange={changeFocus}
-					class="border-input bg-background focus-visible:border-ring focus-visible:ring-ring/50 h-9 min-w-0 flex-1 rounded-md border px-3 text-sm shadow-xs outline-none focus-visible:ring-3"
+		<div class="flex flex-col gap-2.5 lg:flex-row lg:items-center lg:justify-between">
+			<fieldset class="min-w-0 flex-1">
+				<legend class="sr-only">Map focus</legend>
+				<div
+					bind:this={focusStrip}
+					class="flex max-w-full gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
 				>
-					<option value={0}>Entire loop</option>
+					<button
+						type="button"
+						data-focus="0"
+						aria-label="Show the entire loop"
+						aria-pressed={selectedNumber === 0}
+						onclick={() => selectDay(0)}
+						class="focus-visible:ring-ring h-8 shrink-0 rounded-md border px-3 text-xs font-medium outline-none transition-colors focus-visible:ring-3 aria-pressed:bg-foreground aria-pressed:text-background aria-[pressed=false]:text-muted-foreground aria-[pressed=false]:hover:bg-muted"
+					>
+						Loop
+					</button>
 					{#each itinerary.days as day}
-						<option value={day.day}>Day {day.day}: {day.title}</option>
+						<button
+							type="button"
+							data-focus={day.day}
+							aria-label={`Show Day ${day.day}: ${day.title}`}
+							aria-pressed={selectedNumber === day.day}
+							title={`Day ${day.day}: ${day.title}`}
+							onclick={() => selectDay(day.day)}
+							class="focus-visible:ring-ring h-8 min-w-9 shrink-0 rounded-md border px-2 text-xs font-medium outline-none transition-colors focus-visible:ring-3 aria-pressed:bg-foreground aria-pressed:text-background aria-[pressed=false]:text-muted-foreground aria-[pressed=false]:hover:bg-muted"
+						>
+							D{day.day}
+						</button>
 					{/each}
-				</select>
-			</label>
+				</div>
+			</fieldset>
 
 			<fieldset class="flex shrink-0 items-center gap-1.5">
 				<legend class="sr-only">Place categories</legend>
