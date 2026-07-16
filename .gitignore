@@ -1,0 +1,15 @@
+node_modules/
+.svelte-kit/
+build/
+
+.vercel/
+.env
+.env.*
+!.env.example
+
+coverage/
+playwright-report/
+test-results/
+
+.DS_Store
+*.log
