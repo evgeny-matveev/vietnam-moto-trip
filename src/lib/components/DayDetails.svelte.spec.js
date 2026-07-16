@@ -11,6 +11,19 @@ const hikingDay = {
   distance: "4–10 km walking",
   rideTime: "3–6 hr on foot",
   kind: "hike",
+  activities: [
+    {
+      id: "test-rafting",
+      kind: "rafting",
+      symbol: "🛶︎",
+      name: "Canyoning or white-water rafting",
+      time: "Full day",
+      detour: "operator transfer from Đà Lạt",
+      summary: "A guide-led high-energy alternative to hiking.",
+      condition: "Choose one and replace the mountain hike when conditions are safe.",
+      sources: [{ label: "Operator details", url: "https://example.com/activity" }],
+    },
+  ],
   stops: ["Primary: Lang Biang trail", "Shorter: Đa Phú hills"],
   note: "Choose after seeing the cloud.",
   stayPlan: {
@@ -60,5 +73,22 @@ describe("DayDetails", () => {
     await expect
       .element(page.getByRole("link", { name: "View property" }))
       .toHaveAttribute("href", "https://example.com/stay");
+
+    await page.getByRole("button", { name: "Show Forest House on map" }).click();
+    expect(onSelectStay).toHaveBeenCalledWith("forest-house");
+  });
+
+  it("shows optional activities as alternatives with practical limits", async () => {
+    render(DayDetails, { day: hikingDay });
+
+    await expect.element(page.getByRole("heading", { name: "Optional activities" })).toBeVisible();
+    await expect
+      .element(page.getByRole("heading", { name: "Canyoning or white-water rafting" }))
+      .toBeVisible();
+    await expect.element(page.getByText("Full day · operator transfer from Đà Lạt")).toBeVisible();
+    await expect.element(page.getByText(/replace the mountain hike/)).toBeVisible();
+    await expect
+      .element(page.getByRole("link", { name: /Operator details/ }))
+      .toHaveAttribute("href", "https://example.com/activity");
   });
 });

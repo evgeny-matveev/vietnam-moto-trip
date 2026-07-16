@@ -1,3 +1,4 @@
+import { activitiesByDay } from "./activities.js";
 import { dayResources } from "./day-resources.js";
 import { staysByDay } from "./stays.js";
 
@@ -8,8 +9,7 @@ export const sources = {
   nhaTrang: "https://vietnam.travel/places-to-go/central-vietnam/nha-trang",
   dt639:
     "https://baodautu.vn/binh-dinh-du-an-tuyen-duong-ven-bien-tang-von-dau-tu-hon-230-ty-dong-d205710.html",
-  phuNinh:
-    "https://quangnamtourism.com.vn/en/detailnews/?id=news_2148&t=nine-musttry-experiences-in-quang-nam",
+  phuNinh: "https://quangnamtourism.com.vn/ho-phu-ninh/",
 };
 
 const dayDefinitions = [
@@ -346,6 +346,7 @@ const dayDefinitions = [
 
 const days = dayDefinitions.map((day) => ({
   ...day,
+  activities: activitiesByDay[day.day] ?? [],
   creatorResources: dayResources[day.day] ?? [],
   stayPlan: staysByDay[day.day],
 }));

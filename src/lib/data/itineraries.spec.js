@@ -138,6 +138,43 @@ describe("the relaxed itinerary", () => {
     }
   });
 
+  it("adds source-backed optional activities only where the schedule can absorb them", () => {
+    const activeDays = itinerary.days.filter((day) => day.activities.length);
+    const allActivities = activeDays.flatMap((day) => day.activities);
+
+    expect(activeDays.map((day) => day.day)).toEqual([5, 6, 8, 11]);
+    expect(new Set(allActivities.map((activity) => activity.kind))).toEqual(
+      new Set(["water-park", "paddling", "rafting", "adventure", "hot-spring"]),
+    );
+    expect(new Set(allActivities.map((activity) => activity.id)).size).toBe(allActivities.length);
+
+    for (const activity of allActivities) {
+      expect(activity.name.length).toBeGreaterThan(8);
+      expect(activity.symbol.length).toBeGreaterThan(0);
+      expect(activity.time.length).toBeGreaterThan(3);
+      expect(activity.detour.length).toBeGreaterThan(8);
+      expect(activity.summary.length).toBeGreaterThan(40);
+      expect(activity.condition.length).toBeGreaterThan(60);
+      expect(activity.sources.length).toBeGreaterThan(0);
+      for (const source of activity.sources) expect(source.url).toMatch(/^https:\/\//);
+    }
+  });
+
+  it("keeps major activities as substitutions and weather-sensitive ones conditional", () => {
+    const activitiesFor = (day) => itinerary.days[day - 1].activities;
+    const day6 = JSON.stringify(activitiesFor(6));
+    const day8 = JSON.stringify(activitiesFor(8));
+    const day11 = JSON.stringify(activitiesFor(11));
+
+    expect(activitiesFor(1)).toEqual([]);
+    expect(day6).toMatch(/replace the mountain hike/i);
+    expect(day6).toMatch(/licensed operator/i);
+    expect(day6).toMatch(/heavy rain|unsafe river flow|thunder/i);
+    expect(day8).toMatch(/instead of|not alongside/i);
+    expect(day11).toMatch(/confirm.*operating|confirm locally/i);
+    expect(activitiesFor(12)).toEqual([]);
+  });
+
   it("gives every day three six-person stay choices in the requested order", () => {
     for (const day of itinerary.days) {
       expect(validateStayPlan(day.stayPlan), `Day ${day.day} stay plan`).toBe(true);

@@ -3,6 +3,7 @@
 	import RouteIcon from '@lucide/svelte/icons/route';
 	import FootprintsIcon from '@lucide/svelte/icons/footprints';
 	import WavesIcon from '@lucide/svelte/icons/waves';
+	import ActivityRecommendations from '$lib/components/ActivityRecommendations.svelte';
 	import CreatorResources from '$lib/components/CreatorResources.svelte';
 	import RouteDownloads from '$lib/components/RouteDownloads.svelte';
 	import StayRecommendations from '$lib/components/StayRecommendations.svelte';
@@ -73,6 +74,8 @@
 			<span class="font-medium">If weather turns:</span> {day.weatherFallback}
 		</div>
 	{/if}
+
+	<ActivityRecommendations activities={day.activities} />
 
 	{#if places.length}
 		<div class="space-y-2">

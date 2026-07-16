@@ -99,6 +99,10 @@ The western approach is slower than a main-road transfer and much more satisfyin
 
 Take one coffee stop. Elephant Waterfall is optional and should be attempted only if access is officially open, the steps are safe and timing remains comfortable.
 
+### Optional activity
+
+- **Lắk Lake paddle — 1–2 hours:** arrange a dugout-canoe or kayak outing locally before departure; [Vietnam Tourism](https://vietnam.travel/node/1788) lists paddling as a way to experience the lake. Go only in calm conditions and let it replace a later coffee or waterfall stop. Avoid elephant-riding packages.
+
 **If weather turns:** Skip the waterfall and unpaved farm lanes. Stay on the main surfaced Nam Ban–Tà Nung connector.
 
 ## Day 6 — Đà Lạt hiking day
@@ -112,6 +116,11 @@ Leave the scooters and luggage parked. These are alternatives, not a checklist:
 - **Tuyền Lâm — short fallback only:** use signed lake and pine-forest paths that are confirmed open locally. Do not navigate the complete west-lake or race course from an old GPX: the [official UTMB route page](https://vietnamhighlands.utmb.world/races/10Ktuyenlam) says its 11.3 km course crosses private land and should not be attempted without the organised event.
 
 Choose after seeing the morning cloud, rain and group energy. Download the selected map before leaving town and carry water, grip footwear and a light rain layer. After Lang Biang or the guided park walk, keep the rest of the day empty.
+
+### Optional activities
+
+- **Canyoning or white-water rafting — full day:** this is a high-energy replacement for the mountain hike, not an addition. Pre-book a licensed operator such as those offering the programmes through [Dalat Adventure Tours](https://adventuredalat.com/) and accept cancellation after heavy rain, unsafe river flow or thunderstorms.
+- **Datanla coaster or high ropes — 2–4 hours:** the [Lâm Đồng destination page](https://lamdong.gov.vn/sites/en/tourist/famous-landscape/SitePages/dalanta-waterfall.aspx) describes the alpine coaster, while the current [Dalattourist Datanla page](https://dalattourist.com.vn/diem-den/khu-du-lich-datanla) covers the forest high-rope course. Pick this instead of a longer hike and confirm same-day opening and height limits.
 
 **If weather turns:** Leave exposed trails immediately in thunder. In persistent rain, use the paved Xuân Hương loop only if conditions are comfortable, or turn the day into café time and recovery.
 
@@ -140,6 +149,11 @@ Book one established island or snorkelling trip around Nha Trang Bay and Hòn Mu
 Build a relaxed city day from Po Nagar, Long Sơn Pagoda, the National Oceanographic Museum, Hòn Chồng and a mud bath. Three well-chosen stops are enough.
 
 The [official Nha Trang guide](https://vietnam.travel/places-to-go/central-vietnam/nha-trang) is the starting point for both plans.
+
+### Optional activities
+
+- **VinWonders Nha Trang — full day:** the [official park site](https://vinwonders.com/en/vinwonders-nha-trang/) lists its Tropical Paradise water park and wider Hòn Tre attractions. Use it instead of the island or city plan and check current ride maintenance and weather closures before buying tickets.
+- **I-Resort hot mineral mud bath — 2–4 hours:** the [official I-Resort site](https://www.i-resort.vn/) lists hot mineral pools, mud baths and spa facilities. It fits a recovery or poor-sea day; pair it with only one nearby city sight rather than squeezing it around a boat day or VinWonders.
 
 **If weather turns:** Cancel boat activity in warnings, swell or thunderstorms. The city-and-mud-bath plan is the complete alternative, not a consolation prize.
 
@@ -178,7 +192,12 @@ This day is provisional. Parts of ĐT639 remained tied to a construction program
 
 Start with Gò Cỏ or a longer Sa Huỳnh morning. Give the Sơn Mỹ Memorial the quiet time appropriate to its history. Mỹ Khê, Bà Làng An and Thiên Ấn Pagoda remain choices, but skip them when they would consume the lake’s late-afternoon light.
 
-The route bends inland around Dung Quất to avoid industrial truck corridors, then finishes at Phú Ninh rather than returning to the coast. The lake is about 7 km from Tam Kỳ and has 32 islands, forested shores and options such as boating, kayaking and camping, according to the [Quảng Nam Tourism Promotion Center](https://quangnamtourism.com.vn/en/detailnews/?id=news_2148&t=nine-musttry-experiences-in-quang-nam).
+The route bends inland around Dung Quất to avoid industrial truck corridors, then finishes at Phú Ninh rather than returning to the coast. The lake is about 7 km from Tam Kỳ and has 32 islands, forested shores and options such as boating, kayaking and camping, according to the [Quảng Nam Tourism Promotion Center](https://quangnamtourism.com.vn/ho-phu-ninh/).
+
+### Optional activities
+
+- **Lake paddle or boat — 1–2 hours:** confirm a kayak or sightseeing boat after arrival, protect the late-afternoon margin and stay ashore in strong wind, thunder or poor visibility.
+- **Mineral bath or lake play — 1–3 hours:** Quảng Nam Tourism also lists mineral bathing, zipline, windsurfing, jet ski and banana boat. Treat these as possible services rather than guaranteed daily operations; choose one only after checking locally and skip exposed activity in thunder or high wind.
 
 Pre-book a lake-area bungalow or approved campsite rather than assuming that a particular service will be operating. Tam Kỳ is the nearby accommodation fallback, but the preferred plan is to arrive early enough for a quiet lakeside evening and stay at the lake.
 
