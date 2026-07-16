@@ -4,6 +4,7 @@
 	import FootprintsIcon from '@lucide/svelte/icons/footprints';
 	import WavesIcon from '@lucide/svelte/icons/waves';
 	import CreatorResources from '$lib/components/CreatorResources.svelte';
+	import RouteDownloads from '$lib/components/RouteDownloads.svelte';
 	import { Badge } from '$lib/components/ui/badge/index.js';
 	import { Separator } from '$lib/components/ui/separator/index.js';
 	import { placeCategories } from '$lib/data/places.js';
@@ -46,6 +47,10 @@
 			<h3 class="text-sm font-medium">Road character</h3>
 			<p class="text-muted-foreground text-sm leading-relaxed">{day.roadCharacter}</p>
 		</div>
+	{/if}
+
+	{#if day.routeFile}
+		<RouteDownloads {day} />
 	{/if}
 
 	<div class="space-y-2">

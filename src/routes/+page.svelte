@@ -4,6 +4,7 @@
 	import DayDetails from '$lib/components/DayDetails.svelte';
 	import PlaceDetails from '$lib/components/PlaceDetails.svelte';
 	import RouteMap from '$lib/components/RouteMap.svelte';
+	import RouteDownloads from '$lib/components/RouteDownloads.svelte';
 	import { itinerary } from '$lib/data/itineraries.js';
 	import {
 		filterPlacesByCategory,
@@ -169,6 +170,8 @@
 							<span>Rest day</span>
 						</div>
 					</div>
+
+					<RouteDownloads {itinerary} />
 
 					<div class="rounded-md border border-sky-700/25 bg-sky-500/5 p-3 text-sm leading-relaxed">
 						<div class="mb-1 flex items-center gap-2 font-medium">

@@ -29,6 +29,16 @@ pnpm routes:refresh
 
 The refresh script uses the public OSRM demo service with deliberate intermediate waypoints. The deployed app does not call a routing, places or weather API.
 
+## Download for a map app
+
+The route map can download the riding route in three formats:
+
+- GPX: the recommended format for OsmAnd and navigation apps. The whole-loop file contains ten separate riding tracks; Days 6 and 8 have no intercity route.
+- KML: useful for Google My Maps and Google Earth.
+- GeoJSON: useful for Organic Maps and GIS tools, and the same format used by the website.
+
+The downloads contain road-following track geometry, not guaranteed turn-by-turn instructions. In OsmAnd, use its “Attach to roads” option after importing if you want more detailed voice guidance. Check local road, weather and construction conditions before riding.
+
 ## Deploy
 
 The project uses SvelteKit’s static adapter and is connected to Vercel. Every push to `main` creates a production deployment automatically.

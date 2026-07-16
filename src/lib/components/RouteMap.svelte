@@ -1,5 +1,6 @@
 <script>
 	import { onMount, untrack } from 'svelte';
+	import { loadRouteFeatures } from '$lib/route-downloads.js';
 	import { boundsForFeatures, featureCollection } from '$lib/route-utils.js';
 	import { placeCategories } from '$lib/data/places.js';
 
@@ -231,23 +232,7 @@
 		error = '';
 
 		try {
-			const routeDays = itinerary.days.filter((item) => item.routeFile);
-			const loaded = await Promise.all(
-				routeDays.map(async (day) => {
-					const response = await fetch(`/routes/${day.routeFile}`);
-					if (!response.ok) throw new Error(`Could not load Day ${day.day}`);
-					const geojson = await response.json();
-					return {
-						...geojson.features[0],
-						properties: {
-							...geojson.features[0].properties,
-							day: day.day,
-							kind: day.kind,
-							title: day.title
-						}
-					};
-				})
-			);
+			const loaded = await loadRouteFeatures(itinerary);
 			if (currentVersion !== renderVersion) return;
 			routeFeatures = loaded;
 			clearRouteLayers();
