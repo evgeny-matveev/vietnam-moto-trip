@@ -2,6 +2,8 @@
 
 A mobile-first interactive map and complete written plan for a 12-day scooter loop from Đà Nẵng to Đà Lạt and back through the Central Highlands.
 
+Live site: [vietnam-moto-trip.vercel.app](https://vietnam-moto-trip.vercel.app)
+
 The readable itinerary lives in [`docs/ride-plan.md`](docs/ride-plan.md). The app imports that file for the `/guide` page, while `src/lib/data/itineraries.js` drives the map controls and day details.
 
 ## Run locally
@@ -29,4 +31,4 @@ The refresh script uses the public OSRM demo service at build time. The deployed
 
 ## Deploy
 
-The project uses SvelteKit’s static adapter and builds to `build/`. Import the repository into Vercel with the default SvelteKit settings, or configure any free static host to publish that directory.
+The project uses SvelteKit’s static adapter and is connected to Vercel. Every push to `main` creates a production deployment automatically.
