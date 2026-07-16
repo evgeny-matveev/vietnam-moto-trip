@@ -18,7 +18,10 @@ describe("activity photo metadata", () => {
         for (const photo of activity.photos) {
           expect(photo.alt.length, activity.id).toBeGreaterThan(10);
           expect(existsSync(join(process.cwd(), "static", photo.src)), photo.src).toBe(true);
-          expect(() => new URL(photo.credit.url), `${activity.id}: ${photo.credit.url}`).not.toThrow();
+          expect(
+            () => new URL(photo.credit.url),
+            `${activity.id}: ${photo.credit.url}`,
+          ).not.toThrow();
           expect(photo.credit.url.startsWith("https://"), activity.id).toBe(true);
         }
       } else {

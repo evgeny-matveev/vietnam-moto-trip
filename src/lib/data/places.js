@@ -1,4 +1,4 @@
-import { addPhotoMetadata, placePhotoManifest } from './photo-manifest.js';
+import { addPhotoMetadata, placePhotoManifest } from "./photo-manifest.js";
 
 const official = {
   daNang: "https://vietnam.travel/things-to-do/around-marble-mountains",

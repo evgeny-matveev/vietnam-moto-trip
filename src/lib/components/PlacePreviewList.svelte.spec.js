@@ -35,7 +35,9 @@ describe("PlacePreviewList", () => {
 
     await expect.element(page.getByText("30–60 мин · крюк 4 км")).toBeVisible();
     await page.getByRole("button", { name: "Показать фото: Preview place" }).click();
-    await expect.element(page.getByRole("dialog").getByRole("img", { name: "Preview place photo 1" })).toBeVisible();
+    await expect
+      .element(page.getByRole("dialog").getByRole("img", { name: "Preview place photo 1" }))
+      .toBeVisible();
     await page.getByRole("dialog").getByRole("button", { name: "Закрыть галерею" }).click();
     expect(onSelectPlace).not.toHaveBeenCalled();
 
