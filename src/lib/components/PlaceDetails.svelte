@@ -10,16 +10,16 @@
 	let category = $derived(placeCategories.find((item) => item.id === place.category));
 
 	function visitTime([minimum, maximum]) {
-		if (minimum === maximum) return `${minimum} min`;
-		if (minimum >= 240 && maximum >= 240) return `${Math.round(minimum / 60)}–${Math.round(maximum / 60)} hr`;
-		return `${minimum}–${maximum} min`;
+		if (minimum === maximum) return `${minimum} мин`;
+		if (minimum >= 240 && maximum >= 240) return `${Math.round(minimum / 60)}–${Math.round(maximum / 60)} ч`;
+		return `${minimum}–${maximum} мин`;
 	}
 </script>
 
 <article class="space-y-5" aria-live="polite">
 	<Button variant="ghost" size="sm" class="-ml-2" onclick={onBack}>
 		<ArrowLeftIcon data-icon="inline-start" aria-hidden="true" />
-		Back to route details
+		К маршруту дня
 	</Button>
 
 	<div class="space-y-2">
@@ -43,14 +43,14 @@
 		<div class="rounded-md border p-3">
 			<div class="text-muted-foreground flex items-center gap-1.5">
 				<span class="font-emoji text-base" aria-hidden="true">🧭</span>
-				Approximate detour
+				Примерный крюк
 			</div>
-			<p class="mt-1 font-medium">{place.detourKm === 0 ? 'On the planned line' : `${place.detourKm} km`}</p>
+			<p class="mt-1 font-medium">{place.detourKm === 0 ? 'На линии маршрута' : `${place.detourKm} км`}</p>
 		</div>
 		<div class="rounded-md border p-3">
 			<div class="text-muted-foreground flex items-center gap-1.5">
 				<span class="font-emoji text-base" aria-hidden="true">⏱️</span>
-				Allow
+				Заложите времени
 			</div>
 			<p class="mt-1 font-medium">{visitTime(place.visitMinutes)}</p>
 		</div>
@@ -58,19 +58,19 @@
 
 	{#if place.accessNote}
 		<div class="rounded-md border border-amber-700/25 bg-amber-500/5 p-3 text-sm leading-relaxed">
-			<span class="font-medium">Access:</span> {place.accessNote}
+			<span class="font-medium">Доступ:</span> {place.accessNote}
 		</div>
 	{/if}
 
 	{#if place.seasonNote}
 		<div class="rounded-md border border-sky-700/25 bg-sky-500/5 p-3 text-sm leading-relaxed">
-			<span class="font-medium">For this trip:</span> {place.seasonNote}
+			<span class="font-medium">Для этой поездки:</span> {place.seasonNote}
 		</div>
 	{/if}
 
 	{#if place.sources?.length}
 		<div class="space-y-2 text-sm">
-			<h3 class="font-medium">Read more</h3>
+			<h3 class="font-medium">Подробнее</h3>
 			<div class="flex flex-wrap gap-x-4 gap-y-2">
 				{#each place.sources as source}
 					<a

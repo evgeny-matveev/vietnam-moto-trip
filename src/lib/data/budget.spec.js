@@ -46,6 +46,51 @@ describe("the on-road budget", () => {
     });
   });
 
+  it("keeps every original USD and VND accommodation label unchanged", () => {
+    const labels = Object.values(staysByDay).flatMap((plan) =>
+      plan.stays.map((stay) => [stay.pricePerPersonUsd, stay.pricePerPersonVnd]),
+    );
+
+    expect(labels).toEqual([
+      ["$15–22", "400–570k VND"],
+      ["$16–25", "420–650k VND"],
+      ["$8–13", "200–330k VND"],
+      ["$12–17", "300–430k VND"],
+      ["$14–20", "370–530k VND"],
+      ["$8–14", "220–370k VND"],
+      ["$5–8", "130–200k VND"],
+      ["$20–30", "530–780k VND"],
+      ["$9–14", "230–370k VND"],
+      ["$23–45", "600k–1.18m VND"],
+      ["$43–63", "1.12–1.67m VND"],
+      ["$6–9", "150–230k VND"],
+      ["$13–23", "350–620k VND"],
+      ["$50–78", "1.32–2.07m VND"],
+      ["$8–11", "200–280k VND"],
+      ["$13–23", "350–620k VND"],
+      ["$50–78", "1.32–2.07m VND"],
+      ["$8–11", "200–280k VND"],
+      ["$13–22", "350–570k VND"],
+      ["$83–117", "2.2–3.07m VND"],
+      ["$17–23", "430–620k VND"],
+      ["$13–22", "350–570k VND"],
+      ["$83–117", "2.2–3.07m VND"],
+      ["$17–23", "430–620k VND"],
+      ["$15–25", "400–650k VND"],
+      ["$267–400", "7–10.5m VND"],
+      ["$9–16", "230–420k VND"],
+      ["$6–9", "150–230k VND"],
+      ["$13–20", "330–530k VND"],
+      ["$4–8", "120–200k VND"],
+      ["$8–11", "200–280k VND"],
+      ["$21–28", "550–750k VND"],
+      ["$18–24", "470–630k VND"],
+      ["$67–108", "1.75–2.85m VND"],
+      ["$125–167", "3.28–4.38m VND"],
+      ["$38–50", "1.0–1.32m VND"],
+    ]);
+  });
+
   it("calculates the baseline from eleven regular stays and the documented formulas", () => {
     expect(calculateRoadBudget()).toEqual(roadBudget);
     expect(roadBudget.plannedDistanceKm).toBeCloseTo(1925);
@@ -71,9 +116,11 @@ describe("the on-road budget", () => {
   });
 
   it("keeps prepaid equipment and transport outside the road baseline", () => {
-    expect(budgetExclusions).toContain("Scooter purchase or rental");
-    expect(budgetExclusions).toContain("Pre-trip servicing, tyres and repairs");
-    expect(budgetExclusions).toContain("Insurance and travel to or from Đà Nẵng");
-    expect(budgetExclusions).toContain("Optional activities and the optional Day 12 hotel");
+    expect(budgetExclusions).toContain("Покупка или аренда байка");
+    expect(budgetExclusions).toContain("Обслуживание перед поездкой, шины и ремонт");
+    expect(budgetExclusions).toContain("Страховка и дорога в Đà Nẵng (Дананг) или обратно");
+    expect(budgetExclusions).toContain(
+      "Дополнительные занятия и необязательный отель после двенадцатого дня",
+    );
   });
 });

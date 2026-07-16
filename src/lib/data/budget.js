@@ -1,7 +1,7 @@
 import { staysByDay } from "./stays.js";
 
 export const budgetAssumptions = {
-  lastReviewed: "16 July 2026",
+  lastReviewed: "16 июля 2026 года",
   people: 6,
   scootersPerPerson: 1,
   routeDistanceKm: 1750,
@@ -18,12 +18,12 @@ export const budgetAssumptions = {
 };
 
 export const budgetExclusions = [
-  "Scooter purchase or rental",
-  "Pre-trip servicing, tyres and repairs",
-  "Riding gear and luggage",
-  "Insurance and travel to or from Đà Nẵng",
-  "Alcohol, shopping and personal purchases",
-  "Optional activities and the optional Day 12 hotel",
+  "Покупка или аренда байка",
+  "Обслуживание перед поездкой, шины и ремонт",
+  "Мотоэкипировка и багаж",
+  "Страховка и дорога в Đà Nẵng (Дананг) или обратно",
+  "Алкоголь, покупки и личные расходы",
+  "Дополнительные занятия и необязательный отель после двенадцатого дня",
 ];
 
 function addRanges(...ranges) {

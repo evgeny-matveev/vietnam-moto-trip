@@ -1,6 +1,7 @@
 import { page } from "vitest/browser";
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { render } from "vitest-browser-svelte";
+import { resetExchangeRateCacheForTests } from "$lib/exchange-rates.js";
 import DayDetails from "./DayDetails.svelte";
 
 const hikingDay = {
@@ -48,6 +49,17 @@ const hikingDay = {
 };
 
 describe("DayDetails", () => {
+  beforeEach(() => {
+    sessionStorage.clear();
+    resetExchangeRateCacheForTests();
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => ({ ok: false, status: 503 })),
+    );
+  });
+
+  afterEach(() => vi.unstubAllGlobals());
+
   it("renders the selected day and its open-ended choices", async () => {
     render(DayDetails, { day: hikingDay });
 
@@ -63,25 +75,28 @@ describe("DayDetails", () => {
     render(DayDetails, { day: hikingDay, onSelectStay });
 
     await expect
-      .element(page.getByRole("heading", { name: "Where to stay in Đà Lạt" }))
+      .element(page.getByRole("heading", { name: "Где остановиться в Đà Lạt" }))
       .toBeVisible();
     await expect
-      .element(page.getByText("Estimated price per person, per night", { exact: false }))
+      .element(page.getByText("Ориентировочная стоимость за человека", { exact: false }))
       .toBeVisible();
     await expect.element(page.getByText("$17–22")).toBeVisible();
+    await expect.element(page.getByText("≈ 1 300–1 700 ₽")).toBeVisible();
     await expect.element(page.getByText("A whole house for six.")).toBeVisible();
     await expect
-      .element(page.getByRole("link", { name: "View property" }))
+      .element(page.getByRole("link", { name: "Открыть страницу отеля" }))
       .toHaveAttribute("href", "https://example.com/stay");
 
-    await page.getByRole("button", { name: "Show Forest House on map" }).click();
+    await page.getByRole("button", { name: "Показать Forest House на карте" }).click();
     expect(onSelectStay).toHaveBeenCalledWith("forest-house");
   });
 
   it("shows optional activities as alternatives with practical limits", async () => {
     render(DayDetails, { day: hikingDay });
 
-    await expect.element(page.getByRole("heading", { name: "Optional activities" })).toBeVisible();
+    await expect
+      .element(page.getByRole("heading", { name: "Дополнительные занятия" }))
+      .toBeVisible();
     await expect
       .element(page.getByRole("heading", { name: "Canyoning or white-water rafting" }))
       .toBeVisible();

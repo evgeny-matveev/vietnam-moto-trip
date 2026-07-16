@@ -65,7 +65,7 @@
 			type: 'Feature',
 			properties: {
 				day: routeFeature.properties.day,
-				label: `D${routeFeature.properties.day}`,
+				label: `Д${routeFeature.properties.day}`,
 				markerImage: `day-marker-${routeFeature.properties.day}`,
 				title: routeFeature.properties.title,
 				kind: routeFeature.properties.kind
@@ -78,7 +78,7 @@
 				type: 'Feature',
 				properties: {
 					day: day.day,
-					label: `D${day.day}`,
+					label: `Д${day.day}`,
 					markerImage: `day-marker-${day.day}`,
 					title: day.title,
 					kind: day.kind
@@ -220,7 +220,7 @@
 					context.font = '600 11px "Inter Variable", sans-serif';
 					context.textAlign = 'center';
 					context.textBaseline = 'middle';
-					context.fillText(`D${day.day}`, 22, 14.5);
+					context.fillText(`Д${day.day}`, 22, 14.5);
 				}),
 				{ pixelRatio: 2 }
 			);
@@ -428,7 +428,7 @@
 			});
 			updateSelection();
 		} catch (exception) {
-			error = exception instanceof Error ? exception.message : 'The route could not be drawn.';
+			error = exception instanceof Error ? exception.message : 'Не удалось отрисовать маршрут.';
 		}
 	}
 
@@ -491,7 +491,7 @@
 				map.on('mouseleave', layer, () => (map.getCanvas().style.cursor = ''));
 			}
 		} catch (exception) {
-			error = exception instanceof Error ? exception.message : 'The map could not start.';
+			error = exception instanceof Error ? exception.message : 'Не удалось запустить карту.';
 		}
 
 		return () => map?.remove();
@@ -512,16 +512,16 @@
 		bind:this={container}
 		class="h-full w-full"
 		role="application"
-		aria-label="Interactive map of the relaxed Đà Nẵng, Central Highlands and coast scooter route"
+		aria-label="Интерактивная карта маршрута из Đà Nẵng (Дананга) через Центральное нагорье и побережье"
 	></div>
 	{#if !ready && !error}
 		<div class="pointer-events-none absolute inset-0 grid place-items-center bg-muted text-sm text-muted-foreground">
-			Loading route map…
+			Загружаем карту маршрута…
 		</div>
 	{/if}
 	{#if error}
 		<div class="absolute inset-x-4 bottom-4 rounded-md border bg-background/95 p-3 text-sm shadow-sm">
-			{error} The complete itinerary is still available in the Ride plan.
+			{error} Полный маршрут по-прежнему доступен в путеводителе.
 		</div>
 	{/if}
 </div>

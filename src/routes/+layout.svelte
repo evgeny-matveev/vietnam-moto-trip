@@ -10,7 +10,7 @@
 	<link rel="icon" href={favicon} />
 	<meta
 		name="description"
-		content="A quiet-road scooter loop from Đà Nẵng to Đà Lạt and back through the Central Highlands."
+		content="Двенадцатидневный маршрут на байках из Đà Nẵng (Дананга) через Центральное нагорье и обратно по побережью."
 	/>
 </svelte:head>
 

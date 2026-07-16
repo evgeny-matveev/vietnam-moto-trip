@@ -4,20 +4,20 @@ export const activitiesByDay = {
       id: "lak-lake-paddle",
       kind: "paddling",
       symbol: "🛶︎",
-      name: "Lắk Lake paddle",
-      time: "1–2 hr",
-      detour: "at the overnight stop",
+      name: "Прогулка по озеру Lắk (Лак)",
+      time: "1–2 ч",
+      detour: "у места ночёвки",
       summary:
-        "Take a locally arranged dugout-canoe or kayak outing before the road turns toward Đà Lạt.",
+        "До выезда в сторону Đà Lạt (Далата) договоритесь на месте о прогулке на долблёной лодке или каяке.",
       condition:
-        "Go only in calm conditions, confirm the service locally and let it replace a later coffee or waterfall stop; avoid elephant-riding packages.",
+        "Выходите только в тихую погоду, подтвердив услугу на месте. Прогулка заменяет позднюю остановку у кофе или водопада; программы с катанием на слонах не выбирайте.",
       pricing: {
         status: "quote-required",
-        note: "Arrange and price the paddle locally; it is not included in the baseline budget.",
+        note: "Прогулку и её цену согласуйте на месте; в базовый бюджет она не входит.",
       },
       sources: [
         {
-          label: "Vietnam Tourism — Lắk Lake",
+          label: "Vietnam Tourism — озеро Lắk (Лак)",
           url: "https://vietnam.travel/node/1788",
         },
       ],
@@ -28,19 +28,18 @@ export const activitiesByDay = {
       id: "dalat-canyoning-or-rafting",
       kind: "rafting",
       symbol: "🛶︎",
-      name: "Canyoning or white-water rafting",
-      time: "Full day",
-      detour: "operator transfer from Đà Lạt",
-      summary:
-        "A guide-led day of waterfall descents or rafting is the high-energy alternative to hiking.",
+      name: "Каньонинг или рафтинг",
+      time: "Целый день",
+      detour: "трансфер оператора из Đà Lạt (Далата)",
+      summary: "Спуски по водопадам или рафтинг с гидом — энергичная альтернатива пешему дню.",
       condition:
-        "Choose one and replace the mountain hike. Pre-book a licensed operator and accept cancellation after heavy rain, unsafe river flow or thunderstorms.",
+        "Выберите одно занятие вместо горного похода. Заранее забронируйте лицензированного оператора и будьте готовы к отмене после ливня, при опасном течении или грозе.",
       pricing: {
         status: "published",
         rangeVnd: { min: 2_400_000, max: 2_400_000 },
-        note: "Published canyoning-and-countryside price; the operator currently marks rafting unavailable.",
+        note: "Опубликованная цена программы каньонинга; рафтинг сейчас отмечен оператором как недоступный.",
         source: {
-          label: "Dalat Adventure Tours — canyoning price",
+          label: "Dalat Adventure Tours — цена каньонинга",
           url: "https://adventuredalat.com/Tours/72/oneday-canyoning-and-countryside-tour",
         },
       },
@@ -55,24 +54,24 @@ export const activitiesByDay = {
       id: "datanla-adventure",
       kind: "adventure",
       symbol: "🎢︎",
-      name: "Datanla coaster or high ropes",
-      time: "2–4 hr",
-      detour: "about 5 km from central Đà Lạt",
+      name: "Рельсовые сани или верёвочный парк Datanla (Датанла)",
+      time: "2–4 ч",
+      detour: "около 5 км от центра Đà Lạt (Далата)",
       summary:
-        "Use the alpine coaster for an easy thrill or the forest high-rope course for a more physical half-day.",
+        "Рельсовые сани дадут лёгкий заряд адреналина, а лесная трасса потребует больше сил и займёт полдня.",
       condition:
-        "Pick this instead of a longer hike, check same-day opening and height limits, and avoid exposed activities during rain or thunder.",
+        "Выбирайте парк вместо долгого похода, в тот же день проверьте часы работы и ограничения по росту. В дождь и грозу от открытых трасс откажитесь.",
       pricing: {
         status: "quote-required",
-        note: "Confirm the chosen coaster or high-rope ticket directly; it is not included in the baseline budget.",
+        note: "Цену выбранных саней или верёвочной трассы уточняйте напрямую; в базовый бюджет она не входит.",
       },
       sources: [
         {
-          label: "Lâm Đồng — Datanla Waterfall",
+          label: "Lâm Đồng (Ламдонг) — водопад Datanla (Датанла)",
           url: "https://lamdong.gov.vn/sites/en/tourist/famous-landscape/SitePages/dalanta-waterfall.aspx",
         },
         {
-          label: "Dalattourist — Datanla",
+          label: "Dalattourist — Datanla (Датанла)",
           url: "https://dalattourist.com.vn/diem-den/khu-du-lich-datanla",
         },
       ],
@@ -84,24 +83,24 @@ export const activitiesByDay = {
       kind: "water-park",
       symbol: "💦︎",
       name: "VinWonders Nha Trang",
-      time: "Full day",
-      detour: "cable car to Hòn Tre",
+      time: "Целый день",
+      detour: "канатная дорога на Hòn Tre (Хонтре)",
       summary:
-        "Tropical Paradise water park and the wider amusement park make a complete land-based day.",
+        "Аквапарк Tropical Paradise и большая зона аттракционов складываются в полноценный день на суше.",
       condition:
-        "Use this instead of the island or city plan, not alongside it. Check ride maintenance and weather closures before buying tickets.",
+        "Выбирайте VinWonders вместо островной или городской программы, а не вместе с ней. До покупки билетов проверьте ремонты аттракционов и погодные закрытия.",
       pricing: {
         status: "published",
         rangeVnd: { min: 1_050_000, max: 1_050_000 },
-        note: "Published 2026 adult standard price with the round-trip cable car.",
+        note: "Опубликованная стандартная цена для взрослого на 2026 год, включая канатную дорогу туда и обратно.",
         source: {
-          label: "VinWonders — 2026 prices",
+          label: "VinWonders — цены 2026 года",
           url: "https://vinwonders.com/en/vinwonders-nha-trang-price-and-regulations/",
         },
       },
       sources: [
         {
-          label: "Official park details",
+          label: "Официальная информация о парке",
           url: "https://vinwonders.com/en/vinwonders-nha-trang/",
         },
       ],
@@ -110,20 +109,20 @@ export const activitiesByDay = {
       id: "i-resort-hot-mineral-bath",
       kind: "hot-spring",
       symbol: "♨︎",
-      name: "I-Resort hot mineral mud bath",
-      time: "2–4 hr",
-      detour: "about 6 km from the beach",
+      name: "Горячие минеральные и грязевые ванны I-Resort",
+      time: "2–4 ч",
+      detour: "около 6 км от пляжа",
       summary:
-        "Hot mineral pools, mud baths and spa facilities work well as a recovery or poor-sea option.",
+        "Горячие минеральные бассейны, грязевые ванны и спа особенно хороши для восстановления или в день плохого моря.",
       condition:
-        "Pair it with only one nearby city sight; do not squeeze it around VinWonders or a boat day. Check the current last-entry time.",
+        "Добавьте только одно соседнее городское место. Не пытайтесь втиснуть ванны между VinWonders и лодочной прогулкой; проверьте время последнего входа.",
       pricing: {
         status: "quote-required",
-        note: "Choose the treatment first and confirm the current 2026 tariff; it is not included in the baseline budget.",
+        note: "Сначала выберите процедуру, затем уточните тариф 2026 года; в базовый бюджет он не входит.",
       },
       sources: [
         {
-          label: "Official I-Resort site",
+          label: "Официальный сайт I-Resort",
           url: "https://www.i-resort.vn/",
         },
       ],
@@ -134,20 +133,20 @@ export const activitiesByDay = {
       id: "phu-ninh-lake-paddle",
       kind: "paddling",
       symbol: "🛶︎",
-      name: "Phú Ninh lake paddle or boat",
-      time: "1–2 hr",
-      detour: "at the overnight stop",
+      name: "Каяк или лодка на озере Phú Ninh (Фунин)",
+      time: "1–2 ч",
+      detour: "у места ночёвки",
       summary:
-        "See the reservoir from the water by kayak or a locally operated sightseeing boat after arrival.",
+        "После приезда посмотрите на водохранилище с воды — с каяка или местной прогулочной лодки.",
       condition:
-        "Protect the late-afternoon arrival, confirm that the service is operating and stay ashore in strong wind, thunder or poor visibility.",
+        "Не жертвуйте ради этого своевременным приездом, подтвердите работу услуги и оставайтесь на берегу при сильном ветре, грозе или плохой видимости.",
       pricing: {
         status: "quote-required",
-        note: "Confirm the boat or kayak price after arrival; it is not included in the baseline budget.",
+        note: "Цену лодки или каяка уточняйте после приезда; в базовый бюджет она не входит.",
       },
       sources: [
         {
-          label: "Quảng Nam Tourism — Phú Ninh",
+          label: "Quảng Nam Tourism — Phú Ninh (Фунин)",
           url: "https://quangnamtourism.com.vn/ho-phu-ninh/",
         },
       ],
@@ -156,20 +155,20 @@ export const activitiesByDay = {
       id: "phu-ninh-mineral-and-lake-play",
       kind: "hot-spring",
       symbol: "♨︎",
-      name: "Mineral bath or lake-play session",
-      time: "1–3 hr",
-      detour: "at the lake visitor area",
+      name: "Минеральные ванны или развлечения на озере",
+      time: "1–3 ч",
+      detour: "в гостевой зоне озера",
       summary:
-        "Depending on current operations, choose mineral bathing, zipline, windsurfing, jet ski or banana boat.",
+        "Если услуги работают, можно выбрать минеральные ванны, зиплайн, виндсёрфинг, гидроцикл или «банан».",
       condition:
-        "Treat the official list as possibilities, not guaranteed daily services. Confirm locally and skip water or zipline activity in thunder and high wind.",
+        "Официальный список — это возможные, а не гарантированные ежедневные услуги. Уточните всё на месте и откажитесь от воды и зиплайна в грозу или сильный ветер.",
       pricing: {
         status: "quote-required",
-        note: "Services and prices vary by operation; confirm locally and keep them outside the baseline budget.",
+        note: "Набор услуг и цены меняются: уточняйте на месте и не включайте их в базовый бюджет.",
       },
       sources: [
         {
-          label: "Quảng Nam Tourism — activity list",
+          label: "Quảng Nam Tourism — список занятий",
           url: "https://quangnamtourism.com.vn/ho-phu-ninh/",
         },
       ],

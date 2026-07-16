@@ -13,7 +13,7 @@ function escapeXml(value) {
 }
 
 function routeTitle(feature) {
-  return feature.properties?.title ?? `Day ${feature.properties?.day ?? "route"}`;
+  return feature.properties?.title ?? `День ${feature.properties?.day ?? "маршрут"}`;
 }
 
 function routeCoordinates(feature) {
@@ -25,11 +25,11 @@ export async function loadRouteFeatures(itinerary, fetcher = fetch) {
   return Promise.all(
     routeDays.map(async (day) => {
       const response = await fetcher(`/routes/${day.routeFile}`);
-      if (!response.ok) throw new Error(`Could not load Day ${day.day}`);
+      if (!response.ok) throw new Error(`Не удалось загрузить день ${day.day}`);
 
       const geojson = await response.json();
       const feature = geojson.features?.[0];
-      if (!feature?.geometry) throw new Error(`Day ${day.day} has no route geometry`);
+      if (!feature?.geometry) throw new Error(`У дня ${day.day} нет геометрии маршрута`);
 
       return {
         ...feature,
@@ -48,7 +48,7 @@ export function geoJsonFromFeatures(features) {
   return `${JSON.stringify(featureCollection(features), null, 2)}\n`;
 }
 
-export function gpxFromFeatures(features, name = "Quiet Roads Vietnam") {
+export function gpxFromFeatures(features, name = "Верхом на байках по югу Вьетнама") {
   const tracks = features
     .map((feature) => {
       const points = routeCoordinates(feature)
@@ -59,17 +59,17 @@ export function gpxFromFeatures(features, name = "Quiet Roads Vietnam") {
     .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<gpx version="1.1" creator="Quiet Roads Vietnam" xmlns="${GPX_NAMESPACE}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="${GPX_SCHEMA}">
+<gpx version="1.1" creator="Верхом на байках по югу Вьетнама" xmlns="${GPX_NAMESPACE}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="${GPX_SCHEMA}">
   <metadata>
     <name>${escapeXml(name)}</name>
-    <desc>Road-following scooter tracks for the Quiet Roads Vietnam itinerary.</desc>
+    <desc>Треки мотопутешествия «Верхом на байках по югу Вьетнама».</desc>
   </metadata>
 ${tracks}
 </gpx>
 `;
 }
 
-export function kmlFromFeatures(features, name = "Quiet Roads Vietnam") {
+export function kmlFromFeatures(features, name = "Верхом на байках по югу Вьетнама") {
   const placemarks = features
     .map((feature) => {
       const coordinates = routeCoordinates(feature)

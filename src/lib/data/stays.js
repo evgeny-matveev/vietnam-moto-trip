@@ -17,9 +17,9 @@ function priceRangeVnd(label) {
 }
 
 export const stayCategoryLabels = {
-  special: "Best view / niche experience",
-  luxury: "Most comfortable",
-  regular: "Regular",
+  special: "Особое место",
+  luxury: "Максимум комфорта",
+  regular: "Практичный выбор",
 };
 
 const stayCoordinates = {
@@ -80,40 +80,40 @@ function plan(location, note, stays) {
 }
 
 export function stayLinkLabel(url = "") {
-  if (url.includes("booking.com")) return "View on Booking.com";
-  if (url.includes("agoda.com")) return "View on Agoda";
-  if (url.includes("airbnb.com")) return "View on Airbnb";
-  return "View property";
+  if (url.includes("booking.com")) return "Открыть на Booking.com";
+  if (url.includes("agoda.com")) return "Открыть на Agoda";
+  if (url.includes("airbnb.com")) return "Открыть на Airbnb";
+  return "Открыть страницу отеля";
 }
 
 const daLatStays = [
   stay("special", {
     name: "Crazy House",
-    experience: "Architectural stay",
+    experience: "Ночь в архитектурной достопримечательности",
     pricePerPersonUsd: "$13–23",
     pricePerPersonVnd: "350–620k VND",
-    setup: "Two themed rooms for six; ask for one four-person room plus one double.",
-    why: "The route’s most unusual night: sculptural rooms, tunnels and terraces in a Đà Lạt landmark.",
+    setup: "Два тематических номера на шестерых: один на четверых и один двухместный.",
+    why: "Самая необычная ночь маршрута: комнаты-скульптуры, тоннели и террасы в одной из достопримечательностей Đà Lạt (Далата).",
     caution:
-      "Room shapes and bed layouts vary, so confirm the exact six-adult combination before paying.",
+      "Планировка и количество кроватей различаются — до оплаты подтвердите размещение именно шести взрослых.",
     url: "https://www.booking.com/hotel/vn/crazy-house.en-gb.html",
   }),
   stay("luxury", {
     name: "Dalat Edensee Lake Resort & Spa — Sakura Villa",
     pricePerPersonUsd: "$50–78",
     pricePerPersonVnd: "1.32–2.07m VND",
-    setup: "A six-adult Sakura villa floor with several bedrooms and bathrooms.",
-    why: "A quiet Tuyền Lâm Lake setting with resort service, breakfast, spa facilities and a pool.",
+    setup: "Этаж виллы Sakura для шести взрослых, с несколькими спальнями и ванными.",
+    why: "Тихий берег озера Tuyền Lâm (Туенлам), курортный сервис, завтрак, спа и бассейн.",
     caution:
-      "Some listings describe a private floor within the Sakura villa, not exclusive use of the whole building.",
+      "В некоторых предложениях речь идёт об отдельном этаже Sakura Villa, а не о вилле целиком.",
     url: "https://www.booking.com/hotel/vn/dalat-eden-lake-resort-spa.en-gb.html",
   }),
   stay("regular", {
     name: "Vy Anh Hotel Dalat — Family Room",
     pricePerPersonUsd: "$8–11",
     pricePerPersonVnd: "200–280k VND",
-    setup: "One family room with three double beds for six adults.",
-    why: "Simple, central and unusually efficient for the group: no need to split across several rooms.",
+    setup: "Один семейный номер с тремя двуспальными кроватями для шести взрослых.",
+    why: "Простой центральный вариант, особенно удобный для группы: не придётся делиться на несколько номеров.",
     url: "https://www.booking.com/hotel/vn/vy-anh-dalat.html",
   }),
 ];
@@ -121,293 +121,303 @@ const daLatStays = [
 const nhaTrangStays = [
   stay("special", {
     name: "Memento Country Home — Thatched Cottages",
-    experience: "Countryside heritage stay",
+    experience: "Загородный дом с историей",
     pricePerPersonUsd: "$13–22",
     pricePerPersonVnd: "350–570k VND",
-    setup:
-      "Three Oldie House or thatched-cottage rooms for six, with two or three adults per room.",
-    why: "A small rural retreat built around a family home more than 70 years old, with bamboo gardens, countryside food and a pool.",
+    setup: "Три номера в Oldie House или коттеджах под соломенной крышей, по два-три человека.",
+    why: "Небольшое сельское поместье вокруг семейного дома старше 70 лет, с бамбуковым садом, домашней кухней и бассейном.",
     caution:
-      "It is about 18 km from central Nha Trang; confirm three suitable rooms and the two-night availability before choosing it over the beach.",
+      "От центра Nha Trang (Нячанга) около 18 км. Прежде чем отказаться от пляжа, подтвердите три подходящих номера на обе ночи.",
     mapNote:
-      "The marker shows the Diên Hòa countryside; confirm the exact entrance in the booking details.",
+      "Метка указывает на сельскую местность Diên Hòa (Зиенхоа); точный въезд смотрите в подтверждении бронирования.",
     url: "https://www.agoda.com/memento-country-home/hotel/nha-trang-vn.html",
   }),
   stay("luxury", {
     name: "Vinpearl Resort & Spa Nha Trang Bay — Three-Bedroom Pool Villa",
     pricePerPersonUsd: "$83–117",
     pricePerPersonVnd: "2.2–3.07m VND",
-    setup: "A beachfront three-bedroom villa for six with a private pool.",
-    why: "The full resort option: maximum space and privacy, with island facilities and direct beach access.",
+    setup: "Вилла у пляжа с тремя спальнями и частным бассейном, рассчитанная на шестерых.",
+    why: "Полноценный курортный отдых: простор, приватность, инфраструктура острова и прямой выход к пляжу.",
     caution:
-      "Allow extra time for the island transfer; it is less convenient for a quick city evening.",
+      "Заложите время на трансфер до острова: для короткой вечерней прогулки по городу этот вариант неудобен.",
     url: "https://www.booking.com/hotel/vn/vinpearl-premium-nha-trang-bay.html",
   }),
   stay("regular", {
     name: "DTX Hotel Nha Trang",
     pricePerPersonUsd: "$17–23",
     pricePerPersonVnd: "430–620k VND",
-    setup: "Three double or twin rooms for six adults.",
-    why: "A dependable central base near the beach, with a rooftop pool but without resort pricing.",
+    setup: "Три двухместных номера для шести взрослых.",
+    why: "Надёжная база в центре рядом с пляжем и бассейном на крыше, но без курортной наценки.",
     url: "https://www.booking.com/hotel/vn/dtx-nha-trang.en-gb.html",
   }),
 ];
 
 export const staysByDay = {
-  1: plan("Tam Thanh", "One night at the end of Day 1.", [
+  1: plan("Tam Thanh (Тамтхань)", "Одна ночь после первого ходового дня.", [
     stay("special", {
       name: "House of the Rising Sun at Tam Thanh Beach",
-      experience: "Independent beach house",
+      experience: "Отдельный дом у моря",
       pricePerPersonUsd: "$15–22",
       pricePerPersonVnd: "400–570k VND",
-      setup: "An entire three-bedroom beachfront house for exactly six guests.",
-      why: "The best match for the brief: everyone together, a kitchen, ocean views and sunrise outside the door.",
+      setup: "Целый дом у пляжа с тремя спальнями — ровно на шестерых.",
+      why: "Лучшее попадание в замысел поездки: вся компания вместе, своя кухня, вид на море и рассвет сразу за дверью.",
       caution:
-        "It has very few reviews and the host’s recent response rate is low; message before relying on it.",
-      mapNote: "Airbnb shows only an approximate position until the booking is confirmed.",
+        "Отзывов мало, а хозяин в последнее время отвечает нечасто — обязательно напишите ему заранее.",
+      mapNote: "До подтверждения бронирования Airbnb показывает только примерное положение дома.",
       url: "https://www.airbnb.com/rooms/33101620",
     }),
     stay("luxury", {
       name: "Tam Thanh Beach Resort & Spa",
       pricePerPersonUsd: "$16–25",
       pricePerPersonVnd: "420–650k VND",
-      setup: "Three resort rooms for six adults.",
-      why: "The most comfortable local option, with a beach setting, swimming pool, restaurant and spa service.",
+      setup: "Три курортных номера для шести взрослых.",
+      why: "Самый комфортный вариант поблизости: пляж, бассейн, ресторан и спа.",
       url: "https://www.booking.com/hotel/vn/tam-thanh-beach-resort-amp-spa.en-gb.html",
     }),
     stay("regular", {
       name: "Tam Thanh Natural Beach Resort",
       pricePerPersonUsd: "$8–13",
       pricePerPersonVnd: "200–330k VND",
-      setup: "Three simple beach rooms or bungalows for six.",
-      why: "Low-cost, directly by the sea and close to the mural village; comfort is basic but the location is right.",
+      setup: "Три простых номера или бунгало у пляжа для шестерых.",
+      why: "Недорого, прямо у моря и рядом с деревней муралов. Условия скромные, зато место выбрано удачно.",
       url: "https://www.agoda.com/tam-thanh-natural-beach-resort_2/hotel/tam-ky-quang-nam-vn.html",
     }),
   ]),
-  2: plan("Măng Đen", "One night after the long Vi Ô Lắc ride.", [
+  2: plan("Măng Đen (Мангден)", "Одна ночь после длинного переезда через Vi Ô Lắc (Виолак).", [
     stay("special", {
       name: "De Vivre Homestay Măng Đen",
-      experience: "Homestay / tent option",
+      experience: "Гостевой дом или палатка",
       pricePerPersonUsd: "$12–17",
       pricePerPersonVnd: "300–430k VND",
       setup:
-        "A family room for six with three large double beds; tents can be requested separately.",
-      why: "Pine, mountain and garden views with the choice of a proper six-person room or a one-night tent experience.",
+        "Семейный номер на шестерых с тремя большими двуспальными кроватями; палатки можно запросить отдельно.",
+      why: "Сосны, горы и сад — и выбор между полноценным номером на шестерых и одной ночью в палатке.",
       caution:
-        "Confirm whether tents have suitable rain cover and private bathroom access for the trip dates.",
+        "Уточните, защищены ли палатки от дождя и будет ли доступ к отдельной ванной в даты поездки.",
       url: "https://www.booking.com/hotel/vn/khach-san-de-vivre.html",
     }),
     stay("luxury", {
       name: "Diamond Luxury Hotel & Cafe Măng Đen",
       pricePerPersonUsd: "$14–20",
       pricePerPersonVnd: "370–530k VND",
-      setup: "One deluxe family room with three double beds for six.",
-      why: "The simplest high-comfort group arrangement in town, with newer rooms and no nightly room split.",
+      setup: "Один семейный номер делюкс с тремя двуспальными кроватями.",
+      why: "Самое простое размещение всей компании с повышенным комфортом: свежие номера и никаких ночных переселений.",
       url: "https://www.booking.com/hotel/vn/diamond-luxury-amp-cafe-mang-den.html",
     }),
     stay("regular", {
       name: "Bình Sơn Măng Đen Villa",
       pricePerPersonUsd: "$8–14",
       pricePerPersonVnd: "220–370k VND",
-      setup: "A six-person villa layout advertised with three large double beds.",
-      why: "A quieter, home-like alternative to three separate hotel rooms at a moderate group price.",
+      setup: "Вилла на шестерых, заявленная с тремя большими двуспальными кроватями.",
+      why: "Тихая домашняя альтернатива трём отдельным номерам по умеренной цене для группы.",
       caution:
-        "Several villa types share the same listing; confirm that the selected unit really has all three beds.",
+        "В одном объявлении объединено несколько типов вилл — подтвердите, что в выбранном варианте действительно три кровати.",
       url: "https://www.booking.com/hotel/vn/binh-son-mang-den-villa-mang-den.en-gb.html",
     }),
   ]),
-  3: plan("Pleiku", "One night; the farmstay is the unusually strong value choice here.", [
-    stay("special", {
-      name: "An Nhiên Farmstay & Resort — Full House",
-      experience: "Working farmstay",
-      pricePerPersonUsd: "$5–8",
-      pricePerPersonVnd: "130–200k VND",
-      setup: "A full house with one double and four single beds for six.",
-      why: "A genuine group home among vegetable, rice and coffee fields, with a garden and outdoor barbecue area.",
-      url: "https://www.booking.com/hotel/vn/xom-organic-farm-stay.en-gb.html",
-    }),
-    stay("luxury", {
-      name: "Mường Thanh Grand Gia Lai",
-      pricePerPersonUsd: "$20–30",
-      pricePerPersonVnd: "530–780k VND",
-      setup: "Three double or twin rooms for six adults.",
-      why: "Pleiku’s reliable full-service choice, with a swimming pool, spa, restaurant and proper hotel support.",
-      url: "https://www.booking.com/hotel/vn/muong-thanh-grand-gia-lai.en-gb.html",
-    }),
-    stay("regular", {
-      name: "Adalie Pleiku Hotel",
-      pricePerPersonUsd: "$9–14",
-      pricePerPersonVnd: "230–370k VND",
-      setup: "One family room plus one double or twin room for six.",
-      why: "Clean, practical rooms and a straightforward city location at a sensible total price.",
-      url: "https://www.booking.com/hotel/vn/adalie-pleiku.html",
-    }),
-  ]),
+  3: plan(
+    "Pleiku (Плейку)",
+    "Одна ночь; ферма здесь особенно удачна по соотношению цены и впечатлений.",
+    [
+      stay("special", {
+        name: "An Nhiên Farmstay & Resort — Full House",
+        experience: "Жилая ферма",
+        pricePerPersonUsd: "$5–8",
+        pricePerPersonVnd: "130–200k VND",
+        setup: "Целый дом с одной двуспальной и четырьмя односпальными кроватями.",
+        why: "Настоящий дом для всей компании среди овощных грядок, рисовых и кофейных полей, с садом и зоной барбекю.",
+        url: "https://www.booking.com/hotel/vn/xom-organic-farm-stay.en-gb.html",
+      }),
+      stay("luxury", {
+        name: "Mường Thanh Grand Gia Lai",
+        pricePerPersonUsd: "$20–30",
+        pricePerPersonVnd: "530–780k VND",
+        setup: "Три двухместных номера для шести взрослых.",
+        why: "Надёжный полноформатный отель Pleiku (Плейку): бассейн, спа, ресторан и круглосуточный сервис.",
+        url: "https://www.booking.com/hotel/vn/muong-thanh-grand-gia-lai.en-gb.html",
+      }),
+      stay("regular", {
+        name: "Adalie Pleiku Hotel",
+        pricePerPersonUsd: "$9–14",
+        pricePerPersonVnd: "230–370k VND",
+        setup: "Один семейный и один двухместный номер для шестерых.",
+        why: "Чистые практичные номера, понятное расположение в городе и разумная общая цена.",
+        url: "https://www.booking.com/hotel/vn/adalie-pleiku.html",
+      }),
+    ],
+  ),
   4: plan(
-    "Lắk Lake",
-    "One night. This is the strongest place on the route to choose experience over price.",
+    "озеро Lắk (Лак)",
+    "Одна ночь. Здесь особенно стоит выбрать впечатления, а не минимальную цену.",
     [
       stay("special", {
         name: "LAK Tented Camp — Lakeview Tents",
-        experience: "Lake tented camp",
+        experience: "Палаточный лагерь у озера",
         pricePerPersonUsd: "$23–45",
         pricePerPersonVnd: "600k–1.18m VND",
-        setup: "Two ensuite lakeview tents for six, each sleeping up to three people.",
-        why: "Boat arrival, canvas rooms and lake-and-mountain views make this the trip’s best special-experience night.",
+        setup: "Две палатки с ванными и видом на озеро, до трёх человек в каждой.",
+        why: "Прибытие на лодке, ночь под парусиной и вид на озеро и горы — самый яркий вариант ночёвки за всю поездку.",
         caution:
-          "The lower estimate is accommodation only; meal, boat and cultural packages raise the total.",
+          "Нижняя граница включает только проживание; питание, лодка и культурная программа увеличат итоговую сумму.",
         url: "https://www.booking.com/hotel/vn/lak-tented-camp.en-gb.html",
       }),
       stay("luxury", {
         name: "LAK Tented Camp — Lakefront Bungalows",
         pricePerPersonUsd: "$43–63",
         pricePerPersonVnd: "1.12–1.67m VND",
-        setup: "Two air-conditioned lakefront bungalows for six, each sleeping up to three.",
-        why: "The most comfortable stay directly on Lắk Lake, keeping the camp’s boat access and quiet setting.",
-        caution: "This is polished eco-lodge comfort, not a conventional pool-and-spa resort.",
+        setup: "Два бунгало с кондиционером у самой воды, до трёх человек в каждом.",
+        why: "Самый комфортный вариант прямо на озере Lắk (Лак), сохранивший лодочный трансфер и тишину лагеря.",
+        caution: "Это хорошо устроенный эколодж, а не привычный курорт с бассейном и спа.",
         url: "https://www.booking.com/hotel/vn/lak-tented-camp.en-gb.html",
       }),
       stay("regular", {
         name: "Lak View Hotel",
         pricePerPersonUsd: "$6–9",
         pricePerPersonVnd: "150–230k VND",
-        setup: "Three double rooms for six adults.",
-        why: "A basic but well-located stop near the lake when the camp is too expensive or unavailable.",
+        setup: "Три двухместных номера для шести взрослых.",
+        why: "Простой, но удобно расположенный вариант у озера, если лагерь слишком дорог или занят.",
         url: "https://www.booking.com/hotel/vn/lak-view.en-gb.html",
       }),
     ],
   ),
   5: plan(
-    "Đà Lạt",
-    "Book once for Nights 5 and 6; keep the same base for the hiking day.",
+    "Đà Lạt (Далат)",
+    "Одно бронирование на пятую и шестую ночи: в день прогулки базу не меняем.",
     daLatStays,
   ),
-  6: plan("Đà Lạt", "Second night of the same two-night Đà Lạt booking.", daLatStays),
+  6: plan(
+    "Đà Lạt (Далат)",
+    "Вторая ночь того же двухдневного бронирования в Đà Lạt (Далате).",
+    daLatStays,
+  ),
   7: plan(
-    "Nha Trang",
-    "Book once for Nights 7 and 8; leave the scooters parked on the rest day.",
+    "Nha Trang (Нячанг)",
+    "Одно бронирование на седьмую и восьмую ночи; в день отдыха байки остаются на парковке.",
     nhaTrangStays,
   ),
-  8: plan("Nha Trang", "Second night of the same two-night Nha Trang booking.", nhaTrangStays),
+  8: plan(
+    "Nha Trang (Нячанг)",
+    "Вторая ночь того же двухдневного бронирования в Nha Trang (Нячанге).",
+    nhaTrangStays,
+  ),
   9: plan(
-    "Sông Cầu",
-    "One night; staying on the coast is more rewarding than continuing into Quy Nhơn.",
+    "Sông Cầu (Шонгкау)",
+    "Одна ночь; лучше остаться у моря, чем в тот же вечер продолжать до Quy Nhơn (Куинёна).",
     [
       stay("special", {
         name: "Lucky Spot Beach Bungalow",
-        experience: "Independent beach bungalow",
+        experience: "Отдельное бунгало у пляжа",
         pricePerPersonUsd: "$15–25",
         pricePerPersonVnd: "400–650k VND",
-        setup: "Three simple beachfront bungalows or rooms for six.",
-        why: "A quiet, small-scale beach stay where the group can finish the riding day with sand directly outside.",
+        setup: "Три простых бунгало или номера у пляжа для шестерых.",
+        why: "Небольшое тихое место у моря, где после ходового дня песок начинается прямо за порогом.",
         url: "https://www.booking.com/hotel/vn/lucky-spot-beach-bungalow.en-gb.html",
       }),
       stay("luxury", {
         name: "Zannier Bãi San Hô — Three-Bedroom Grand Bay Pool Villa",
         pricePerPersonUsd: "$267–400",
         pricePerPersonVnd: "7–10.5m VND",
-        setup: "A 241 m² three-bedroom villa for six with a private infinity pool.",
-        why: "The route’s true splurge: sea views, complete privacy and exceptional resort design on a secluded bay.",
-        caution:
-          "This is an indicative range; the resort normally prices this villa by direct quote.",
+        setup: "Вилла площадью 241 м² с тремя спальнями и частным панорамным бассейном.",
+        why: "Главная роскошь маршрута: вид на море, полное уединение и выдающаяся архитектура курорта в закрытой бухте.",
+        caution: "Диапазон ориентировочный: обычно курорт сообщает цену этой виллы по запросу.",
         url: "https://www.zannierhotels.com/hotels/bai-san-ho/accommodation/three-bedroom-grand-bay-pool-villa/",
       }),
       stay("regular", {
         name: "RUBEACH Hotel & Restaurant",
         pricePerPersonUsd: "$9–16",
         pricePerPersonVnd: "230–420k VND",
-        setup: "Three double or twin rooms for six adults.",
-        why: "A practical beach stop with a pool and restaurant, without the high price of the secluded resorts.",
+        setup: "Три двухместных номера для шести взрослых.",
+        why: "Практичная остановка у пляжа с бассейном и рестораном, без высокой цены уединённых курортов.",
         url: "https://www.booking.com/hotel/vn/rubeach-amp-rerost-song-cau1.en-gb.html",
       }),
     ],
   ),
   10: plan(
-    "Sa Huỳnh",
-    "One night. Local inventory is small; reserve early and expect simpler service.",
+    "Sa Huỳnh (Сахюинь)",
+    "Одна ночь. Выбор невелик: бронируйте заранее и рассчитывайте на простой сервис.",
     [
       stay("special", {
         name: "Homestay Giếng Cổ, Gò Cỏ Village",
-        experience: "Community village homestay",
+        experience: "Гостевой дом в деревне",
         pricePerPersonUsd: "$6–9",
         pricePerPersonVnd: "150–230k VND",
-        setup:
-          "Simple earth-and-thatch huts for six with extra beds and shared bathroom facilities.",
-        why: "The most distinctive local experience: a community stay in the old coastal village rather than a hotel.",
+        setup: "Простые глинобитные хижины под соломой с дополнительными кроватями и общей ванной.",
+        why: "Самый самобытный вариант: ночь у жителей старой прибрежной деревни вместо обычного отеля.",
         caution:
-          "Capacity for six and late arrival must be confirmed directly; this is deliberately rustic.",
-        mapNote: "The marker shows Gò Cỏ village; confirm the host’s exact house before arrival.",
+          "Размещение шестерых и поздний приезд нужно согласовать напрямую; условия здесь намеренно деревенские.",
+        mapNote: "Метка указывает на деревню Gò Cỏ (Гоко); точный дом хозяина уточните до приезда.",
         url: "https://ohdidi.vn/homestay/homestay-gieng-co",
       }),
       stay("luxury", {
         name: "Sa Huynh Beach Resort",
         pricePerPersonUsd: "$13–20",
         pricePerPersonVnd: "330–530k VND",
-        setup: "Three beach-facing rooms or villas for six adults.",
-        why: "The most comfortable local choice, with a pool, restaurant and direct beach access.",
-        caution: "This is the area’s best full-service stay, but it is not city-level luxury.",
+        setup: "Три номера или виллы с видом на пляж для шести взрослых.",
+        why: "Самый комфортный местный вариант: бассейн, ресторан и прямой выход к пляжу.",
+        caution: "Это лучший полноформатный отель в округе, но не городская гостиница класса люкс.",
         url: "https://www.agoda.com/en-sg/sa-huynh-resort-quang-ngai/hotel/quang-ngai-vn.html",
       }),
       stay("regular", {
         name: "Tien Vuong Hotel",
         pricePerPersonUsd: "$4–8",
         pricePerPersonVnd: "120–200k VND",
-        setup: "Two sea- or garden-view twin rooms for six, with two double beds in each.",
-        why: "A straightforward beachfront backup with parking, balconies and enough bed space for the group.",
+        setup:
+          "Два номера с видом на море или сад; в каждом по две двуспальные кровати, всего на шестерых.",
+        why: "Простой запасной вариант у пляжа: парковка, балконы и достаточно спальных мест для всей группы.",
         url: "https://www.booking.com/hotel/vn/tien-vuong.en-gb.html",
       }),
     ],
   ),
   11: plan(
-    "Phú Ninh Lake",
-    "One night. Confirm all lake stays directly because inventory is limited.",
+    "озеро Phú Ninh (Фунин)",
+    "Одна ночь. Все варианты у озера подтверждайте напрямую: мест немного.",
     [
       stay("special", {
         name: "Phú Ninh Lake official campsite",
-        experience: "Lakeside campsite",
+        experience: "Кемпинг у озера",
         pricePerPersonUsd: "$8–11",
         pricePerPersonVnd: "200–280k VND",
-        setup: "One four-person tent plus one two-person tent for all six.",
-        why: "The purest lake experience and the cheapest way to keep everyone together under the same night sky.",
+        setup: "Одна четырёхместная и одна двухместная палатка для всей группы.",
+        why: "Самая близкая к природе ночь у озера и самый доступный способ остаться всей компанией под одним небом.",
         caution:
-          "Confirm overnight operation, rain cover, bedding and bathroom access before depending on the campsite.",
+          "Заранее подтвердите работу кемпинга с ночёвкой, защиту от дождя, постельные принадлежности и доступ к санузлу.",
         mapNote:
-          "The marker shows the lake visitor area; the operator assigns the exact tent location.",
+          "Метка указывает на гостевую зону озера; точное место для палаток назначает оператор.",
         url: "https://vinpearl.com/en/phu-ninh-lake",
       }),
       stay("luxury", {
         name: "Phu Ninh Lake Resort",
         pricePerPersonUsd: "$21–28",
         pricePerPersonVnd: "550–750k VND",
-        setup: "One lake-view family room plus one chalet or twin room for six.",
-        why: "The comfortable lake option, with views, an outdoor pool, restaurant and no ride back from Tam Kỳ at night.",
+        setup: "Один семейный номер с видом на озеро и одно шале или двухместный номер.",
+        why: "Комфорт у озера: красивый вид, открытый бассейн, ресторан и никакой ночной дороги обратно в Tam Kỳ (Тамки).",
         caution:
-          "Only a few rooms are listed online, so ask the resort to hold the full six-person combination.",
+          "В интернете выставлена лишь часть номеров — попросите курорт удержать весь комплект на шестерых.",
         url: "https://www.booking.com/hotel/vn/phu-ninh-lake-resort-amp-spa-ecotourism.en-gb.html",
       }),
       stay("regular", {
         name: "Mường Thanh Grand Quảng Nam",
         pricePerPersonUsd: "$18–24",
         pricePerPersonVnd: "470–630k VND",
-        setup: "Three double or twin rooms for six in Tam Kỳ, about 7 km from the lake.",
-        why: "The dependable weather backup: a large hotel with pool, restaurant, parking and predictable reception.",
+        setup: "Три двухместных номера в Tam Kỳ (Тамки), примерно в 7 км от озера.",
+        why: "Надёжный вариант на плохую погоду: большой отель с бассейном, рестораном, парковкой и круглосуточной стойкой.",
         url: "https://www.booking.com/hotel/vn/muong-thanh-grand-quang-nam.html",
       }),
     ],
   ),
   12: plan(
-    "Đà Nẵng",
-    "Optional post-trip night after scooter return; skip this booking if everyone departs.",
+    "Đà Nẵng (Дананг)",
+    "Необязательная ночь после возврата байков; если все сразу уезжают, бронирование не нужно.",
     [
       stay("special", {
         name: "KOI Resort & Residence — Three-Bedroom Pool Villa",
-        experience: "Private pool villa",
+        experience: "Вилла с частным бассейном",
         pricePerPersonUsd: "$67–108",
         pricePerPersonVnd: "1.75–2.85m VND",
-        setup: "A whole three-bedroom villa for six with a private pool.",
-        why: "The best final-night group house: private shared space, resort facilities and beach access south of the city.",
+        setup: "Целая вилла с тремя спальнями и частным бассейном для шестерых.",
+        why: "Лучший общий дом на финальную ночь: своё пространство, курортная инфраструктура и пляж к югу от города.",
         caution:
-          "Rates vary sharply between garden, river and beachfront versions; confirm the exact villa shown.",
+          "Цены на виллы у сада, реки и пляжа сильно различаются — подтвердите именно тот вариант, что показан в бронировании.",
         url: "https://www.booking.com/hotel/vn/koi-resort-and-residence-da-nang.en-gb.html",
       }),
       stay("luxury", {
@@ -415,18 +425,18 @@ export const staysByDay = {
         pricePerPersonUsd: "$125–167",
         pricePerPersonVnd: "3.28–4.38m VND",
         setup:
-          "A 670–850 m² three-bedroom villa with living room, dining area and a large private pool.",
-        why: "The most polished six-person villa finish, with space to stay together and full resort service.",
+          "Вилла площадью 670–850 м² с тремя спальнями, гостиной, столовой и большим частным бассейном.",
+        why: "Самый изысканный финал для шестерых: достаточно места, чтобы быть вместе, и полный курортный сервис.",
         caution:
-          "The promoted villa package requires two nights; request a separate one-night rate if needed.",
+          "Акционное предложение рассчитано на две ночи; при необходимости запросите отдельный тариф на одну.",
         url: "https://www.booking.com/hotel/vn/naman-retreat.en-gb.html",
       }),
       stay("regular", {
         name: "SALA Danang Beach Hotel",
         pricePerPersonUsd: "$38–50",
         pricePerPersonVnd: "1.0–1.32m VND",
-        setup: "Three double or twin rooms for six adults.",
-        why: "A comfortable My Khe finish with rooftop pool, beach access and easy airport or city connections.",
+        setup: "Три двухместных номера для шести взрослых.",
+        why: "Комфортный финал у пляжа Mỹ Khê (Микхе): бассейн на крыше, море рядом, удобный выезд в аэропорт и центр.",
         url: "https://www.booking.com/hotel/vn/sala-danang-beach.en-gb.html",
       }),
     ],

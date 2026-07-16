@@ -96,10 +96,10 @@
 </script>
 
 <svelte:head>
-	<title>Quiet Roads Vietnam — relaxed highlands and coast route</title>
+	<title>К югу от границы, на запад от солнца — мотопутешествие по Вьетнаму</title>
 	<meta
 		name="description"
-		content="A relaxed 12-day scooter route from Đà Nẵng through the Central Highlands and home along Vietnam’s coast."
+		content="Спокойный двенадцатидневный маршрут на байках из Đà Nẵng (Дананга) через Центральное нагорье и обратно по побережью Вьетнама."
 	/>
 </svelte:head>
 
@@ -108,11 +108,11 @@
 >
 	<header class="flex flex-col gap-1 xl:flex-row xl:items-baseline xl:justify-between xl:gap-5">
 		<div class="flex min-w-0 items-baseline gap-3">
-			<p class="text-muted-foreground shrink-0 text-xs font-medium tracking-wide uppercase">12-day route</p>
-			<h1 class="truncate text-xl font-medium tracking-tight sm:text-2xl">Highlands south, coast home</h1>
+			<p class="text-muted-foreground shrink-0 text-xs font-medium tracking-wide uppercase">Маршрут на 12 дней</p>
+			<h1 class="min-w-0 text-xl font-medium tracking-tight text-balance sm:text-2xl">К югу от границы, на запад от солнца</h1>
 		</div>
 		<ul
-			aria-label="Route at a glance"
+			aria-label="Маршрут в цифрах"
 			class="text-muted-foreground flex min-w-0 flex-wrap items-baseline gap-x-1.5 text-sm xl:flex-nowrap xl:justify-end"
 		>
 			{#each itinerary.atAGlance as fact, index}
@@ -124,10 +124,10 @@
 		</ul>
 	</header>
 
-	<section aria-label="Map controls" class="rounded-lg border px-3 py-2.5">
+	<section aria-label="Настройки карты" class="rounded-lg border px-3 py-2.5">
 		<div class="flex flex-col gap-2.5 lg:flex-row lg:items-center lg:justify-between">
 			<fieldset class="min-w-0 flex-1">
-				<legend class="sr-only">Map focus</legend>
+				<legend class="sr-only">Показать на карте</legend>
 				<div
 					bind:this={focusStrip}
 					class="flex max-w-full gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -135,36 +135,36 @@
 					<button
 						type="button"
 						data-focus="0"
-						aria-label="Show the entire loop"
+						aria-label="Показать весь маршрут"
 						aria-pressed={selectedNumber === 0}
 						onclick={() => selectDay(0)}
 						class="focus-visible:ring-ring h-8 shrink-0 rounded-md border px-3 text-xs font-medium outline-none transition-colors focus-visible:ring-3 aria-pressed:bg-foreground aria-pressed:text-background aria-[pressed=false]:text-muted-foreground aria-[pressed=false]:hover:bg-muted"
 					>
-						Loop
+						Весь путь
 					</button>
 					{#each itinerary.days as day}
 						<button
 							type="button"
 							data-focus={day.day}
-							aria-label={`Show Day ${day.day}: ${day.title}`}
+							aria-label={`Показать день ${day.day}: ${day.title}`}
 							aria-pressed={selectedNumber === day.day}
-							title={`Day ${day.day}: ${day.title}`}
+							title={`День ${day.day}: ${day.title}`}
 							onclick={() => selectDay(day.day)}
 							class="focus-visible:ring-ring h-8 min-w-9 shrink-0 rounded-md border px-2 text-xs font-medium outline-none transition-colors focus-visible:ring-3 aria-pressed:bg-foreground aria-pressed:text-background aria-[pressed=false]:text-muted-foreground aria-[pressed=false]:hover:bg-muted"
 						>
-							D{day.day}
+							Д{day.day}
 						</button>
 					{/each}
 				</div>
 			</fieldset>
 
 			<fieldset class="flex shrink-0 items-center gap-1.5">
-				<legend class="sr-only">Place categories</legend>
-				<span class="text-muted-foreground mr-1 hidden text-xs font-medium md:inline">Places</span>
+				<legend class="sr-only">Категории мест</legend>
+				<span class="text-muted-foreground mr-1 hidden text-xs font-medium md:inline">Места</span>
 				{#each placeCategories as category}
 					<button
 						type="button"
-						aria-label={`${activeCategoryIds.includes(category.id) ? 'Hide' : 'Show'} ${category.label}`}
+						aria-label={`${activeCategoryIds.includes(category.id) ? 'Скрыть' : 'Показать'}: ${category.label}`}
 						aria-pressed={activeCategoryIds.includes(category.id)}
 						title={category.label}
 						onclick={() => toggleCategory(category.id)}
@@ -176,9 +176,9 @@
 			</fieldset>
 
 			{#if selectedDay}
-				<div class="text-muted-foreground flex shrink-0 items-center gap-2 text-xs" aria-label="Stay markers">
+				<div class="text-muted-foreground flex shrink-0 items-center gap-2 text-xs" aria-label="Метки жилья">
 					<span class="grid size-6 place-items-center rounded-full bg-[var(--map-stay)] font-medium text-white">1–3</span>
-					<span>Stays</span>
+					<span>Жильё</span>
 				</div>
 			{/if}
 		</div>
@@ -187,7 +187,7 @@
 	<div
 		class="grid gap-4 xl:min-h-0 xl:flex-1 xl:grid-cols-[minmax(360px,0.72fr)_minmax(560px,1.28fr)]"
 	>
-		<section class="h-[56svh] min-h-[360px] xl:h-auto xl:min-h-0" aria-label="Route map">
+		<section class="h-[56svh] min-h-[360px] xl:h-auto xl:min-h-0" aria-label="Карта маршрута">
 			<RouteMap
 				{itinerary}
 				{selectedDay}
@@ -204,7 +204,7 @@
 		<aside
 			bind:this={detailsPanel}
 			class="min-w-0 rounded-lg border bg-card p-4 sm:p-5 xl:min-h-0 xl:overflow-y-auto xl:overscroll-contain xl:p-6 xl:[scrollbar-gutter:stable]"
-			aria-label="Selected route details"
+			aria-label="Описание выбранного участка"
 		>
 			{#if selectedPlace}
 				<PlaceDetails place={selectedPlace} onBack={backToDay} />
@@ -220,29 +220,29 @@
 			{:else}
 				<div class="space-y-5">
 					<div class="space-y-2">
-						<h2 class="text-2xl font-medium tracking-tight">The whole loop</h2>
+						<h2 class="text-2xl font-medium tracking-tight">Весь маршрут</h2>
 						<p class="text-muted-foreground leading-relaxed">
-							A relaxed line through the highlands to Đà Lạt, then home along the coast. Choose a day
-							or a place on the map; the story stays here while the map keeps its position.
+							Неспешная дорога через нагорье до Đà Lạt (Далата) и возвращение вдоль моря. Выберите день
+							или место: описание появится здесь, а карта сохранит выбранный ракурс.
 						</p>
 					</div>
 
-					<div class="grid gap-3 text-sm sm:grid-cols-2" aria-label="Map legend">
+					<div class="grid gap-3 text-sm sm:grid-cols-2" aria-label="Условные обозначения карты">
 						<div class="flex items-center gap-2">
 							<span class="h-1 w-8 rounded-full bg-[var(--map-route-outbound)]"></span>
-							<span>Highlands south</span>
+							<span>На юг через нагорье</span>
 						</div>
 						<div class="flex items-center gap-2">
 							<span class="h-1 w-8 rounded-full bg-[var(--map-route-return)]"></span>
-							<span>Coast home</span>
+							<span>Обратно вдоль моря</span>
 						</div>
 						<div class="flex items-center gap-2">
-							<span class="grid h-5 min-w-8 place-items-center rounded-full bg-[var(--map-route-hike)] px-1 text-[9px] font-semibold text-white">D6</span>
-							<span>Hiking</span>
+							<span class="grid h-5 min-w-8 place-items-center rounded-full bg-[var(--map-route-hike)] px-1 text-[9px] font-semibold text-white">Д6</span>
+							<span>Пеший день</span>
 						</div>
 						<div class="flex items-center gap-2">
-							<span class="grid h-5 min-w-8 place-items-center rounded-full bg-[var(--map-route-rest)] px-1 text-[9px] font-semibold text-white">D8</span>
-							<span>Rest day</span>
+							<span class="grid h-5 min-w-8 place-items-center rounded-full bg-[var(--map-route-rest)] px-1 text-[9px] font-semibold text-white">Д8</span>
+							<span>День отдыха</span>
 						</div>
 					</div>
 
@@ -261,7 +261,7 @@
 								</a>
 							{/each}
 						</div>
-						<p class="text-muted-foreground mt-2 text-xs">Last reviewed {itinerary.season.reviewedAt}.</p>
+						<p class="text-muted-foreground mt-2 text-xs">Проверено {itinerary.season.reviewedAt}.</p>
 					</div>
 
 					<ol class="grid gap-x-5 text-sm sm:grid-cols-2">
@@ -272,7 +272,7 @@
 									onclick={() => selectDay(day.day)}
 									class="hover:bg-muted focus-visible:ring-ring flex w-full items-start gap-3 rounded-md py-3 text-left outline-none focus-visible:ring-3"
 								>
-									<span class="text-muted-foreground w-6 shrink-0">D{day.day}</span>
+									<span class="text-muted-foreground w-6 shrink-0">Д{day.day}</span>
 									<span class="min-w-0 flex-1">
 										<span class="block font-medium">{day.title}</span>
 										<span class="text-muted-foreground mt-0.5 block">{day.distance}</span>

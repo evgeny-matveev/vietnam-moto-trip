@@ -1,0 +1,27 @@
+import { readFileSync } from "node:fs";
+import { describe, expect, it } from "vitest";
+import { itinerary } from "./itineraries.js";
+
+const appHtml = readFileSync("src/app.html", "utf8");
+const homePage = readFileSync("src/routes/+page.svelte", "utf8");
+const guidePage = readFileSync("src/routes/guide/+page.svelte", "utf8");
+const siteHeader = readFileSync("src/lib/components/SiteHeader.svelte", "utf8");
+
+describe("Russian localization", () => {
+  it("sets the document language and exact editorial identity", () => {
+    expect(appHtml).toContain('<html lang="ru">');
+    expect(itinerary.name).toBe("К югу от границы, на запад от солнца");
+    expect(homePage).toContain(">К югу от границы, на запад от солнца</h1>");
+    expect(siteHeader).toContain(">Верхом на байках по югу Вьетнама</a>");
+  });
+
+  it("keeps representative established Russian place forms and translated metadata", () => {
+    const publicCopy = `${JSON.stringify(itinerary)}\n${homePage}\n${guidePage}`;
+    expect(publicCopy).toContain("Đà Nẵng (Дананг)");
+    expect(publicCopy).toContain("Hội An (Хойан)");
+    expect(publicCopy).toContain("Nha Trang (Нячанг)");
+    expect(publicCopy).not.toMatch(/Хо\s+ши\s+мин/i);
+    expect(publicCopy).not.toContain("Quiet Roads Vietnam");
+    expect(publicCopy).not.toContain("Highlands south, coast home");
+  });
+});

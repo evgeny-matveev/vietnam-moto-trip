@@ -19,7 +19,7 @@
 	<div class="space-y-2">
 		<div class="flex flex-wrap items-center gap-2">
 			<Badge variant={day.kind === 'hike' || day.kind === 'rest' ? 'default' : 'secondary'}
-				>Day {day.day}</Badge
+				>День {day.day}</Badge
 			>
 			<Badge variant="outline">
 				{#if day.kind === 'hike'}
@@ -39,14 +39,14 @@
 	<Separator />
 
 	<div class="space-y-1.5">
-		<h3 class="text-sm font-medium">Road</h3>
+		<h3 class="text-sm font-medium">Дорога</h3>
 		<p class="text-sm leading-relaxed">{day.roads}</p>
 		<p class="text-muted-foreground text-sm">{day.rideTime}</p>
 	</div>
 
 	{#if day.roadCharacter}
 		<div class="space-y-1.5">
-			<h3 class="text-sm font-medium">Road character</h3>
+			<h3 class="text-sm font-medium">Характер дороги</h3>
 			<p class="text-muted-foreground text-sm leading-relaxed">{day.roadCharacter}</p>
 		</div>
 	{/if}
@@ -56,7 +56,7 @@
 	{/if}
 
 	<div class="space-y-2">
-		<h3 class="text-sm font-medium">Choose on the day</h3>
+		<h3 class="text-sm font-medium">Выберите по ситуации</h3>
 		<ul class="space-y-2 text-sm leading-relaxed">
 			{#each day.stops as stop}
 				<li class="flex gap-2">
@@ -71,7 +71,7 @@
 
 	{#if day.weatherFallback}
 		<div class="rounded-md border border-sky-700/25 bg-sky-500/5 p-3 text-sm leading-relaxed">
-			<span class="font-medium">If weather turns:</span> {day.weatherFallback}
+			<span class="font-medium">Если погода испортится:</span> {day.weatherFallback}
 		</div>
 	{/if}
 
@@ -79,7 +79,7 @@
 
 	{#if places.length}
 		<div class="space-y-2">
-			<h3 class="text-sm font-medium">Places on the map</h3>
+			<h3 class="text-sm font-medium">Места на карте</h3>
 			<div class="flex flex-wrap gap-2">
 				{#each places as place}
 					<button

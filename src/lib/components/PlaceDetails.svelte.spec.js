@@ -22,13 +22,13 @@ describe("PlaceDetails", () => {
     render(PlaceDetails, { place, onBack });
 
     await expect.element(page.getByRole("heading", { name: "Hòn Mun" })).toBeVisible();
-    await expect.element(page.getByText("4–6 hr").first()).toBeVisible();
+    await expect.element(page.getByText("4–6 ч").first()).toBeVisible();
     await expect.element(page.getByText(/Cancel when marine warnings/)).toBeVisible();
     await expect
       .element(page.getByRole("link", { name: /Official Nha Trang guide/ }))
       .toHaveAttribute("href", "https://vietnam.travel/example");
 
-    await page.getByRole("button", { name: /Back to route details/ }).click();
+    await page.getByRole("button", { name: /К маршруту дня/ }).click();
     expect(onBack).toHaveBeenCalledOnce();
   });
 });

@@ -1,7 +1,16 @@
 <script>
+	import { onMount } from 'svelte';
 	import ExternalLinkIcon from '@lucide/svelte/icons/external-link';
 	import MapPinIcon from '@lucide/svelte/icons/map-pin';
 	import { stayCategoryLabels, stayLinkLabel } from '$lib/data/stays.js';
+	import {
+		exchangeRateAttributionUrl,
+		fallbackRateInfo,
+		fallbackRateSourceUrl,
+		formatRateDate,
+		formatRubRange,
+		loadUsdRubRate
+	} from '$lib/exchange-rates.js';
 
 	let { stayPlan, onSelectStay } = $props();
 
@@ -10,19 +19,25 @@
 		luxury: 2,
 		regular: 3
 	};
+
+	let rateInfo = $state(fallbackRateInfo);
+
+	onMount(async () => {
+		rateInfo = await loadUsdRubRate();
+	});
 </script>
 
 {#if stayPlan?.stays?.length}
 	<section class="space-y-3" aria-labelledby="stay-recommendations-title">
 		<div class="space-y-1">
-			<h3 id="stay-recommendations-title" class="text-sm font-medium">Where to stay in {stayPlan.location}</h3>
+			<h3 id="stay-recommendations-title" class="text-sm font-medium">Где остановиться в {stayPlan.location}</h3>
 			<p class="text-muted-foreground text-xs leading-relaxed">
-				Estimated price per person, per night, assuming six adults in late September–early
-				October 2026. Taxes, breakfast and cancellation terms may change.
+				Ориентировочная стоимость за человека в сутки для шести взрослых в конце сентября —
+				начале октября 2026 года. Налоги, завтрак и условия отмены могут измениться.
 			</p>
 			<p class="text-muted-foreground text-xs leading-relaxed">
-				The first pick favors camps, farmstays, village homes and other niche experiences when
-				a credible option exists.
+				Первым идёт вариант с характером: кемпинг, ферма, деревенский дом или другое необычное
+				место, если его можно рекомендовать без оговорок.
 			</p>
 			<p class="text-xs leading-relaxed">{stayPlan.note}</p>
 		</div>
@@ -41,11 +56,14 @@
 						<p class="shrink-0 text-sm font-medium sm:text-right">
 							{stay.pricePerPersonUsd}
 							<span class="text-muted-foreground block text-[11px] font-normal"
-								>per person / night</span
+								>за человека / сутки</span
 							>
 							<span class="text-muted-foreground block text-xs font-normal"
 								>{stay.pricePerPersonVnd}</span
 							>
+							<span class="text-muted-foreground block text-xs font-normal">
+								{formatRubRange(stay.pricePerPersonUsd, rateInfo.rate)}
+							</span>
 						</p>
 					</div>
 
@@ -54,7 +72,7 @@
 
 					{#if stay.caution}
 						<p class="mt-2 border-l-2 border-amber-600/35 pl-2 text-xs leading-relaxed">
-							<span class="font-medium">Check:</span> {stay.caution}
+							<span class="font-medium">Проверьте:</span> {stay.caution}
 						</p>
 					{/if}
 
@@ -62,11 +80,11 @@
 						{#if onSelectStay}
 							<button
 								type="button"
-								aria-label={`Show ${stay.name} on map`}
+								aria-label={`Показать ${stay.name} на карте`}
 								onclick={() => onSelectStay(stay.id)}
 								class="decoration-muted-foreground hover:decoration-foreground inline-flex items-center gap-1 text-xs underline underline-offset-4"
 							>
-								Show on map
+								На карте
 								<MapPinIcon class="size-3" aria-hidden="true" />
 							</button>
 						{/if}
@@ -83,5 +101,15 @@
 				</article>
 			{/each}
 		</div>
+
+		<p class="text-muted-foreground text-xs leading-relaxed">
+			{#if rateInfo.source === 'current'}
+				Рубли рассчитаны по текущему курсу ЦБ РФ на {formatRateDate(rateInfo.date)}
+			{:else}
+				Рубли рассчитаны по <a class="underline underline-offset-4" href={fallbackRateSourceUrl} target="_blank" rel="noreferrer">сохранённому курсу ЦБ РФ</a> на {formatRateDate(rateInfo.date)} — свежий курс загрузить не удалось.
+			{/if}
+			Расчёт приблизительный: курс банка или карты может отличаться.
+			<a class="underline underline-offset-4" href={exchangeRateAttributionUrl} target="_blank" rel="noreferrer">API курсов ЦБ РФ</a>.
+		</p>
 	</section>
 {/if}

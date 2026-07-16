@@ -7,8 +7,8 @@
 {#if activities.length}
 	<section class="space-y-2.5" aria-labelledby="optional-activities-title">
 		<div class="space-y-0.5">
-			<h3 id="optional-activities-title" class="text-sm font-medium">Optional activities</h3>
-			<p class="text-muted-foreground text-xs">Choose one when it fits the day; these are alternatives, not extra obligations.</p>
+			<h3 id="optional-activities-title" class="text-sm font-medium">Дополнительные занятия</h3>
+			<p class="text-muted-foreground text-xs">Выбирайте одно, если оно вписывается в день: это альтернативы, а не новые обязательные пункты.</p>
 		</div>
 
 		<div class="grid gap-2 sm:grid-cols-2">

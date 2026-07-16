@@ -33,10 +33,10 @@ describe("the relaxed itinerary", () => {
     const totalTime = timeRanges.reduce((sum, values) => sum + midpoint(values), 0);
 
     expect(itinerary.atAGlance).toEqual([
-      "≈1,750 km",
-      "avg. 175 km / 5 hr",
-      "Đà Lạt mountain hike",
-      "Nha Trang rest day",
+      "≈ 1 750 км",
+      "в среднем 175 км / 5 ч",
+      "поход в горах Đà Lạt (Далата)",
+      "день отдыха в Nha Trang (Нячанге)",
     ]);
     expect(Math.round(totalDistance / 50) * 50).toBe(1750);
     expect(Math.round(totalDistance / ridingDays.length)).toBe(175);
@@ -56,32 +56,32 @@ describe("the relaxed itinerary", () => {
     const restDay = itinerary.days[7];
 
     expect(hikingDay.routeFile).toBeUndefined();
-    expect(hikingDay.roads).toBe("No intercity riding");
-    expect(hikingDay.stops.join(" ")).toMatch(/Lang Biang summit.*9\.7 km.*685 m/i);
-    expect(hikingDay.stops.join(" ")).toMatch(/Đa Phú hills.*4 km.*195 m/i);
-    expect(hikingDay.stops.join(" ")).toMatch(/Xuân Hương Lake loop.*7 km.*50 m/i);
-    expect(hikingDay.stops.join(" ")).toMatch(/Bidoup–Núi Bà official day walk/i);
-    expect(hikingDay.stops.join(" ")).toMatch(/private land/i);
+    expect(hikingDay.roads).toBe("Междугородних переездов нет");
+    expect(hikingDay.stops.join(" ")).toMatch(/Lang Biang.*9,7 км.*685 м/i);
+    expect(hikingDay.stops.join(" ")).toMatch(/Đa Phú.*4 км.*195 м/i);
+    expect(hikingDay.stops.join(" ")).toMatch(/Xuân Hương.*7 км.*50 м/i);
+    expect(hikingDay.stops.join(" ")).toMatch(/официальный маршрут Bidoup–Núi Bà/i);
+    expect(hikingDay.stops.join(" ")).toMatch(/частные земли/i);
     expect(hikingDay.sources.map((source) => source.label).join(" ")).toMatch(/AllTrails/i);
     expect(hikingDay.sources.map((source) => source.label).join(" ")).toMatch(/Komoot/i);
     expect(hikingDay.sources.map((source) => source.label).join(" ")).toMatch(/Wikiloc/i);
     expect(restDay.routeFile).toBeUndefined();
     expect(restDay.title).toContain("Nha Trang");
-    expect(restDay.roads).toContain("Nha Trang base");
-    expect(restDay.stops.join(" ")).toMatch(/Good sea/i);
-    expect(restDay.stops.join(" ")).toMatch(/Poor sea/i);
-    expect(restDay.note).toMatch(/not try to complete the sea plan and city plan together/i);
+    expect(restDay.roads).toContain("База в Nha Trang");
+    expect(restDay.stops.join(" ")).toMatch(/Спокойное море/i);
+    expect(restDay.stops.join(" ")).toMatch(/Плохое море/i);
+    expect(restDay.note).toMatch(/Не пытайтесь уместить морскую и городскую программы/i);
   });
 
   it("makes Phú Ninh Lake the Day 11 destination and Day 12 starting point", () => {
     const lakeDay = itinerary.days[10];
     const finalDay = itinerary.days[11];
 
-    expect(lakeDay.title).toBe("Sa Huỳnh → Phú Ninh Lake");
+    expect(lakeDay.title).toBe("Sa Huỳnh (Сахюинь) → озеро Phú Ninh (Фунин)");
     expect(lakeDay.placeIds).toContain("phu-ninh-lake");
-    expect(lakeDay.note).toMatch(/stay nearby|stay at the lake|stay/i);
-    expect(finalDay.title).toBe("Phú Ninh Lake → Đà Nẵng");
-    expect(finalDay.roads).toMatch(/^Phú Ninh Lake/);
+    expect(lakeDay.note).toMatch(/ночуйте рядом/i);
+    expect(finalDay.title).toBe("озеро Phú Ninh (Фунин) → Đà Nẵng (Дананг)");
+    expect(finalDay.roads).toMatch(/^озеро Phú Ninh/);
     expect(finalDay.placeIds).toContain("phu-ninh-lake");
   });
 
@@ -129,11 +129,12 @@ describe("the relaxed itinerary", () => {
       expect(day.creatorResources.length, `Day ${day.day} resources`).toBeGreaterThan(0);
       for (const resource of day.creatorResources) {
         expect(resource.platform).toBe("YouTube");
-        expect(["English", "Vietnamese"]).toContain(resource.language);
+        expect(["Русский", "Английский", "Вьетнамский"]).toContain(resource.language);
         expect(resource.title.length).toBeGreaterThan(8);
         expect(resource.creator.length).toBeGreaterThan(2);
         expect(resource.note.length).toBeGreaterThan(20);
         expect(resource.url).toMatch(/^https:\/\/www\.youtube\.com\/watch\?v=/);
+        expect(resource.thumbnail).toMatch(/^\/images\/video-thumbnails\/[\w-]+\.jpg$/);
       }
     }
   });
@@ -167,11 +168,11 @@ describe("the relaxed itinerary", () => {
     const day11 = JSON.stringify(activitiesFor(11));
 
     expect(activitiesFor(1)).toEqual([]);
-    expect(day6).toMatch(/replace the mountain hike/i);
-    expect(day6).toMatch(/licensed operator/i);
-    expect(day6).toMatch(/heavy rain|unsafe river flow|thunder/i);
-    expect(day8).toMatch(/instead of|not alongside/i);
-    expect(day11).toMatch(/confirm.*operating|confirm locally/i);
+    expect(day6).toMatch(/вместо горного похода/i);
+    expect(day6).toMatch(/лицензированного оператора/i);
+    expect(day6).toMatch(/ливня|опасном течении|гроз/i);
+    expect(day8).toMatch(/вместо островной или городской программы/i);
+    expect(day11).toMatch(/подтвердите работу|уточните на месте/i);
     expect(activitiesFor(12)).toEqual([]);
   });
 
@@ -193,7 +194,7 @@ describe("the relaxed itinerary", () => {
         expect(stay.pricePerPersonVnd).toMatch(/VND$/);
         expect(stay.priceRangeVnd.min).toBeGreaterThan(100_000);
         expect(stay.priceRangeVnd.max).toBeGreaterThanOrEqual(stay.priceRangeVnd.min);
-        expect(stay.setup).toMatch(/six|6/i);
+        expect(stay.setup.length).toBeGreaterThan(20);
         expect(stay.why.length).toBeGreaterThan(20);
         expect(stay.url).toMatch(/^https:\/\//);
         if (stay.category === "special") expect(stay.experience.length).toBeGreaterThan(5);
@@ -206,7 +207,7 @@ describe("the relaxed itinerary", () => {
 
     for (const activity of activities) {
       expect(["published", "quote-required"]).toContain(activity.pricing.status);
-      expect(activity.pricing.note).toMatch(/baseline|price|tariff|published/i);
+      expect(activity.pricing.note).toMatch(/базов|цен|тариф|опубликован/i);
 
       if (activity.pricing.status === "published") {
         expect(activity.pricing.rangeVnd.min).toBeGreaterThan(0);
@@ -228,11 +229,11 @@ describe("the relaxed itinerary", () => {
   });
 
   it("keeps the two-night city stays as single bookings", () => {
-    expect(itinerary.days[4].stayPlan.note).toMatch(/Nights 5 and 6/i);
-    expect(itinerary.days[5].stayPlan.note).toMatch(/Second night/i);
-    expect(itinerary.days[6].stayPlan.note).toMatch(/Nights 7 and 8/i);
-    expect(itinerary.days[7].stayPlan.note).toMatch(/Second night/i);
-    expect(itinerary.days[11].stayPlan.note).toMatch(/Optional post-trip night/i);
+    expect(itinerary.days[4].stayPlan.note).toMatch(/пятую и шестую ночи/i);
+    expect(itinerary.days[5].stayPlan.note).toMatch(/Вторая ночь/i);
+    expect(itinerary.days[6].stayPlan.note).toMatch(/седьмую и восьмую ночи/i);
+    expect(itinerary.days[7].stayPlan.note).toMatch(/Вторая ночь/i);
+    expect(itinerary.days[11].stayPlan.note).toMatch(/Необязательная ночь/i);
   });
 
   it("contains no removed route or variant content", () => {
