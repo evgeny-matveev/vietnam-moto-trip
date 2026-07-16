@@ -65,12 +65,19 @@ function stayId(name) {
     .replace(/^-|-$/g, "");
 }
 
+function stayPhotoPaths(id) {
+  return Array.from({ length: 4 }, (_, index) => `/images/stays/${id}/${index + 1}.webp`);
+}
+
 function stay(category, details) {
+  const id = stayId(details.name);
+
   return {
-    id: stayId(details.name),
+    id,
     coordinates: stayCoordinates[details.name],
     category,
     priceRangeVnd: priceRangeVnd(details.pricePerPersonVnd),
+    photos: stayPhotoPaths(id),
     ...details,
   };
 }
@@ -84,6 +91,16 @@ export function stayLinkLabel(url = "") {
   if (url.includes("agoda.com")) return "Открыть на Agoda";
   if (url.includes("airbnb.com")) return "Открыть на Airbnb";
   return "Открыть страницу отеля";
+}
+
+export function stayPhotoSourceLabel(url = "") {
+  if (url.includes("booking.com")) return "Booking.com";
+  if (url.includes("agoda.com")) return "Agoda";
+  if (url.includes("airbnb.com")) return "Airbnb";
+  if (url.includes("zannierhotels.com")) return "Zannier Hotels";
+  if (url.includes("ohdidi.vn")) return "Ohdidi";
+  if (url.includes("vinpearl.com")) return "Vinpearl";
+  return "страница объекта";
 }
 
 const daLatStays = [
@@ -130,7 +147,7 @@ const nhaTrangStays = [
       "От центра Nha Trang (Нячанга) около 18 км. Прежде чем отказаться от пляжа, подтвердите три подходящих номера на обе ночи.",
     mapNote:
       "Метка указывает на сельскую местность Diên Hòa (Зиенхоа); точный въезд смотрите в подтверждении бронирования.",
-    url: "https://www.agoda.com/memento-country-home/hotel/nha-trang-vn.html",
+    url: "https://www.booking.com/hotel/vn/memento-country-home-nha-trang.en-gb.html",
   }),
   stay("luxury", {
     name: "Vinpearl Resort & Spa Nha Trang Bay — Three-Bedroom Pool Villa",

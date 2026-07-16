@@ -228,6 +228,19 @@ describe("the relaxed itinerary", () => {
     expect(staysForDay(null)).toEqual([]);
   });
 
+  it("ships four local reference photos for every stay", () => {
+    const stays = Object.values(itinerary.days).flatMap((day) => day.stayPlan.stays);
+
+    for (const stay of stays) {
+      expect(stay.photos, stay.name).toHaveLength(4);
+
+      for (const photo of stay.photos) {
+        expect(photo, stay.name).toMatch(/^\/images\/stays\/[a-z0-9-]+\/[1-4]\.webp$/);
+        expect(existsSync(`static${photo}`), `${stay.name}: ${photo}`).toBe(true);
+      }
+    }
+  });
+
   it("keeps the two-night city stays as single bookings", () => {
     expect(itinerary.days[4].stayPlan.note).toMatch(/пятую и шестую ночи/i);
     expect(itinerary.days[5].stayPlan.note).toMatch(/Вторая ночь/i);

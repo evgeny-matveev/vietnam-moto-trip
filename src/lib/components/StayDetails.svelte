@@ -5,6 +5,7 @@
 	import { Badge } from '$lib/components/ui/badge/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { Separator } from '$lib/components/ui/separator/index.js';
+	import StayGallery from '$lib/components/StayGallery.svelte';
 	import { stayCategoryLabels, stayLinkLabel } from '$lib/data/stays.js';
 	import {
 		exchangeRateAttributionUrl,
@@ -50,6 +51,8 @@
 		<h2 class="text-2xl font-medium tracking-tight">{stay.name}</h2>
 		<p class="text-muted-foreground leading-relaxed">{stay.why}</p>
 	</div>
+
+	<StayGallery {stay} />
 
 	<Separator />
 

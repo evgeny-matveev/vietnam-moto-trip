@@ -15,6 +15,12 @@ const stay = {
   why: "Everyone stays together with a mountain view.",
   caution: "Confirm all three bedrooms.",
   mapNote: "The host confirms the exact gate after booking.",
+  photos: [
+    "/images/stays/forest-house/1.webp",
+    "/images/stays/forest-house/2.webp",
+    "/images/stays/forest-house/3.webp",
+    "/images/stays/forest-house/4.webp",
+  ],
   url: "https://example.com/stay",
 };
 
@@ -41,6 +47,16 @@ describe("StayDetails", () => {
       .toBeVisible();
     await expect.element(page.getByText(/Confirm all three bedrooms/)).toBeVisible();
     await expect.element(page.getByText(/host confirms the exact gate/)).toBeVisible();
+    await expect.element(page.getByRole("heading", { name: "Как выглядит место" })).toBeVisible();
+    await expect
+      .element(page.getByRole("img", { name: "Forest House: фото 1" }))
+      .toHaveAttribute("loading", "eager");
+    await expect
+      .element(page.getByRole("img", { name: "Forest House: фото 4" }))
+      .toHaveAttribute("loading", "lazy");
+    await expect
+      .element(page.getByRole("link", { name: "страница объекта" }))
+      .toHaveAttribute("href", "https://example.com/stay");
     await expect
       .element(page.getByText("сохранённому курсу ЦБ РФ", { exact: false }))
       .toBeVisible();
