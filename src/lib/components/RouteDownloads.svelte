@@ -64,7 +64,11 @@
 	}
 </script>
 
-<section class="space-y-2 rounded-md border bg-muted/20 p-3" aria-label="Download route">
+<section
+	id={day ? undefined : 'route-downloads'}
+	class="scroll-mt-4 space-y-2 rounded-md border bg-muted/20 p-3"
+	aria-label="Download route"
+>
 	<div class="space-y-1">
 		<h3 class="text-sm font-medium">Use in a map app</h3>
 		<p class="text-muted-foreground text-xs leading-relaxed">

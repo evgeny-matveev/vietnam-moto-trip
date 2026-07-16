@@ -8,7 +8,7 @@ export const sources = {
   shortRangeForecast: "https://nchmf.gov.vn/kttvsite/",
   nhaTrang: "https://vietnam.travel/places-to-go/central-vietnam/nha-trang",
   dt639:
-    "https://baodautu.vn/binh-dinh-du-an-tuyen-duong-ven-bien-tang-von-dau-tu-hon-230-ty-dong-d205710.html",
+    "https://baoxaydung.vn/gia-lai-gan-1ha-phi-lao-rung-phong-ho-bi-cua-ha-trai-phep-19226051712245469.htm",
   phuNinh: "https://quangnamtourism.com.vn/ho-phu-ninh/",
 };
 
@@ -128,7 +128,7 @@ const dayDefinitions = [
     summary:
       "A full day off the scooters with a hard summit, a short open ridge, an easy city loop and an official guided forest walk.",
     roads: "No intercity riding",
-    distance: "4–10 km walking",
+    distance: "4–10 km hiking",
     rideTime: "1.5–6 hr on foot",
     kind: "hike",
     mapAnchor: [108.4406, 12.0473],
@@ -286,7 +286,7 @@ const dayDefinitions = [
     note: "This is the route’s provisional day: construction status matters more than the drawn line.",
     weatherFallback:
       "If ĐT639 is closed, flooded or actively under construction, use the shortest open connector to QL1A and return to the coast only when the line is confirmed open.",
-    sources: [{ label: "ĐT639 project schedule", url: sources.dt639 }],
+    sources: [{ label: "May 2026 ĐT639 construction status", url: sources.dt639 }],
   },
   {
     day: 11,
@@ -356,7 +356,7 @@ export const itinerary = {
   name: "Highlands south, coast home",
   description:
     "One relaxed 12-day line: climb to Măng Đen, ride south through the highlands to Đà Lạt, spend full days hiking and in Nha Trang, then come home on the quieter coast.",
-  distance: "approximately 1,650–1,800 km",
+  distance: "approximately 1,750 km",
   atAGlance: ["≈1,750 km", "avg. 175 km / 5 hr", "Đà Lạt mountain hike", "Nha Trang rest day"],
   days,
   season: {

@@ -1,5 +1,21 @@
 const categories = ["special", "luxury", "regular"];
 
+function parseVndAmount(value, defaultUnit) {
+  const normalized = value.trim().toLowerCase();
+  const unit =
+    normalized.endsWith("m") || normalized.endsWith("k") ? normalized.at(-1) : defaultUnit;
+  const multiplier = unit === "m" ? 1_000_000 : 1_000;
+  return Math.round(Number.parseFloat(normalized) * multiplier);
+}
+
+function priceRangeVnd(label) {
+  const normalized = label.replace(/vnd/gi, "").trim().toLowerCase();
+  const defaultUnit = normalized.endsWith("m") ? "m" : "k";
+  const values = normalized.split(/[–-]/).map((value) => parseVndAmount(value, defaultUnit));
+
+  return { min: values[0], max: values[1] ?? values[0] };
+}
+
 export const stayCategoryLabels = {
   special: "Best view / niche experience",
   luxury: "Most comfortable",
@@ -54,6 +70,7 @@ function stay(category, details) {
     id: stayId(details.name),
     coordinates: stayCoordinates[details.name],
     category,
+    priceRangeVnd: priceRangeVnd(details.pricePerPersonVnd),
     ...details,
   };
 }

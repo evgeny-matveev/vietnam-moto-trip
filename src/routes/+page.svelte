@@ -1,5 +1,5 @@
 <script>
-	import { tick } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import CloudRainIcon from '@lucide/svelte/icons/cloud-rain';
 	import DayDetails from '$lib/components/DayDetails.svelte';
 	import PlaceDetails from '$lib/components/PlaceDetails.svelte';
@@ -85,6 +85,14 @@
 			activeCategoryIds = [...activeCategoryIds, id];
 		}
 	}
+
+	onMount(async () => {
+		const targetId = decodeURIComponent(window.location.hash.slice(1));
+		if (!targetId) return;
+
+		await tick();
+		requestAnimationFrame(() => document.getElementById(targetId)?.scrollIntoView({ block: 'start' }));
+	});
 </script>
 
 <svelte:head>

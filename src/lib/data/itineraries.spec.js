@@ -191,10 +191,29 @@ describe("the relaxed itinerary", () => {
         expect(stay.name.length).toBeGreaterThan(5);
         expect(stay.pricePerPersonUsd).toMatch(/^\$/);
         expect(stay.pricePerPersonVnd).toMatch(/VND$/);
+        expect(stay.priceRangeVnd.min).toBeGreaterThan(100_000);
+        expect(stay.priceRangeVnd.max).toBeGreaterThanOrEqual(stay.priceRangeVnd.min);
         expect(stay.setup).toMatch(/six|6/i);
         expect(stay.why.length).toBeGreaterThan(20);
         expect(stay.url).toMatch(/^https:\/\//);
         if (stay.category === "special") expect(stay.experience.length).toBeGreaterThan(5);
+      }
+    }
+  });
+
+  it("gives every optional activity a published price or an explicit quote state", () => {
+    const activities = itinerary.days.flatMap((day) => day.activities);
+
+    for (const activity of activities) {
+      expect(["published", "quote-required"]).toContain(activity.pricing.status);
+      expect(activity.pricing.note).toMatch(/baseline|price|tariff|published/i);
+
+      if (activity.pricing.status === "published") {
+        expect(activity.pricing.rangeVnd.min).toBeGreaterThan(0);
+        expect(activity.pricing.rangeVnd.max).toBeGreaterThanOrEqual(activity.pricing.rangeVnd.min);
+        expect(activity.pricing.source.url).toMatch(/^https:\/\//);
+      } else {
+        expect(activity.pricing.rangeVnd).toBeUndefined();
       }
     }
   });
