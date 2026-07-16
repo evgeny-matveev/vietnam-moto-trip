@@ -41,6 +41,12 @@ const hikingDay = {
         setup: "A whole house for six.",
         why: "Everyone stays together with a mountain view.",
         caution: "Confirm all three bedrooms.",
+        photos: [
+          "/images/stays/an-nhien-farmstay-resort-full-house/1.webp",
+          "/images/stays/an-nhien-farmstay-resort-full-house/2.webp",
+          "/images/stays/an-nhien-farmstay-resort-full-house/3.webp",
+          "/images/stays/an-nhien-farmstay-resort-full-house/4.webp",
+        ],
         url: "https://example.com/stay",
       },
     ],
@@ -84,10 +90,14 @@ describe("DayDetails", () => {
     await expect.element(page.getByText("≈ 1 300–1 700 ₽")).toBeVisible();
     await expect.element(page.getByText("A whole house for six.")).toBeVisible();
     await expect
+      .element(page.getByRole("img", { name: "Forest House: фото 1" }))
+      .toHaveAttribute("loading", "lazy");
+    await expect.element(page.getByRole("img", { name: "Forest House: фото 4" })).toBeVisible();
+    await expect
       .element(page.getByRole("link", { name: "Открыть страницу отеля" }))
       .toHaveAttribute("href", "https://example.com/stay");
 
-    await page.getByRole("button", { name: "Показать Forest House на карте" }).click();
+    await page.getByRole("button", { name: "Открыть карточку Forest House" }).click();
     expect(onSelectStay).toHaveBeenCalledWith("forest-house");
   });
 

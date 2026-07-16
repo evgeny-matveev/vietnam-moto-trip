@@ -16,10 +16,10 @@ const stay = {
   caution: "Confirm all three bedrooms.",
   mapNote: "The host confirms the exact gate after booking.",
   photos: [
-    "/images/stays/forest-house/1.webp",
-    "/images/stays/forest-house/2.webp",
-    "/images/stays/forest-house/3.webp",
-    "/images/stays/forest-house/4.webp",
+    "/images/stays/an-nhien-farmstay-resort-full-house/1.webp",
+    "/images/stays/an-nhien-farmstay-resort-full-house/2.webp",
+    "/images/stays/an-nhien-farmstay-resort-full-house/3.webp",
+    "/images/stays/an-nhien-farmstay-resort-full-house/4.webp",
   ],
   url: "https://example.com/stay",
 };

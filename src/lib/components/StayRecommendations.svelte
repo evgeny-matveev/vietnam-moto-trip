@@ -1,7 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
+	import ArrowRightIcon from '@lucide/svelte/icons/arrow-right';
 	import ExternalLinkIcon from '@lucide/svelte/icons/external-link';
-	import MapPinIcon from '@lucide/svelte/icons/map-pin';
+	import StayGallery from '$lib/components/StayGallery.svelte';
 	import { stayCategoryLabels, stayLinkLabel } from '$lib/data/stays.js';
 	import {
 		exchangeRateAttributionUrl,
@@ -44,59 +45,78 @@
 
 		<div class="grid gap-2">
 			{#each stayPlan.stays as stay}
-				<article class="rounded-lg border p-3">
-					<div class="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
-						<div>
-							<p class="text-muted-foreground text-[11px] font-medium tracking-wide uppercase">
-								{categoryNumbers[stay.category]}. {stayCategoryLabels[stay.category]}
-								{#if stay.experience} · {stay.experience}{/if}
-							</p>
-							<h4 class="mt-0.5 text-sm font-medium">{stay.name}</h4>
-						</div>
-						<p class="shrink-0 text-sm font-medium sm:text-right">
-							{stay.pricePerPersonUsd}
-							<span class="text-muted-foreground block text-[11px] font-normal"
-								>за человека / сутки</span
-							>
-							<span class="text-muted-foreground block text-xs font-normal"
-								>{stay.pricePerPersonVnd}</span
-							>
-							<span class="text-muted-foreground block text-xs font-normal">
-								{formatRubRange(stay.pricePerPersonUsd, rateInfo.rate)}
-							</span>
-						</p>
-					</div>
-
-					<p class="mt-2 text-xs leading-relaxed">{stay.setup}</p>
-					<p class="text-muted-foreground mt-1 text-xs leading-relaxed">{stay.why}</p>
-
-					{#if stay.caution}
-						<p class="mt-2 border-l-2 border-amber-600/35 pl-2 text-xs leading-relaxed">
-							<span class="font-medium">Проверьте:</span> {stay.caution}
-						</p>
+				<article
+					class={`relative rounded-lg border p-3 ${onSelectStay ? 'cursor-pointer transition-colors hover:bg-muted/40' : ''}`}
+				>
+					{#if onSelectStay}
+						<button
+							type="button"
+							aria-label={`Открыть карточку ${stay.name}`}
+							onclick={() => onSelectStay(stay.id)}
+							class="focus-visible:ring-ring absolute inset-0 rounded-lg outline-none focus-visible:ring-3 focus-visible:ring-inset"
+						>
+							<span class="sr-only">Открыть подробности</span>
+						</button>
 					{/if}
 
-					<div class="mt-2 flex flex-wrap gap-x-4 gap-y-2">
-						{#if onSelectStay}
-							<button
-								type="button"
-								aria-label={`Показать ${stay.name} на карте`}
-								onclick={() => onSelectStay(stay.id)}
+					<div class={onSelectStay ? 'pointer-events-none relative z-10' : ''}>
+						<div class="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+							<div>
+								<p class="text-muted-foreground text-[11px] font-medium tracking-wide uppercase">
+									{categoryNumbers[stay.category]}. {stayCategoryLabels[stay.category]}
+									{#if stay.experience} · {stay.experience}{/if}
+								</p>
+								<h4 class="mt-0.5 text-sm font-medium">{stay.name}</h4>
+							</div>
+							<p class="shrink-0 text-sm font-medium sm:text-right">
+								{stay.pricePerPersonUsd}
+								<span class="text-muted-foreground block text-[11px] font-normal"
+									>за человека / сутки</span
+								>
+								<span class="text-muted-foreground block text-xs font-normal"
+									>{stay.pricePerPersonVnd}</span
+								>
+								<span class="text-muted-foreground block text-xs font-normal">
+									{formatRubRange(stay.pricePerPersonUsd, rateInfo.rate)}
+								</span>
+							</p>
+						</div>
+
+						<div class="mt-3">
+							<StayGallery {stay} compact />
+						</div>
+
+						<p class="mt-2 text-xs leading-relaxed">{stay.setup}</p>
+						<p class="text-muted-foreground mt-1 text-xs leading-relaxed">{stay.why}</p>
+
+						{#if stay.caution}
+							<p class="mt-2 border-l-2 border-amber-600/35 pl-2 text-xs leading-relaxed">
+								<span class="font-medium">Проверьте:</span> {stay.caution}
+							</p>
+						{/if}
+
+						<div class="pointer-events-auto mt-2 flex flex-wrap gap-x-4 gap-y-2">
+							{#if onSelectStay}
+								<button
+									type="button"
+									aria-label={`Подробнее о ${stay.name}`}
+									onclick={() => onSelectStay(stay.id)}
+									class="decoration-muted-foreground hover:decoration-foreground inline-flex items-center gap-1 text-xs underline underline-offset-4"
+								>
+									Подробнее
+									<ArrowRightIcon class="size-3" aria-hidden="true" />
+								</button>
+							{/if}
+							<a
+								href={stay.url}
+								target="_blank"
+								rel="noreferrer"
 								class="decoration-muted-foreground hover:decoration-foreground inline-flex items-center gap-1 text-xs underline underline-offset-4"
 							>
-								На карте
-								<MapPinIcon class="size-3" aria-hidden="true" />
-							</button>
-						{/if}
-						<a
-							href={stay.url}
-							target="_blank"
-							rel="noreferrer"
-							class="decoration-muted-foreground hover:decoration-foreground inline-flex items-center gap-1 text-xs underline underline-offset-4"
-						>
-							{stayLinkLabel(stay.url)}
-							<ExternalLinkIcon class="size-3" aria-hidden="true" />
-						</a>
+								{stayLinkLabel(stay.url)}
+								<ExternalLinkIcon class="size-3" aria-hidden="true" />
+							</a>
+						</div>
 					</div>
 				</article>
 			{/each}
