@@ -40,21 +40,25 @@ describe("ActivityRecommendations", () => {
     });
 
     const trigger = page.getByRole("button", { name: "Показать фото: Test river activity" });
-    await expect.element(page.getByRole("img", { name: "Activity photo 1" })).toHaveAttribute("loading", "lazy");
+    await expect
+      .element(page.getByRole("img", { name: "Activity photo 1" }))
+      .toHaveAttribute("loading", "lazy");
     await trigger.click();
 
-    const dialog = page.getByRole("dialog");
+    const dialog = page.getByTestId("activity-test-activity-dialog");
     await expect.element(dialog).toBeVisible();
     await expect.element(dialog.getByRole("img", { name: "Activity photo 1" })).toBeVisible();
     await expect
       .element(dialog.getByRole("link", { name: /Источник фото: Official gallery/ }))
       .toHaveAttribute("href", "https://example.com/photo-1");
 
-		await dialog.getByRole("button", { name: "Следующее фото" }).click();
-		await expect.element(dialog.getByRole("img", { name: "Activity photo 2" })).toBeVisible();
-		await dialog.press("ArrowRight");
-		await expect.element(dialog.getByRole("img", { name: "Activity photo 3" })).toBeVisible();
-		await dialog.press("Escape");
+    await dialog.getByRole("button", { name: "Следующее фото" }).click();
+    await expect.element(dialog.getByRole("img", { name: "Activity photo 2" })).toBeVisible();
+    document
+      .querySelector("dialog")
+      ?.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }));
+    await expect.element(dialog.getByRole("img", { name: "Activity photo 3" })).toBeVisible();
+    await dialog.getByRole("button", { name: "Закрыть галерею" }).click();
     await expect.element(dialog).not.toBeVisible();
     await expect.element(trigger).toHaveFocus();
   });

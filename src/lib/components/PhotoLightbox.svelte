@@ -12,7 +12,7 @@
 		startIndex = $bindable(0)
 	} = $props();
 
-	let dialog;
+	let dialog = $state(null);
 	let activeIndex = $state(0);
 	let wasOpen = false;
 	let returnFocus;
@@ -64,6 +64,7 @@
 <dialog
 	bind:this={dialog}
 	id={`${galleryId}-dialog`}
+	data-testid={`${galleryId}-dialog`}
 	aria-labelledby={`${galleryId}-title`}
 	onclose={handleClose}
 	onkeydown={handleKeydown}

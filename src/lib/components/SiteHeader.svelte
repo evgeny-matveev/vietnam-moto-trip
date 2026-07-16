@@ -1,3 +1,7 @@
+<script>
+	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
+</script>
+
 <header class="border-b bg-background/95">
 	<div class="mx-auto flex max-w-[1500px] items-center justify-between gap-1 px-4 py-2 sm:gap-4 sm:px-6 lg:px-8">
 		<a href="/" class="max-w-32 min-w-0 text-xs leading-tight font-medium tracking-tight sm:max-w-none sm:text-base">Верхом на байках по югу Вьетнама</a>
@@ -15,6 +19,7 @@
 			>
 				Путеводитель
 			</a>
+			<ThemeToggle />
 		</nav>
 	</div>
 </header>
