@@ -2,6 +2,8 @@ const official = {
   daNang: "https://vietnam.travel/things-to-do/around-marble-mountains",
   hoiAn: "https://vietnam.travel/places-to-go/central-vietnam/hoi-an",
   tamThanh: "https://quangnamtourism.com.vn/lang-bich-hoa-tam-thanh/",
+  phuNinh:
+    "https://quangnamtourism.com.vn/en/detailnews/?id=news_2148&t=nine-musttry-experiences-in-quang-nam",
   konTum:
     "https://nongthon.vietnamtourism.gov.vn/kon-tum-attracts-tourists-with-its-indigenous-culture/?lang=en",
   pleiku: "https://vietnam.travel/node/1865",
@@ -21,12 +23,12 @@ const official = {
 };
 
 export const placeCategories = [
-  { id: "waterfall", label: "Waterfalls", symbol: "≋", color: "#0284c7" },
-  { id: "park", label: "Parks & reserves", symbol: "♣", color: "#15803d" },
-  { id: "nature", label: "Natural landmarks", symbol: "◆", color: "#0f766e" },
-  { id: "viewpoint", label: "Views & peaks", symbol: "▲", color: "#b45309" },
-  { id: "culture", label: "Culture & spiritual", symbol: "✦", color: "#7e22ce" },
-  { id: "history", label: "History & monuments", symbol: "●", color: "#b91c1c" },
+  { id: "waterfall", label: "Waterfalls", symbol: "💧︎" },
+  { id: "park", label: "Parks & reserves", symbol: "🌲︎" },
+  { id: "nature", label: "Natural landmarks", symbol: "🏞︎" },
+  { id: "viewpoint", label: "Views & peaks", symbol: "⛰︎" },
+  { id: "culture", label: "Culture & spiritual", symbol: "🛕︎" },
+  { id: "history", label: "History & monuments", symbol: "🏛︎" },
 ];
 
 const source = (label, url) => [{ label, url }];
@@ -86,6 +88,21 @@ export const places = [
     visitMinutes: [45, 90],
     detourKm: 0,
     sources: source("Quảng Nam Tourism Promotion Center", official.tamThanh),
+  },
+  {
+    id: "phu-ninh-lake",
+    name: "Phú Ninh Lake",
+    category: "nature",
+    coordinates: [108.464, 15.4969],
+    whyWorthIt:
+      "A forest-ringed reservoir with 32 islands and enough quiet water and shoreline to make the overnight feel like a destination, not a transit stop.",
+    visitMinutes: [120, 240],
+    detourKm: 0,
+    accessNote:
+      "Confirm a lake-area bungalow or approved campsite before the trip; Tam Kỳ is the reliable nearby fallback.",
+    seasonNote:
+      "Boat, swimming and camping plans depend on lake operations, wind and rain; keep a shore-based evening as the default.",
+    sources: source("Quảng Nam Tourism Promotion Center", official.phuNinh),
   },
   {
     id: "ba-to",

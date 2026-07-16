@@ -4,6 +4,14 @@
 @import "@fontsource-variable/inter";
 @import "maplibre-gl/dist/maplibre-gl.css";
 
+@font-face {
+  font-family: "Noto Emoji";
+  src: url("/fonts/noto-emoji-variable.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300 700;
+}
+
 @custom-variant dark (&:is(.dark *));
 @plugin '@tailwindcss/typography';
 
@@ -138,6 +146,11 @@
     @apply font-sans;
     scroll-behavior: smooth;
   }
+}
+
+.font-emoji {
+  font-family: "Noto Emoji", sans-serif;
+  font-variant-emoji: text;
 }
 
 @media (prefers-reduced-motion: reduce) {

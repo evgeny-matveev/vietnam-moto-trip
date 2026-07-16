@@ -12,20 +12,20 @@ This is one route, not a menu of competing itineraries. It runs south through th
 
 The line does not pretend every kilometre is quiet. Day 4 uses QL14 because no sensible parallel route covers the same transfer. Days 9–11 may need short QL1A connectors when a coastal road is closed, flooded or incomplete. Those compromises are named rather than hidden.
 
-| Day | Route                                    |        Distance | Character                                   |
-| --: | ---------------------------------------- | --------------: | ------------------------------------------- |
-|   1 | Đà Nẵng → Tam Thanh                      |       95–115 km | Easy coast and village lanes                |
-|   2 | Tam Thanh → Ba Tơ → Vi Ô Lắc → Măng Đen  |      235–250 km | First long day and major climb              |
-|   3 | Măng Đen → Kon Tum → Pleiku              |      100–125 km | Culture, tea country and volcanic landscape |
-|   4 | Pleiku → Buôn Ma Thuột → Lắk Lake        |      225–245 km | Necessary QL14 transfer                     |
-|   5 | Lắk Lake → ĐT725 → Đà Lạt                |      180–200 km | Coffee country and slower provincial roads  |
-|   6 | Đà Lạt hiking day                        | 4–10 km walking | One hike chosen for the conditions          |
-|   7 | Đà Lạt → Khánh Lê Pass → Nha Trang       |      135–145 km | Long controlled descent                     |
-|   8 | Full Nha Trang day                       |       No target | Sea plan or city plan                       |
-|   9 | Nha Trang → Phú Yên → Sông Cầu           |      210–235 km | One substantial attraction branch           |
-|  10 | Sông Cầu → Quy Nhơn → ĐT639 → Sa Huỳnh   |      180–215 km | Provisional coast line                      |
-|  11 | Sa Huỳnh → Quảng Ngãi coast → Tam Thanh  |      175–200 km | Villages, history and headlands             |
-|  12 | Tam Thanh → Hội An countryside → Đà Nẵng |       95–120 km | Deliberately easy finish                    |
+| Day | Route                                   |        Distance | Character                                   |
+| --: | --------------------------------------- | --------------: | ------------------------------------------- |
+|   1 | Đà Nẵng → Tam Thanh                     |       95–115 km | Easy coast and village lanes                |
+|   2 | Tam Thanh → Ba Tơ → Vi Ô Lắc → Măng Đen |      235–250 km | First long day and major climb              |
+|   3 | Măng Đen → Kon Tum → Pleiku             |      100–125 km | Culture, tea country and volcanic landscape |
+|   4 | Pleiku → Buôn Ma Thuột → Lắk Lake       |      225–245 km | Necessary QL14 transfer                     |
+|   5 | Lắk Lake → ĐT725 → Đà Lạt               |      180–200 km | Coffee country and slower provincial roads  |
+|   6 | Đà Lạt hiking day                       | 4–10 km walking | One hike chosen for the conditions          |
+|   7 | Đà Lạt → Khánh Lê Pass → Nha Trang      |      135–145 km | Long controlled descent                     |
+|   8 | Full Nha Trang day                      |       No target | Sea plan or city plan                       |
+|   9 | Nha Trang → Phú Yên → Sông Cầu          |      210–235 km | One substantial attraction branch           |
+|  10 | Sông Cầu → Quy Nhơn → ĐT639 → Sa Huỳnh  |      180–215 km | Provisional coast line                      |
+|  11 | Sa Huỳnh → Quảng Ngãi coast → Phú Ninh  |      185–210 km | Selective coast, then a lake overnight      |
+|  12 | Phú Ninh → Hội An countryside → Đà Nẵng |       95–115 km | Deliberately easy finish                    |
 
 ## Conditions for late September 2026
 
@@ -168,25 +168,27 @@ This day is provisional. Parts of ĐT639 remained tied to a construction program
 
 **If weather or construction closes the coast:** Take the shortest open connector to QL1A, accept the busy section and return to the coast only where the road is confirmed open. Reach Sa Huỳnh before dark.
 
-## Day 11 — Sa Huỳnh to Tam Thanh
+## Day 11 — Sa Huỳnh to Phú Ninh Lake
 
-**Road:** Gò Cỏ → Mỹ Khê → Sơn Mỹ → Bà Làng An → inland Dung Quất bypass → Tam Thanh
+**Road:** Gò Cỏ → Mỹ Khê → Sơn Mỹ → Bà Làng An → inland Dung Quất bypass → Phú Ninh Lake
 
-**Distance:** 175–200 km · **Riding:** 5–6 hours
+**Distance:** 185–210 km · **Riding:** 5–6 hours
 
-Start with Gò Cỏ or a longer Sa Huỳnh morning. Give the Sơn Mỹ Memorial the quiet time appropriate to its history. Mỹ Khê, Bà Làng An and Thiên Ấn Pagoda are choices around that fixed stop.
+Start with Gò Cỏ or a longer Sa Huỳnh morning. Give the Sơn Mỹ Memorial the quiet time appropriate to its history. Mỹ Khê, Bà Làng An and Thiên Ấn Pagoda remain choices, but skip them when they would consume the lake’s late-afternoon light.
 
-The route bends inland around Dung Quất to avoid industrial truck corridors. Do not improvise through the port approaches simply because they look shorter on a small map.
+The route bends inland around Dung Quất to avoid industrial truck corridors, then finishes at Phú Ninh rather than returning to the coast. The lake is about 7 km from Tam Kỳ and has 32 islands, forested shores and options such as boating, kayaking and camping, according to the [Quảng Nam Tourism Promotion Center](https://quangnamtourism.com.vn/en/detailnews/?id=news_2148&t=nine-musttry-experiences-in-quang-nam).
 
-**If weather turns:** Remove exposed beaches and capes, avoid flooded low lanes and use the direct inland Quảng Ngãi connector to Tam Thanh.
+Pre-book a lake-area bungalow or approved campsite rather than assuming that a particular service will be operating. Tam Kỳ is the nearby accommodation fallback, but the preferred plan is to arrive early enough for a quiet lakeside evening and stay at the lake.
 
-## Day 12 — Tam Thanh to Đà Nẵng
+**If weather turns:** Remove exposed beaches and capes, avoid flooded low lanes and use the direct inland Quảng Ngãi connector to Phú Ninh. Stay in Tam Kỳ if lake access or the confirmed booking is affected.
 
-**Road:** Tam Kỳ countryside → Duy Xuyên → Hội An rice fields → Đà Nẵng
+## Day 12 — Phú Ninh Lake to Đà Nẵng
 
-**Distance:** 95–120 km · **Riding:** 3–4 hours
+**Road:** Phú Ninh Lake → Tam Kỳ countryside → Duy Xuyên → Hội An rice fields → Đà Nẵng
 
-The return uses inland parallel roads so it does not simply repeat Day 1. Stop for lunch around Hội An, then reach Đà Nẵng with time to refuel, return the scooters and deal calmly with wet luggage or small mechanical delays.
+**Distance:** 95–115 km · **Riding:** 3–4 hours
+
+Keep the first part of the morning open for the lake, then use inland parallel roads so the final ride does not simply repeat Day 1. Stop for lunch around Hội An, then reach Đà Nẵng with time to refuel, return the scooters and deal calmly with wet luggage or small mechanical delays.
 
 **If weather turns:** Rice-field lanes can flood quickly. Use the most direct open surfaced route and protect the arrival time.
 

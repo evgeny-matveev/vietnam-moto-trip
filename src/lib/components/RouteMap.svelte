@@ -44,11 +44,9 @@
 			'route-hit',
 			'route-lines',
 			'poi-selected',
-			'poi-symbols',
-			'poi-dots',
+			'poi-icons',
 			'poi-cluster-count',
 			'poi-clusters',
-			'day-labels',
 			'day-dots'
 		]) {
 			removeLayer(id);
@@ -61,7 +59,8 @@
 			type: 'Feature',
 			properties: {
 				day: routeFeature.properties.day,
-				label: String(routeFeature.properties.day),
+				label: `D${routeFeature.properties.day}`,
+				markerImage: `day-marker-${routeFeature.properties.day}`,
 				title: routeFeature.properties.title,
 				kind: routeFeature.properties.kind
 			},
@@ -71,7 +70,13 @@
 		for (const day of itinerary.days.filter((item) => !item.routeFile && item.mapAnchor)) {
 			markers.push({
 				type: 'Feature',
-				properties: { day: day.day, label: String(day.day), title: day.title, kind: day.kind },
+				properties: {
+					day: day.day,
+					label: `D${day.day}`,
+					markerImage: `day-marker-${day.day}`,
+					title: day.title,
+					kind: day.kind
+				},
 				geometry: { type: 'Point', coordinates: day.mapAnchor }
 			});
 		}
@@ -87,12 +92,92 @@
 					id: place.id,
 					name: place.name,
 					category: place.category,
-					symbol: category?.symbol ?? '•',
-					color: category?.color ?? '#475569'
+					icon: category ? `poi-${category.id}` : 'poi-nature'
 				},
 				geometry: { type: 'Point', coordinates: place.coordinates }
 			};
 		});
+	}
+
+	function imageData(width, height, draw) {
+		const scale = 2;
+		const canvas = document.createElement('canvas');
+		canvas.width = width * scale;
+		canvas.height = height * scale;
+		const context = canvas.getContext('2d');
+		context.scale(scale, scale);
+		draw(context, width, height);
+		return context.getImageData(0, 0, canvas.width, canvas.height);
+	}
+
+	function roundedRectangle(context, x, y, width, height, radius) {
+		context.beginPath();
+		context.moveTo(x + radius, y);
+		context.lineTo(x + width - radius, y);
+		context.quadraticCurveTo(x + width, y, x + width, y + radius);
+		context.lineTo(x + width, y + height - radius);
+		context.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+		context.lineTo(x + radius, y + height);
+		context.quadraticCurveTo(x, y + height, x, y + height - radius);
+		context.lineTo(x, y + radius);
+		context.quadraticCurveTo(x, y, x + radius, y);
+		context.closePath();
+	}
+
+	function registerMarkerImages() {
+		const marker = colorToken('--map-marker', '#172554');
+		const markerText = colorToken('--map-marker-text', '#ffffff');
+		const fills = {
+			outbound: colorToken('--map-route-outbound', '#b45309'),
+			return: colorToken('--map-route-return', '#0369a1'),
+			hike: colorToken('--map-route-hike', '#15803d'),
+			rest: colorToken('--map-route-rest', '#7e22ce')
+		};
+
+		for (const category of placeCategories) {
+			const id = `poi-${category.id}`;
+			if (map.hasImage(id)) continue;
+			map.addImage(
+				id,
+				imageData(30, 30, (context) => {
+					context.beginPath();
+					context.arc(15, 15, 12.5, 0, Math.PI * 2);
+					context.fillStyle = '#fffdf8';
+					context.fill();
+					context.strokeStyle = marker;
+					context.lineWidth = 1.5;
+					context.stroke();
+					context.fillStyle = marker;
+					context.font = '17px "Noto Emoji"';
+					context.textAlign = 'center';
+					context.textBaseline = 'middle';
+					context.fillText(category.symbol, 15, 15.5);
+				}),
+				{ pixelRatio: 2 }
+			);
+		}
+
+		for (const day of itinerary.days) {
+			const id = `day-marker-${day.day}`;
+			if (map.hasImage(id)) continue;
+			map.addImage(
+				id,
+				imageData(44, 28, (context) => {
+					roundedRectangle(context, 1, 1, 42, 26, 13);
+					context.fillStyle = fills[day.kind] ?? marker;
+					context.fill();
+					context.strokeStyle = markerText;
+					context.lineWidth = 2;
+					context.stroke();
+					context.fillStyle = markerText;
+					context.font = '600 11px "Inter Variable", sans-serif';
+					context.textAlign = 'center';
+					context.textBaseline = 'middle';
+					context.fillText(`D${day.day}`, 22, 14.5);
+				}),
+				{ pixelRatio: 2 }
+			);
+		}
 	}
 
 	function fit(featuresToFit) {
@@ -185,8 +270,6 @@
 			const selected = colorToken('--map-route-selected', '#7c2d12');
 			const marker = colorToken('--map-marker', '#172554');
 			const markerText = colorToken('--map-marker-text', '#ffffff');
-			const hiking = colorToken('--map-route-hike', '#15803d');
-			const resting = colorToken('--map-route-rest', '#7e22ce');
 			const cluster = colorToken('--map-cluster', '#fff7ed');
 			const clusterText = colorToken('--map-cluster-text', '#172554');
 
@@ -212,6 +295,16 @@
 				source: sourceId,
 				filter: ['==', ['get', 'day'], selectedDay?.day ?? -1],
 				paint: { 'line-color': selected, 'line-width': 6, 'line-opacity': 1 }
+			});
+			map.addLayer({
+				id: 'day-dots',
+				type: 'symbol',
+				source: markerSourceId,
+				layout: {
+					'icon-image': ['get', 'markerImage'],
+					'icon-offset': [0, -40],
+					'icon-allow-overlap': true
+				}
 			});
 
 			map.addLayer({
@@ -240,29 +333,14 @@
 				paint: { 'text-color': clusterText }
 			});
 			map.addLayer({
-				id: 'poi-dots',
-				type: 'circle',
-				source: poiSourceId,
-				filter: ['!', ['has', 'point_count']],
-				paint: {
-					'circle-radius': 9,
-					'circle-color': ['get', 'color'],
-					'circle-stroke-color': markerText,
-					'circle-stroke-width': 2
-				}
-			});
-			map.addLayer({
-				id: 'poi-symbols',
+				id: 'poi-icons',
 				type: 'symbol',
 				source: poiSourceId,
 				filter: ['!', ['has', 'point_count']],
 				layout: {
-					'text-field': ['get', 'symbol'],
-					'text-font': ['Noto Sans Regular'],
-					'text-size': 11,
-					'text-allow-overlap': true
-				},
-				paint: { 'text-color': markerText }
+					'icon-image': ['get', 'icon'],
+					'icon-allow-overlap': true
+				}
 			});
 			map.addLayer({
 				id: 'poi-selected',
@@ -270,45 +348,12 @@
 				source: poiSourceId,
 				filter: ['==', ['get', 'id'], selectedPlace?.id ?? ''],
 				paint: {
-					'circle-radius': 14,
+					'circle-radius': 17,
 					'circle-color': 'rgba(0,0,0,0)',
 					'circle-stroke-color': selected,
 					'circle-stroke-width': 3
 				}
 			});
-
-			map.addLayer({
-				id: 'day-dots',
-				type: 'circle',
-				source: markerSourceId,
-				paint: {
-					'circle-radius': 11,
-					'circle-color': [
-						'match',
-						['get', 'kind'],
-						'hike',
-						hiking,
-						'rest',
-						resting,
-						marker
-					],
-					'circle-stroke-color': markerText,
-					'circle-stroke-width': 2
-				}
-			});
-			map.addLayer({
-				id: 'day-labels',
-				type: 'symbol',
-				source: markerSourceId,
-				layout: {
-					'text-field': ['get', 'label'],
-					'text-font': ['Noto Sans Regular'],
-					'text-size': 11,
-					'text-allow-overlap': true
-				},
-				paint: { 'text-color': markerText }
-			});
-
 			updateSelection();
 		} catch (exception) {
 			error = exception instanceof Error ? exception.message : 'The route could not be drawn.';
@@ -329,12 +374,17 @@
 			map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-right');
 			map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
 
-			map.on('load', () => {
+			map.on('load', async () => {
+				await Promise.allSettled([
+					document.fonts.load('17px "Noto Emoji"'),
+					document.fonts.load('600 11px "Inter Variable"')
+				]);
+				registerMarkerImages();
 				ready = true;
 				renderItinerary();
 			});
 			map.on('click', 'route-hit', (event) => {
-				if (map.queryRenderedFeatures(event.point, { layers: ['poi-dots', 'poi-clusters'] }).length) return;
+				if (map.queryRenderedFeatures(event.point, { layers: ['poi-icons', 'poi-clusters'] }).length) return;
 				const number = event.features?.[0]?.properties?.day;
 				if (number) onSelectDay?.(Number(number));
 			});
@@ -342,7 +392,7 @@
 				const number = event.features?.[0]?.properties?.day;
 				if (number) onSelectDay?.(Number(number));
 			});
-			map.on('click', 'poi-dots', (event) => {
+			map.on('click', 'poi-icons', (event) => {
 				const id = event.features?.[0]?.properties?.id;
 				if (id) onSelectPlace?.(id);
 			});
@@ -355,7 +405,7 @@
 				map.easeTo({ center: coordinates, zoom, duration: 500 });
 			});
 
-			for (const layer of ['route-hit', 'day-dots', 'poi-dots', 'poi-clusters']) {
+			for (const layer of ['route-hit', 'day-dots', 'poi-icons', 'poi-clusters']) {
 				map.on('mouseenter', layer, () => (map.getCanvas().style.cursor = 'pointer'));
 				map.on('mouseleave', layer, () => (map.getCanvas().style.cursor = ''));
 			}
@@ -376,7 +426,7 @@
 	});
 </script>
 
-<div class="relative h-full min-h-[360px] w-full overflow-hidden rounded-lg bg-muted">
+<div class="relative h-full min-h-[360px] w-full overflow-hidden rounded-lg bg-muted xl:min-h-0">
 	<div
 		bind:this={container}
 		class="h-full w-full"

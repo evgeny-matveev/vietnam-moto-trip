@@ -15,6 +15,10 @@ describe("places", () => {
     expect(categoryIds).toEqual(
       new Set(["waterfall", "park", "nature", "viewpoint", "culture", "history"]),
     );
+    for (const category of placeCategories) {
+      expect(category.symbol.length, category.id).toBeGreaterThan(0);
+      expect(category).not.toHaveProperty("color");
+    }
 
     for (const place of places) {
       expect(place.id).toMatch(/^[a-z0-9-]+$/);

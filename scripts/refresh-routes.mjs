@@ -77,10 +77,12 @@ const routes = {
     [108.9439, 15.2353],
     [108.804, 15.36],
     [108.7, 15.5],
-    [108.567, 15.565],
+    [108.56, 15.52],
+    [108.464, 15.4969],
   ],
   "relaxed-day-12.geojson": [
-    [108.567, 15.565],
+    [108.464, 15.4969],
+    [108.49, 15.53],
     [108.45, 15.57],
     [108.36, 15.78],
     [108.31, 15.87],
@@ -93,7 +95,19 @@ const routes = {
 const outputDirectory = path.resolve("static/routes");
 await mkdir(outputDirectory, { recursive: true });
 
-for (const [filename, coordinates] of Object.entries(routes)) {
+const requestedFiles = new Set(process.argv.slice(2));
+const routesToRefresh = Object.entries(routes).filter(
+  ([filename]) => requestedFiles.size === 0 || requestedFiles.has(filename),
+);
+
+if (requestedFiles.size > 0 && routesToRefresh.length !== requestedFiles.size) {
+  const unknownFiles = [...requestedFiles].filter((filename) => !(filename in routes));
+  throw new Error(
+    `Unknown route file${unknownFiles.length === 1 ? "" : "s"}: ${unknownFiles.join(", ")}`,
+  );
+}
+
+for (const [filename, coordinates] of routesToRefresh) {
   const coordinatePath = coordinates.map((coordinate) => coordinate.join(",")).join(";");
   const url = new URL(`https://router.project-osrm.org/route/v1/driving/${coordinatePath}`);
   url.searchParams.set("overview", "full");

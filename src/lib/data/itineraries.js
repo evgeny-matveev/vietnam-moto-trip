@@ -1,3 +1,5 @@
+import { dayResources } from "./day-resources.js";
+
 export const sources = {
   seasonalForecast:
     "https://nchmf.gov.vn/kttvsite/vi-VN/1/ban-tin-du-bao-canh-bao-khi-hau-thoi-han-mua-tren-pham-vi-toan-quoc-tu-thang-8-2026-01-2027-post53548.html",
@@ -5,9 +7,11 @@ export const sources = {
   nhaTrang: "https://vietnam.travel/places-to-go/central-vietnam/nha-trang",
   dt639:
     "https://baodautu.vn/binh-dinh-du-an-tuyen-duong-ven-bien-tang-von-dau-tu-hon-230-ty-dong-d205710.html",
+  phuNinh:
+    "https://quangnamtourism.com.vn/en/detailnews/?id=news_2148&t=nine-musttry-experiences-in-quang-nam",
 };
 
-const days = [
+const dayDefinitions = [
   {
     day: 1,
     title: "Đà Nẵng → Tam Thanh",
@@ -253,15 +257,16 @@ const days = [
   },
   {
     day: 11,
-    title: "Sa Huỳnh → Tam Thanh",
-    summary: "Fishing villages, coastal history and volcanic headlands on the penultimate day.",
-    roads: "Sa Huỳnh → Gò Cỏ → Mỹ Khê → Sơn Mỹ → Bà Làng An → Tam Thanh",
-    distance: "175–200 km",
+    title: "Sa Huỳnh → Phú Ninh Lake",
+    summary:
+      "A selective coastal morning followed by an unhurried afternoon and night beside the lake.",
+    roads: "Sa Huỳnh → Gò Cỏ → Mỹ Khê → Sơn Mỹ → Bà Làng An → Phú Ninh Lake",
+    distance: "185–210 km",
     rideTime: "5–6 hr riding",
     kind: "return",
     routeFile: "relaxed-day-11.geojson",
     roadCharacter:
-      "Coastal and village roads with an inland bend to avoid Dung Quất’s port truck corridors.",
+      "Coastal village roads for the first half, then an inland Dung Quất bypass and a calmer final approach to the lake.",
     placeIds: [
       "sa-huynh",
       "go-co",
@@ -269,40 +274,47 @@ const days = [
       "son-my",
       "ba-lang-an",
       "thien-an",
-      "tam-thanh",
+      "phu-ninh-lake",
     ],
     stops: [
       "Start with Gò Cỏ or Sa Huỳnh salt country, not both at length",
       "Give Sơn Mỹ the quiet time appropriate to a memorial",
-      "Choose Bà Làng An only when coastal visibility is good",
-      "Use the inland bypass around industrial traffic",
+      "Skip exposed cape detours if they would cost the lake’s late-afternoon light",
+      "Pre-book a lake-area bungalow or approved campsite; keep Tam Kỳ as the nearby backup",
     ],
-    note: "The day is rich in choices, but Tam Thanh is the fixed overnight and daylight target.",
+    note: "Phú Ninh is the point of the day: arrive with time to slow down, stay nearby and keep any boating or camping arrangement confirmed in advance.",
     weatherFallback:
-      "Skip exposed capes and beaches, avoid low flooded coastal lanes, and use the inland Quảng Ngãi connector to Tam Thanh.",
+      "Skip exposed capes and low coastal lanes, use the direct inland connector to Phú Ninh, and stay in Tam Kỳ seven kilometres away if lake access or the booked stay is affected.",
+    sources: [{ label: "Official Phú Ninh Lake guide", url: sources.phuNinh }],
   },
   {
     day: 12,
-    title: "Tam Thanh → Đà Nẵng",
-    summary: "A deliberately easy homeward ride through rice fields and parallel village roads.",
-    roads: "Tam Thanh → Tam Kỳ countryside → Duy Xuyên → Hội An rice fields → Đà Nẵng",
-    distance: "95–120 km",
+    title: "Phú Ninh Lake → Đà Nẵng",
+    summary: "A quiet lake morning and deliberately easy finish through inland Quảng Nam.",
+    roads: "Phú Ninh Lake → Tam Kỳ countryside → Duy Xuyên → Hội An rice fields → Đà Nẵng",
+    distance: "95–115 km",
     rideTime: "3–4 hr riding",
     kind: "return",
     routeFile: "relaxed-day-12.geojson",
     roadCharacter:
       "Low-pressure inland lanes that avoid repeating the Day 1 coast where practical.",
-    placeIds: ["tam-thanh", "hoi-an", "marble-mountains"],
+    placeIds: ["phu-ninh-lake", "hoi-an", "marble-mountains"],
     stops: [
+      "Keep the morning slow enough for the lake’s first light and breakfast",
       "Take the slower rice-field line only while the lanes remain dry",
       "Use Hội An for lunch, not a final traffic obstacle",
       "Finish at the Đà Nẵng seafront with time to return the scooters",
     ],
     note: "The route ends easy on purpose; there is no final mountain test to prove.",
     weatherFallback:
-      "If village lanes are flooded, use the most direct open surfaced route and prioritise a predictable arrival in Đà Nẵng.",
+      "If lake or village roads are flooded, leave through Tam Kỳ on the most direct open surfaced route and prioritise a predictable arrival in Đà Nẵng.",
   },
 ];
+
+const days = dayDefinitions.map((day) => ({
+  ...day,
+  creatorResources: dayResources[day.day] ?? [],
+}));
 
 export const itinerary = {
   id: "relaxed",

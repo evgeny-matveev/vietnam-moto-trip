@@ -1,8 +1,6 @@
 <script>
 	import ArrowLeftIcon from '@lucide/svelte/icons/arrow-left';
 	import ExternalLinkIcon from '@lucide/svelte/icons/external-link';
-	import MapPinIcon from '@lucide/svelte/icons/map-pin';
-	import TimerIcon from '@lucide/svelte/icons/timer';
 	import { Badge } from '$lib/components/ui/badge/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { Separator } from '$lib/components/ui/separator/index.js';
@@ -27,11 +25,11 @@
 	<div class="space-y-2">
 		<div class="flex flex-wrap items-center gap-2">
 			<Badge variant="secondary">
-				<span aria-hidden="true">{category?.symbol}</span>
+				<span class="font-emoji text-base" aria-hidden="true">{category?.symbol}</span>
 				{category?.label ?? place.category}
 			</Badge>
 			<Badge variant="outline">
-				<TimerIcon aria-hidden="true" />
+				<span class="font-emoji text-sm" aria-hidden="true">⏱️</span>
 				{visitTime(place.visitMinutes)}
 			</Badge>
 		</div>
@@ -41,17 +39,17 @@
 
 	<Separator />
 
-	<div class="grid gap-3 text-sm sm:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2">
+	<div class="grid gap-3 text-sm sm:grid-cols-2">
 		<div class="rounded-md border p-3">
 			<div class="text-muted-foreground flex items-center gap-1.5">
-				<MapPinIcon class="size-4" aria-hidden="true" />
+				<span class="font-emoji text-base" aria-hidden="true">🧭</span>
 				Approximate detour
 			</div>
 			<p class="mt-1 font-medium">{place.detourKm === 0 ? 'On the planned line' : `${place.detourKm} km`}</p>
 		</div>
 		<div class="rounded-md border p-3">
 			<div class="text-muted-foreground flex items-center gap-1.5">
-				<TimerIcon class="size-4" aria-hidden="true" />
+				<span class="font-emoji text-base" aria-hidden="true">⏱️</span>
 				Allow
 			</div>
 			<p class="mt-1 font-medium">{visitTime(place.visitMinutes)}</p>

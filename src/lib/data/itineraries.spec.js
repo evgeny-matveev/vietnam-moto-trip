@@ -44,6 +44,18 @@ describe("the relaxed itinerary", () => {
     expect(restDay.note).toMatch(/not try to complete the sea plan and city plan together/i);
   });
 
+  it("makes Phú Ninh Lake the Day 11 destination and Day 12 starting point", () => {
+    const lakeDay = itinerary.days[10];
+    const finalDay = itinerary.days[11];
+
+    expect(lakeDay.title).toBe("Sa Huỳnh → Phú Ninh Lake");
+    expect(lakeDay.placeIds).toContain("phu-ninh-lake");
+    expect(lakeDay.note).toMatch(/stay nearby|stay at the lake|stay/i);
+    expect(finalDay.title).toBe("Phú Ninh Lake → Đà Nẵng");
+    expect(finalDay.roads).toMatch(/^Phú Ninh Lake/);
+    expect(finalDay.placeIds).toContain("phu-ninh-lake");
+  });
+
   it("has committed, consistently named geometry for every riding day and no obsolete files", () => {
     const routeDays = itinerary.days.filter((day) => day.routeFile);
     const expectedFiles = routeDays.map((day) => day.routeFile).sort();
@@ -80,6 +92,20 @@ describe("the relaxed itinerary", () => {
       expect(day.placeIds.length).toBeGreaterThan(0);
       expect(new Set(day.placeIds).size).toBe(day.placeIds.length);
       for (const placeId of day.placeIds) expect(getPlace(placeId), placeId).not.toBeNull();
+    }
+  });
+
+  it("gives every day at least one curated creator resource", () => {
+    for (const day of itinerary.days) {
+      expect(day.creatorResources.length, `Day ${day.day} resources`).toBeGreaterThan(0);
+      for (const resource of day.creatorResources) {
+        expect(resource.platform).toBe("YouTube");
+        expect(["English", "Vietnamese"]).toContain(resource.language);
+        expect(resource.title.length).toBeGreaterThan(8);
+        expect(resource.creator.length).toBeGreaterThan(2);
+        expect(resource.note.length).toBeGreaterThan(20);
+        expect(resource.url).toMatch(/^https:\/\/www\.youtube\.com\/watch\?v=/);
+      }
     }
   });
 
