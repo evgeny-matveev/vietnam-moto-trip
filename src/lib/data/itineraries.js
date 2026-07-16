@@ -356,13 +356,7 @@ export const itinerary = {
   description:
     "One relaxed 12-day line: climb to Măng Đen, ride south through the highlands to Đà Lạt, spend full days hiking and in Nha Trang, then come home on the quieter coast.",
   distance: "approximately 1,650–1,800 km",
-  atAGlance: [
-    "≈1,750 km",
-    "avg. 175 km / 5 hr",
-    "max. 250 km / 7 hr",
-    "Đà Lạt mountain hike",
-    "full Nha Trang day",
-  ],
+  atAGlance: ["≈1,750 km", "avg. 175 km / 5 hr", "Đà Lạt mountain hike", "Nha Trang rest day"],
   days,
   season: {
     window: "Late September–early October 2026",

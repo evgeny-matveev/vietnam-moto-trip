@@ -35,15 +35,12 @@ describe("the relaxed itinerary", () => {
     expect(itinerary.atAGlance).toEqual([
       "≈1,750 km",
       "avg. 175 km / 5 hr",
-      "max. 250 km / 7 hr",
       "Đà Lạt mountain hike",
-      "full Nha Trang day",
+      "Nha Trang rest day",
     ]);
     expect(Math.round(totalDistance / 50) * 50).toBe(1750);
     expect(Math.round(totalDistance / ridingDays.length)).toBe(175);
     expect(Math.round(totalTime / ridingDays.length)).toBe(5);
-    expect(Math.max(...distanceRanges.map((values) => values.at(-1)))).toBe(250);
-    expect(Math.max(...timeRanges.map((values) => values.at(-1)))).toBe(7);
   });
 
   it("contains exactly 12 sequential days and all four day kinds", () => {
