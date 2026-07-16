@@ -11,7 +11,7 @@
 	<title>Quiet Roads Vietnam — complete ride plan</title>
 	<meta
 		name="description"
-		content="The complete 12-day Đà Nẵng to Đà Lạt quiet-roads scooter itinerary."
+		content="The complete relaxed 12-day scooter itinerary through Vietnam’s Central Highlands and home along the coast."
 	/>
 </svelte:head>
 

@@ -1,20 +1,29 @@
 <script>
-	import { onMount } from 'svelte';
+	import { onMount, untrack } from 'svelte';
 	import { boundsForFeatures, featureCollection } from '$lib/route-utils.js';
+	import { placeCategories } from '$lib/data/places.js';
 
-	let { itinerary, selectedDay = null, onSelect } = $props();
+	let {
+		itinerary,
+		selectedDay = null,
+		visiblePlaces = [],
+		selectedPlace = null,
+		onSelectDay,
+		onSelectPlace
+	} = $props();
 
 	let container = null;
 	let map;
 	let maplibregl;
 	let ready = $state(false);
 	let error = $state('');
-	let features = [];
+	let routeFeatures = [];
 	let renderVersion = 0;
 
 	const sourceId = 'ride-routes';
 	const markerSourceId = 'day-markers';
-	const poiSourceId = 'selected-pois';
+	const poiSourceId = 'route-places';
+	const categoryById = new Map(placeCategories.map((category) => [category.id, category]));
 
 	function colorToken(name, fallback) {
 		const value = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -30,45 +39,60 @@
 	}
 
 	function clearRouteLayers() {
-		for (const id of ['route-selected', 'route-hit', 'route-lines', 'day-labels', 'day-dots', 'poi-labels', 'poi-dots']) {
+		for (const id of [
+			'route-selected',
+			'route-hit',
+			'route-lines',
+			'poi-selected',
+			'poi-symbols',
+			'poi-dots',
+			'poi-cluster-count',
+			'poi-clusters',
+			'day-labels',
+			'day-dots'
+		]) {
 			removeLayer(id);
 		}
 		for (const id of [sourceId, markerSourceId, poiSourceId]) removeSource(id);
 	}
 
-	function routeMarkers(routeFeatures) {
-		const markers = [];
-		for (const routeFeature of routeFeatures) {
-			const coordinates = routeFeature.geometry.coordinates;
-			const last = coordinates.at(-1);
-			markers.push({
-				type: 'Feature',
-				properties: {
-					day: routeFeature.properties.day,
-					label: String(routeFeature.properties.day),
-					title: routeFeature.properties.title
-				},
-				geometry: { type: 'Point', coordinates: last }
-			});
-		}
+	function routeMarkers(features) {
+		const markers = features.map((routeFeature) => ({
+			type: 'Feature',
+			properties: {
+				day: routeFeature.properties.day,
+				label: String(routeFeature.properties.day),
+				title: routeFeature.properties.title,
+				kind: routeFeature.properties.kind
+			},
+			geometry: { type: 'Point', coordinates: routeFeature.geometry.coordinates.at(-1) }
+		}));
 
-		for (const day of itinerary.days.filter((item) => !item.routeFile && item.pois?.length)) {
+		for (const day of itinerary.days.filter((item) => !item.routeFile && item.mapAnchor)) {
 			markers.push({
 				type: 'Feature',
-				properties: { day: day.day, label: String(day.day), title: day.title },
-				geometry: { type: 'Point', coordinates: day.pois[0].coordinates }
+				properties: { day: day.day, label: String(day.day), title: day.title, kind: day.kind },
+				geometry: { type: 'Point', coordinates: day.mapAnchor }
 			});
 		}
 		return markers;
 	}
 
-	function selectedPois() {
-		if (!selectedDay?.pois) return [];
-		return selectedDay.pois.map((poi) => ({
-			type: 'Feature',
-			properties: { name: poi.name },
-			geometry: { type: 'Point', coordinates: poi.coordinates }
-		}));
+	function placeFeatures() {
+		return visiblePlaces.map((place) => {
+			const category = categoryById.get(place.category);
+			return {
+				type: 'Feature',
+				properties: {
+					id: place.id,
+					name: place.name,
+					category: place.category,
+					symbol: category?.symbol ?? '•',
+					color: category?.color ?? '#475569'
+				},
+				geometry: { type: 'Point', coordinates: place.coordinates }
+			};
+		});
 	}
 
 	function fit(featuresToFit) {
@@ -85,19 +109,34 @@
 
 	function updateSelection() {
 		if (!ready || !map?.getSource(sourceId)) return;
-		const filter = selectedDay
+		const dayFilter = selectedDay
 			? ['==', ['get', 'day'], selectedDay.day]
 			: ['==', ['get', 'day'], -1];
-		map.setFilter('route-selected', filter);
+		map.setFilter('route-selected', dayFilter);
 
-		const pois = selectedPois();
+		const pois = placeFeatures();
 		map.getSource(poiSourceId)?.setData(featureCollection(pois));
+		map.setFilter(
+			'poi-selected',
+			selectedPlace ? ['==', ['get', 'id'], selectedPlace.id] : ['==', ['get', 'id'], '']
+		);
+
+		if (selectedPlace) {
+			map.easeTo({
+				center: selectedPlace.coordinates,
+				zoom: Math.max(map.getZoom(), 11),
+				duration: 500
+			});
+			return;
+		}
 
 		if (selectedDay) {
-			const routeFeature = features.find((feature) => feature.properties.day === selectedDay.day);
+			const routeFeature = routeFeatures.find(
+				(feature) => feature.properties.day === selectedDay.day
+			);
 			fit([...(routeFeature ? [routeFeature] : []), ...pois]);
 		} else {
-			fit(features);
+			fit([...routeFeatures, ...pois]);
 		}
 	}
 
@@ -125,31 +164,40 @@
 				})
 			);
 			if (currentVersion !== renderVersion) return;
-			features = loaded;
+			routeFeatures = loaded;
 			clearRouteLayers();
 
-			map.addSource(sourceId, { type: 'geojson', data: featureCollection(features) });
+			map.addSource(sourceId, { type: 'geojson', data: featureCollection(routeFeatures) });
 			map.addSource(markerSourceId, {
 				type: 'geojson',
-				data: featureCollection(routeMarkers(features))
+				data: featureCollection(routeMarkers(routeFeatures))
 			});
-			map.addSource(poiSourceId, { type: 'geojson', data: featureCollection(selectedPois()) });
+			map.addSource(poiSourceId, {
+				type: 'geojson',
+				data: featureCollection(placeFeatures()),
+				cluster: true,
+				clusterRadius: 42,
+				clusterMaxZoom: 10
+			});
 
 			const outbound = colorToken('--map-route-outbound', '#b45309');
 			const returning = colorToken('--map-route-return', '#0369a1');
-			const hiking = colorToken('--map-route-hike', '#15803d');
 			const selected = colorToken('--map-route-selected', '#7c2d12');
 			const marker = colorToken('--map-marker', '#172554');
 			const markerText = colorToken('--map-marker-text', '#ffffff');
+			const hiking = colorToken('--map-route-hike', '#15803d');
+			const resting = colorToken('--map-route-rest', '#7e22ce');
+			const cluster = colorToken('--map-cluster', '#fff7ed');
+			const clusterText = colorToken('--map-cluster-text', '#172554');
 
 			map.addLayer({
 				id: 'route-lines',
 				type: 'line',
 				source: sourceId,
 				paint: {
-					'line-color': ['match', ['get', 'kind'], 'outbound', outbound, 'return', returning, hiking],
+					'line-color': ['match', ['get', 'kind'], 'outbound', outbound, 'return', returning, marker],
 					'line-width': 3,
-					'line-opacity': 0.8
+					'line-opacity': 0.82
 				}
 			});
 			map.addLayer({
@@ -165,13 +213,85 @@
 				filter: ['==', ['get', 'day'], selectedDay?.day ?? -1],
 				paint: { 'line-color': selected, 'line-width': 6, 'line-opacity': 1 }
 			});
+
+			map.addLayer({
+				id: 'poi-clusters',
+				type: 'circle',
+				source: poiSourceId,
+				filter: ['has', 'point_count'],
+				paint: {
+					'circle-radius': ['step', ['get', 'point_count'], 15, 8, 19, 20, 23],
+					'circle-color': cluster,
+					'circle-stroke-color': marker,
+					'circle-stroke-width': 2,
+					'circle-opacity': 0.92
+				}
+			});
+			map.addLayer({
+				id: 'poi-cluster-count',
+				type: 'symbol',
+				source: poiSourceId,
+				filter: ['has', 'point_count'],
+				layout: {
+					'text-field': ['get', 'point_count_abbreviated'],
+					'text-font': ['Noto Sans Regular'],
+					'text-size': 11
+				},
+				paint: { 'text-color': clusterText }
+			});
+			map.addLayer({
+				id: 'poi-dots',
+				type: 'circle',
+				source: poiSourceId,
+				filter: ['!', ['has', 'point_count']],
+				paint: {
+					'circle-radius': 9,
+					'circle-color': ['get', 'color'],
+					'circle-stroke-color': markerText,
+					'circle-stroke-width': 2
+				}
+			});
+			map.addLayer({
+				id: 'poi-symbols',
+				type: 'symbol',
+				source: poiSourceId,
+				filter: ['!', ['has', 'point_count']],
+				layout: {
+					'text-field': ['get', 'symbol'],
+					'text-font': ['Noto Sans Regular'],
+					'text-size': 11,
+					'text-allow-overlap': true
+				},
+				paint: { 'text-color': markerText }
+			});
+			map.addLayer({
+				id: 'poi-selected',
+				type: 'circle',
+				source: poiSourceId,
+				filter: ['==', ['get', 'id'], selectedPlace?.id ?? ''],
+				paint: {
+					'circle-radius': 14,
+					'circle-color': 'rgba(0,0,0,0)',
+					'circle-stroke-color': selected,
+					'circle-stroke-width': 3
+				}
+			});
+
 			map.addLayer({
 				id: 'day-dots',
 				type: 'circle',
 				source: markerSourceId,
 				paint: {
 					'circle-radius': 11,
-					'circle-color': marker,
+					'circle-color': [
+						'match',
+						['get', 'kind'],
+						'hike',
+						hiking,
+						'rest',
+						resting,
+						marker
+					],
 					'circle-stroke-color': markerText,
 					'circle-stroke-width': 2
 				}
@@ -187,34 +307,6 @@
 					'text-allow-overlap': true
 				},
 				paint: { 'text-color': markerText }
-			});
-			map.addLayer({
-				id: 'poi-dots',
-				type: 'circle',
-				source: poiSourceId,
-				paint: {
-					'circle-radius': 6,
-					'circle-color': hiking,
-					'circle-stroke-color': markerText,
-					'circle-stroke-width': 2
-				}
-			});
-			map.addLayer({
-				id: 'poi-labels',
-				type: 'symbol',
-				source: poiSourceId,
-				layout: {
-					'text-field': ['get', 'name'],
-					'text-font': ['Noto Sans Regular'],
-					'text-size': 12,
-					'text-offset': [0, 1.2],
-					'text-anchor': 'top'
-				},
-				paint: {
-					'text-color': marker,
-					'text-halo-color': markerText,
-					'text-halo-width': 1.5
-				}
 			});
 
 			updateSelection();
@@ -242,14 +334,28 @@
 				renderItinerary();
 			});
 			map.on('click', 'route-hit', (event) => {
+				if (map.queryRenderedFeatures(event.point, { layers: ['poi-dots', 'poi-clusters'] }).length) return;
 				const number = event.features?.[0]?.properties?.day;
-				if (number) onSelect?.(Number(number));
+				if (number) onSelectDay?.(Number(number));
 			});
 			map.on('click', 'day-dots', (event) => {
 				const number = event.features?.[0]?.properties?.day;
-				if (number) onSelect?.(Number(number));
+				if (number) onSelectDay?.(Number(number));
 			});
-			for (const layer of ['route-hit', 'day-dots']) {
+			map.on('click', 'poi-dots', (event) => {
+				const id = event.features?.[0]?.properties?.id;
+				if (id) onSelectPlace?.(id);
+			});
+			map.on('click', 'poi-clusters', async (event) => {
+				const clusterId = event.features?.[0]?.properties?.cluster_id;
+				const coordinates = event.features?.[0]?.geometry?.coordinates;
+				const source = map.getSource(poiSourceId);
+				if (clusterId === undefined || !coordinates || !source) return;
+				const zoom = await source.getClusterExpansionZoom(clusterId);
+				map.easeTo({ center: coordinates, zoom, duration: 500 });
+			});
+
+			for (const layer of ['route-hit', 'day-dots', 'poi-dots', 'poi-clusters']) {
 				map.on('mouseenter', layer, () => (map.getCanvas().style.cursor = 'pointer'));
 				map.on('mouseleave', layer, () => (map.getCanvas().style.cursor = ''));
 			}
@@ -261,11 +367,12 @@
 	});
 
 	$effect(() => {
-		if (ready && itinerary) void renderItinerary();
+		if (ready && itinerary) untrack(() => void renderItinerary());
 	});
 
 	$effect(() => {
-		if (ready && selectedDay !== undefined) updateSelection();
+		const dependencyKey = `${selectedDay?.day ?? 0}|${selectedPlace?.id ?? ''}|${visiblePlaces.map((place) => place.id).join(',')}`;
+		if (ready && dependencyKey) updateSelection();
 	});
 </script>
 
@@ -274,7 +381,7 @@
 		bind:this={container}
 		class="h-full w-full"
 		role="application"
-		aria-label="Interactive map of the selected Đà Nẵng to Đà Lạt scooter route"
+		aria-label="Interactive map of the relaxed Đà Nẵng, Central Highlands and coast scooter route"
 	></div>
 	{#if !ready && !error}
 		<div class="pointer-events-none absolute inset-0 grid place-items-center bg-muted text-sm text-muted-foreground">

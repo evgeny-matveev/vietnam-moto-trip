@@ -43,9 +43,12 @@
   --map-route-outbound: #b45309;
   --map-route-return: #0369a1;
   --map-route-hike: #15803d;
+  --map-route-rest: #7e22ce;
   --map-route-selected: #7c2d12;
   --map-marker: #172554;
   --map-marker-text: #ffffff;
+  --map-cluster: #fff7ed;
+  --map-cluster-text: #172554;
 }
 
 .dark {
