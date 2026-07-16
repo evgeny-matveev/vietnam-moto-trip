@@ -7,7 +7,11 @@ import DayDetails from "./DayDetails.svelte";
 const hikingDay = {
   day: 6,
   title: "Đà Lạt hiking day",
-  summary: "A day on foot.",
+  overview: `The day starts with a look at the clouds before choosing a route.
+
+The main trail is a full outing, so the rest of the day stays open.
+
+**Main choice:** choose one route and leave time to recover.`,
   roads: "No intercity riding",
   distance: "4–10 km walking",
   rideTime: "3–6 hr on foot",
@@ -23,11 +27,11 @@ const hikingDay = {
       summary: "A guide-led high-energy alternative to hiking.",
       condition: "Choose one and replace the mountain hike when conditions are safe.",
       sources: [{ label: "Operator details", url: "https://example.com/activity" }],
-			photos: [],
-			photoFallback: {
-				label: "Посмотреть фото в Google Images",
-				url: "https://example.com/activity-photos",
-			},
+      photos: [],
+      photoFallback: {
+        label: "Посмотреть фото в Google Images",
+        url: "https://example.com/activity-photos",
+      },
     },
   ],
   stops: ["Primary: Lang Biang trail", "Shorter: Đa Phú hills"],
@@ -75,6 +79,15 @@ describe("DayDetails", () => {
     render(DayDetails, { day: hikingDay });
 
     await expect.element(page.getByRole("heading", { name: "Đà Lạt hiking day" })).toBeVisible();
+    await expect
+      .element(page.getByText("The day starts with a look at the clouds before choosing a route."))
+      .toBeVisible();
+    await expect
+      .element(
+        page.getByText("The main trail is a full outing, so the rest of the day stays open."),
+      )
+      .toBeVisible();
+    await expect.element(page.getByText("Main choice:", { exact: false })).toBeVisible();
     await expect.element(page.getByText("Primary: Lang Biang trail")).toBeVisible();
     await expect
       .element(page.getByRole("link", { name: /Lang Biang on AllTrails/ }))
@@ -120,34 +133,34 @@ describe("DayDetails", () => {
     await expect
       .element(page.getByRole("link", { name: /Operator details/ }))
       .toHaveAttribute("href", "https://example.com/activity");
-		await expect
-			.element(page.getByRole("link", { name: "Посмотреть фото в Google Images" }))
-			.toHaveAttribute("href", "https://example.com/activity-photos");
+    await expect
+      .element(page.getByRole("link", { name: "Посмотреть фото в Google Images" }))
+      .toHaveAttribute("href", "https://example.com/activity-photos");
   });
 
-	it("shows compact map-place preview cards with an explicit detail action", async () => {
-		const onSelectPlace = vi.fn();
-		render(DayDetails, {
-			day: hikingDay,
-			places: [
-				{
-					id: "test-place",
-					name: "Test waterfall",
-					category: "waterfall",
-					visitMinutes: [30, 45],
-					detourKm: 2,
-					photos: [],
-					photoFallback: {
-						label: "Посмотреть фото в Google Images",
-						url: "https://example.com/place-photos",
-					},
-				}
-			],
-			onSelectPlace,
-		});
+  it("shows compact map-place preview cards with an explicit detail action", async () => {
+    const onSelectPlace = vi.fn();
+    render(DayDetails, {
+      day: hikingDay,
+      places: [
+        {
+          id: "test-place",
+          name: "Test waterfall",
+          category: "waterfall",
+          visitMinutes: [30, 45],
+          detourKm: 2,
+          photos: [],
+          photoFallback: {
+            label: "Посмотреть фото в Google Images",
+            url: "https://example.com/place-photos",
+          },
+        },
+      ],
+      onSelectPlace,
+    });
 
-		await expect.element(page.getByRole("heading", { name: "Места на карте" })).toBeVisible();
-		await page.getByRole("button", { name: "Открыть место" }).click();
-		expect(onSelectPlace).toHaveBeenCalledWith("test-place");
-	});
+    await expect.element(page.getByRole("heading", { name: "Места на карте" })).toBeVisible();
+    await page.getByRole("button", { name: "Открыть место" }).click();
+    expect(onSelectPlace).toHaveBeenCalledWith("test-place");
+  });
 });

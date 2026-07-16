@@ -11,6 +11,17 @@ function daySection(dayNumber) {
   return guide.slice(start, end);
 }
 
+function guideOverview(dayNumber) {
+  const section = daySection(dayNumber);
+  const contentStart = section.indexOf("\n\n") + 2;
+  const contentEnd = section.indexOf("\n### ");
+  return section.slice(contentStart, contentEnd).trim();
+}
+
+function normalizeWhitespace(value) {
+  return value.replace(/\s+/g, " ").trim();
+}
+
 describe("русский путеводитель", () => {
   it("uses the exact editorial heading, brand and compact route figures", () => {
     expect(guide).toContain("# К югу от границы, на запад от солнца");
@@ -31,6 +42,16 @@ describe("русский путеводитель", () => {
       expect(section).toContain(day.distance);
       expect(section).toMatch(/### (Дорога|Передвижение)/);
       expect(section).toContain("### Посмотреть перед выездом");
+    }
+  });
+
+  it("copies each guide day overview into the map day data", () => {
+    for (const day of itinerary.days) {
+      expect(day.summary, `Day ${day.day} keeps no obsolete summary`).toBeUndefined();
+      expect(day.overview, `Day ${day.day} overview`).toBeTruthy();
+      expect(normalizeWhitespace(day.overview), `Day ${day.day} overview`).toBe(
+        normalizeWhitespace(guideOverview(day.day)),
+      );
     }
   });
 

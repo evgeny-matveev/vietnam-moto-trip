@@ -3,6 +3,7 @@
 	import RouteIcon from '@lucide/svelte/icons/route';
 	import FootprintsIcon from '@lucide/svelte/icons/footprints';
 	import WavesIcon from '@lucide/svelte/icons/waves';
+	import { marked } from 'marked';
 	import ActivityRecommendations from '$lib/components/ActivityRecommendations.svelte';
 	import CreatorResources from '$lib/components/CreatorResources.svelte';
 	import PlacePreviewList from '$lib/components/PlacePreviewList.svelte';
@@ -32,7 +33,11 @@
 			</Badge>
 		</div>
 		<h2 class="text-2xl font-medium tracking-tight">{day.title}</h2>
-		<p class="text-muted-foreground leading-relaxed">{day.summary}</p>
+		<div
+			class="text-muted-foreground space-y-3 leading-relaxed [&_strong]:font-medium [&_strong]:text-foreground"
+		>
+			{@html marked.parse(day.overview, { gfm: true })}
+		</div>
 	</div>
 
 	<Separator />
