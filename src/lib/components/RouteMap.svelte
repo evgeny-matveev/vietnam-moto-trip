@@ -8,9 +8,12 @@
 		itinerary,
 		selectedDay = null,
 		visiblePlaces = [],
+		visibleStays = [],
 		selectedPlace = null,
+		selectedStay = null,
 		onSelectDay,
-		onSelectPlace
+		onSelectPlace,
+		onSelectStay
 	} = $props();
 
 	let container = null;
@@ -24,6 +27,7 @@
 	const sourceId = 'ride-routes';
 	const markerSourceId = 'day-markers';
 	const poiSourceId = 'route-places';
+	const staySourceId = 'day-stays';
 	const categoryById = new Map(placeCategories.map((category) => [category.id, category]));
 
 	function colorToken(name, fallback) {
@@ -48,11 +52,12 @@
 			'poi-icons',
 			'poi-cluster-count',
 			'poi-clusters',
+			'stay-icons',
 			'day-dots'
 		]) {
 			removeLayer(id);
 		}
-		for (const id of [sourceId, markerSourceId, poiSourceId]) removeSource(id);
+		for (const id of [sourceId, markerSourceId, poiSourceId, staySourceId]) removeSource(id);
 	}
 
 	function routeMarkers(features) {
@@ -100,6 +105,19 @@
 		});
 	}
 
+	function stayFeatures() {
+		return visibleStays.map((stay) => ({
+			type: 'Feature',
+			properties: {
+				id: stay.id,
+				name: stay.name,
+				category: stay.category,
+				icon: `stay-${stay.category}`
+			},
+			geometry: { type: 'Point', coordinates: stay.coordinates }
+		}));
+	}
+
 	function imageData(width, height, draw) {
 		const scale = 2;
 		const canvas = document.createElement('canvas');
@@ -128,6 +146,7 @@
 	function registerMarkerImages() {
 		const marker = colorToken('--map-marker', '#172554');
 		const markerText = colorToken('--map-marker-text', '#ffffff');
+		const stayMarker = colorToken('--map-stay', '#0f766e');
 		const fills = {
 			outbound: colorToken('--map-route-outbound', '#b45309'),
 			return: colorToken('--map-route-return', '#0369a1'),
@@ -153,6 +172,33 @@
 					context.textAlign = 'center';
 					context.textBaseline = 'middle';
 					context.fillText(category.symbol, 15, 15.5);
+				}),
+				{ pixelRatio: 2 }
+			);
+		}
+
+		for (const [category, number] of [
+			['special', 1],
+			['luxury', 2],
+			['regular', 3]
+		]) {
+			const id = `stay-${category}`;
+			if (map.hasImage(id)) continue;
+			map.addImage(
+				id,
+				imageData(32, 32, (context) => {
+					context.beginPath();
+					context.arc(16, 16, 13, 0, Math.PI * 2);
+					context.fillStyle = stayMarker;
+					context.fill();
+					context.strokeStyle = markerText;
+					context.lineWidth = 2;
+					context.stroke();
+					context.fillStyle = markerText;
+					context.font = '600 13px "Inter Variable", sans-serif';
+					context.textAlign = 'center';
+					context.textBaseline = 'middle';
+					context.fillText(String(number), 16, 16.5);
 				}),
 				{ pixelRatio: 2 }
 			);
@@ -201,11 +247,27 @@
 		map.setFilter('route-selected', dayFilter);
 
 		const pois = placeFeatures();
+		const stays = stayFeatures();
 		map.getSource(poiSourceId)?.setData(featureCollection(pois));
+		map.getSource(staySourceId)?.setData(featureCollection(stays));
 		map.setFilter(
 			'poi-selected',
 			selectedPlace ? ['==', ['get', 'id'], selectedPlace.id] : ['==', ['get', 'id'], '']
 		);
+		map.setLayoutProperty(
+			'stay-icons',
+			'icon-size',
+			selectedStay ? ['case', ['==', ['get', 'id'], selectedStay.id], 1.25, 1] : 1
+		);
+
+		if (selectedStay) {
+			map.easeTo({
+				center: selectedStay.coordinates,
+				zoom: Math.max(map.getZoom(), 12),
+				duration: 500
+			});
+			return;
+		}
 
 		if (selectedPlace) {
 			map.easeTo({
@@ -220,9 +282,9 @@
 			const routeFeature = routeFeatures.find(
 				(feature) => feature.properties.day === selectedDay.day
 			);
-			fit([...(routeFeature ? [routeFeature] : []), ...pois]);
+			fit([...(routeFeature ? [routeFeature] : []), ...pois, ...stays]);
 		} else {
-			fit([...routeFeatures, ...pois]);
+			fit([...routeFeatures, ...pois, ...stays]);
 		}
 	}
 
@@ -248,6 +310,10 @@
 				cluster: true,
 				clusterRadius: 42,
 				clusterMaxZoom: 10
+			});
+			map.addSource(staySourceId, {
+				type: 'geojson',
+				data: featureCollection(stayFeatures())
 			});
 
 			const outbound = colorToken('--map-route-outbound', '#b45309');
@@ -339,6 +405,27 @@
 					'circle-stroke-width': 3
 				}
 			});
+			map.addLayer({
+				id: 'stay-icons',
+				type: 'symbol',
+				source: staySourceId,
+				layout: {
+					'icon-image': ['get', 'icon'],
+					'icon-size': selectedStay
+						? ['case', ['==', ['get', 'id'], selectedStay.id], 1.25, 1]
+						: 1,
+					'icon-offset': [
+						'match',
+						['get', 'category'],
+						'special',
+						['literal', [-16, 0]],
+						'luxury',
+						['literal', [0, 0]],
+						['literal', [16, 0]]
+					],
+					'icon-allow-overlap': true
+				}
+			});
 			updateSelection();
 		} catch (exception) {
 			error = exception instanceof Error ? exception.message : 'The route could not be drawn.';
@@ -369,7 +456,12 @@
 				renderItinerary();
 			});
 			map.on('click', 'route-hit', (event) => {
-				if (map.queryRenderedFeatures(event.point, { layers: ['poi-icons', 'poi-clusters'] }).length) return;
+				if (
+					map.queryRenderedFeatures(event.point, {
+						layers: ['poi-icons', 'poi-clusters', 'stay-icons']
+					}).length
+				)
+					return;
 				const number = event.features?.[0]?.properties?.day;
 				if (number) onSelectDay?.(Number(number));
 			});
@@ -381,6 +473,10 @@
 				const id = event.features?.[0]?.properties?.id;
 				if (id) onSelectPlace?.(id);
 			});
+			map.on('click', 'stay-icons', (event) => {
+				const id = event.features?.[0]?.properties?.id;
+				if (id) onSelectStay?.(id);
+			});
 			map.on('click', 'poi-clusters', async (event) => {
 				const clusterId = event.features?.[0]?.properties?.cluster_id;
 				const coordinates = event.features?.[0]?.geometry?.coordinates;
@@ -390,7 +486,7 @@
 				map.easeTo({ center: coordinates, zoom, duration: 500 });
 			});
 
-			for (const layer of ['route-hit', 'day-dots', 'poi-icons', 'poi-clusters']) {
+			for (const layer of ['route-hit', 'day-dots', 'poi-icons', 'poi-clusters', 'stay-icons']) {
 				map.on('mouseenter', layer, () => (map.getCanvas().style.cursor = 'pointer'));
 				map.on('mouseleave', layer, () => (map.getCanvas().style.cursor = ''));
 			}
@@ -406,7 +502,7 @@
 	});
 
 	$effect(() => {
-		const dependencyKey = `${selectedDay?.day ?? 0}|${selectedPlace?.id ?? ''}|${visiblePlaces.map((place) => place.id).join(',')}`;
+		const dependencyKey = `${selectedDay?.day ?? 0}|${selectedPlace?.id ?? ''}|${selectedStay?.id ?? ''}|${visiblePlaces.map((place) => place.id).join(',')}|${visibleStays.map((stay) => stay.id).join(',')}`;
 		if (ready && dependencyKey) updateSelection();
 	});
 </script>

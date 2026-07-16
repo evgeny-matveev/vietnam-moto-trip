@@ -1,8 +1,9 @@
 <script>
 	import ExternalLinkIcon from '@lucide/svelte/icons/external-link';
-	import { stayCategoryLabels } from '$lib/data/stays.js';
+	import MapPinIcon from '@lucide/svelte/icons/map-pin';
+	import { stayCategoryLabels, stayLinkLabel } from '$lib/data/stays.js';
 
-	let { stayPlan } = $props();
+	let { stayPlan, onSelectStay } = $props();
 
 	const categoryNumbers = {
 		special: 1,
@@ -16,8 +17,12 @@
 		<div class="space-y-1">
 			<h3 id="stay-recommendations-title" class="text-sm font-medium">Where to stay in {stayPlan.location}</h3>
 			<p class="text-muted-foreground text-xs leading-relaxed">
-				Estimated total per night for six adults in late September–early October 2026. Taxes,
-				breakfast and cancellation terms may change.
+				Estimated price per person, per night, assuming six adults in late September–early
+				October 2026. Taxes, breakfast and cancellation terms may change.
+			</p>
+			<p class="text-muted-foreground text-xs leading-relaxed">
+				The first pick favors camps, farmstays, village homes and other niche experiences when
+				a credible option exists.
 			</p>
 			<p class="text-xs leading-relaxed">{stayPlan.note}</p>
 		</div>
@@ -29,12 +34,18 @@
 						<div>
 							<p class="text-muted-foreground text-[11px] font-medium tracking-wide uppercase">
 								{categoryNumbers[stay.category]}. {stayCategoryLabels[stay.category]}
+								{#if stay.experience} · {stay.experience}{/if}
 							</p>
 							<h4 class="mt-0.5 text-sm font-medium">{stay.name}</h4>
 						</div>
 						<p class="shrink-0 text-sm font-medium sm:text-right">
-							{stay.priceUsd}
-							<span class="text-muted-foreground block text-xs font-normal">{stay.priceVnd}</span>
+							{stay.pricePerPersonUsd}
+							<span class="text-muted-foreground block text-[11px] font-normal"
+								>per person / night</span
+							>
+							<span class="text-muted-foreground block text-xs font-normal"
+								>{stay.pricePerPersonVnd}</span
+							>
 						</p>
 					</div>
 
@@ -47,15 +58,28 @@
 						</p>
 					{/if}
 
-					<a
-						href={stay.url}
-						target="_blank"
-						rel="noreferrer"
-						class="decoration-muted-foreground hover:decoration-foreground mt-2 inline-flex items-center gap-1 text-xs underline underline-offset-4"
-					>
-						View property
-						<ExternalLinkIcon class="size-3" aria-hidden="true" />
-					</a>
+					<div class="mt-2 flex flex-wrap gap-x-4 gap-y-2">
+						{#if onSelectStay}
+							<button
+								type="button"
+								aria-label={`Show ${stay.name} on map`}
+								onclick={() => onSelectStay(stay.id)}
+								class="decoration-muted-foreground hover:decoration-foreground inline-flex items-center gap-1 text-xs underline underline-offset-4"
+							>
+								Show on map
+								<MapPinIcon class="size-3" aria-hidden="true" />
+							</button>
+						{/if}
+						<a
+							href={stay.url}
+							target="_blank"
+							rel="noreferrer"
+							class="decoration-muted-foreground hover:decoration-foreground inline-flex items-center gap-1 text-xs underline underline-offset-4"
+						>
+							{stayLinkLabel(stay.url)}
+							<ExternalLinkIcon class="size-3" aria-hidden="true" />
+						</a>
+					</div>
 				</article>
 			{/each}
 		</div>

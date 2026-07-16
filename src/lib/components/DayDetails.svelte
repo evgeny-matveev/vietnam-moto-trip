@@ -10,7 +10,7 @@
 	import { Separator } from '$lib/components/ui/separator/index.js';
 	import { placeCategories } from '$lib/data/places.js';
 
-	let { day, places = [], onSelectPlace } = $props();
+	let { day, places = [], onSelectPlace, onSelectStay } = $props();
 	const categoryById = new Map(placeCategories.map((category) => [category.id, category]));
 </script>
 
@@ -92,7 +92,7 @@
 		</div>
 	{/if}
 
-	<StayRecommendations stayPlan={day.stayPlan} />
+	<StayRecommendations stayPlan={day.stayPlan} {onSelectStay} />
 
 	<CreatorResources resources={day.creatorResources} />
 

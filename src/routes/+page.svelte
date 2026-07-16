@@ -5,6 +5,7 @@
 	import PlaceDetails from '$lib/components/PlaceDetails.svelte';
 	import RouteMap from '$lib/components/RouteMap.svelte';
 	import RouteDownloads from '$lib/components/RouteDownloads.svelte';
+	import StayDetails from '$lib/components/StayDetails.svelte';
 	import { itinerary } from '$lib/data/itineraries.js';
 	import {
 		filterPlacesByCategory,
@@ -13,9 +14,11 @@
 		placesForIds,
 		placesForItinerary
 	} from '$lib/data/places.js';
+	import { staysForDay } from '$lib/data/stays.js';
 
 	let selectedNumber = $state(0);
 	let selectedPlaceId = $state(null);
+	let selectedStayId = $state(null);
 	let activeCategoryIds = $state(placeCategories.map((category) => category.id));
 	let focusStrip = null;
 	let detailsPanel = null;
@@ -28,6 +31,10 @@
 	);
 	let visiblePlaces = $derived(filterPlacesByCategory(routePlaces, activeCategoryIds));
 	let selectedPlace = $derived(selectedPlaceId ? getPlace(selectedPlaceId) : null);
+	let visibleStays = $derived(selectedDay ? staysForDay(selectedDay) : []);
+	let selectedStay = $derived(
+		selectedStayId ? (visibleStays.find((stay) => stay.id === selectedStayId) ?? null) : null
+	);
 
 	async function moveDetailsTo(top) {
 		await tick();
@@ -44,6 +51,7 @@
 	function selectDay(number) {
 		selectedNumber = number;
 		selectedPlaceId = null;
+		selectedStayId = null;
 		previousDetailsScroll = 0;
 		void moveDetailsTo(0);
 		void revealFocus(number);
@@ -51,12 +59,21 @@
 
 	function selectPlace(id) {
 		previousDetailsScroll = detailsPanel?.scrollTop ?? 0;
+		selectedStayId = null;
 		selectedPlaceId = id;
+		void moveDetailsTo(0);
+	}
+
+	function selectStay(id) {
+		previousDetailsScroll = detailsPanel?.scrollTop ?? 0;
+		selectedPlaceId = null;
+		selectedStayId = id;
 		void moveDetailsTo(0);
 	}
 
 	function backToDay() {
 		selectedPlaceId = null;
+		selectedStayId = null;
 		void moveDetailsTo(previousDetailsScroll);
 	}
 
@@ -149,6 +166,13 @@
 					</button>
 				{/each}
 			</fieldset>
+
+			{#if selectedDay}
+				<div class="text-muted-foreground flex shrink-0 items-center gap-2 text-xs" aria-label="Stay markers">
+					<span class="grid size-6 place-items-center rounded-full bg-[var(--map-stay)] font-medium text-white">1–3</span>
+					<span>Stays</span>
+				</div>
+			{/if}
 		</div>
 	</section>
 
@@ -160,9 +184,12 @@
 				{itinerary}
 				{selectedDay}
 				{visiblePlaces}
+				{visibleStays}
 				{selectedPlace}
+				{selectedStay}
 				onSelectDay={selectDay}
 				onSelectPlace={selectPlace}
+				onSelectStay={selectStay}
 			/>
 		</section>
 
@@ -173,8 +200,15 @@
 		>
 			{#if selectedPlace}
 				<PlaceDetails place={selectedPlace} onBack={backToDay} />
+			{:else if selectedStay}
+				<StayDetails stay={selectedStay} onBack={backToDay} />
 			{:else if selectedDay}
-				<DayDetails day={selectedDay} places={visiblePlaces} onSelectPlace={selectPlace} />
+				<DayDetails
+					day={selectedDay}
+					places={visiblePlaces}
+					onSelectPlace={selectPlace}
+					onSelectStay={selectStay}
+				/>
 			{:else}
 				<div class="space-y-5">
 					<div class="space-y-2">

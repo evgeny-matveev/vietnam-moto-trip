@@ -1,5 +1,5 @@
 import { page } from "vitest/browser";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { render } from "vitest-browser-svelte";
 import DayDetails from "./DayDetails.svelte";
 
@@ -18,10 +18,12 @@ const hikingDay = {
     note: "Book once for two nights.",
     stays: [
       {
+        id: "forest-house",
         category: "special",
         name: "Forest House",
-        priceUsd: "$100–130",
-        priceVnd: "2.6–3.4m VND",
+        coordinates: [108.4, 12.1],
+        pricePerPersonUsd: "$17–22",
+        pricePerPersonVnd: "430–570k VND",
         setup: "A whole house for six.",
         why: "Everyone stays together with a mountain view.",
         caution: "Confirm all three bedrooms.",
@@ -44,15 +46,16 @@ describe("DayDetails", () => {
   });
 
   it("shows group stay pricing, room setup and booking cautions", async () => {
-    render(DayDetails, { day: hikingDay });
+    const onSelectStay = vi.fn();
+    render(DayDetails, { day: hikingDay, onSelectStay });
 
     await expect
       .element(page.getByRole("heading", { name: "Where to stay in Đà Lạt" }))
       .toBeVisible();
     await expect
-      .element(page.getByText("Estimated total per night for six adults", { exact: false }))
+      .element(page.getByText("Estimated price per person, per night", { exact: false }))
       .toBeVisible();
-    await expect.element(page.getByText("$100–130")).toBeVisible();
+    await expect.element(page.getByText("$17–22")).toBeVisible();
     await expect.element(page.getByText("A whole house for six.")).toBeVisible();
     await expect
       .element(page.getByRole("link", { name: "View property" }))

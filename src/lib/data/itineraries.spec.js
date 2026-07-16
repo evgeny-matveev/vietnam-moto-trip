@@ -2,7 +2,7 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { itinerary } from "./itineraries.js";
 import { getPlace } from "./places.js";
-import { validateStayPlan } from "./stays.js";
+import { staysForDay, validateStayPlan } from "./stays.js";
 
 const routesDirectory = "static/routes";
 
@@ -145,14 +145,30 @@ describe("the relaxed itinerary", () => {
       expect(day.stayPlan.note.length).toBeGreaterThan(10);
 
       for (const stay of day.stayPlan.stays) {
+        expect(stay.id).toMatch(/^[a-z0-9-]+$/);
+        expect(stay.coordinates).toHaveLength(2);
+        expect(stay.coordinates[0], stay.id).toBeGreaterThan(106);
+        expect(stay.coordinates[0], stay.id).toBeLessThan(111);
+        expect(stay.coordinates[1], stay.id).toBeGreaterThan(10);
+        expect(stay.coordinates[1], stay.id).toBeLessThan(18);
         expect(stay.name.length).toBeGreaterThan(5);
-        expect(stay.priceUsd).toMatch(/^\$/);
-        expect(stay.priceVnd).toMatch(/VND$/);
+        expect(stay.pricePerPersonUsd).toMatch(/^\$/);
+        expect(stay.pricePerPersonVnd).toMatch(/VND$/);
         expect(stay.setup).toMatch(/six|6/i);
         expect(stay.why.length).toBeGreaterThan(20);
         expect(stay.url).toMatch(/^https:\/\//);
+        if (stay.category === "special") expect(stay.experience.length).toBeGreaterThan(5);
       }
     }
+  });
+
+  it("returns only the three stays attached to the selected day", () => {
+    expect(staysForDay(itinerary.days[0]).map((stay) => stay.category)).toEqual([
+      "special",
+      "luxury",
+      "regular",
+    ]);
+    expect(staysForDay(null)).toEqual([]);
   });
 
   it("keeps the two-night city stays as single bookings", () => {
