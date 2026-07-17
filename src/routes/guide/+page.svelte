@@ -9,8 +9,20 @@
 
 <svelte:head>
 	<title>Верхом на байках по югу Вьетнама — полный план поездки</title>
+	<link rel="canonical" href="https://vietnam-moto-trip.vercel.app/guide" />
 	<meta
 		name="description"
+		content="Полный план двенадцатидневного мотопутешествия из Дананга (Đà Nẵng) через перевалы, сосновое нагорье, кофейные земли и побережье Вьетнама."
+	/>
+	<meta property="og:title" content="Верхом на байках по югу Вьетнама — полный план поездки" />
+	<meta
+		property="og:description"
+		content="Полный план двенадцатидневного мотопутешествия из Дананга (Đà Nẵng) через перевалы, сосновое нагорье, кофейные земли и побережье Вьетнама."
+	/>
+	<meta property="og:url" content="https://vietnam-moto-trip.vercel.app/guide" />
+	<meta name="twitter:title" content="Верхом на байках по югу Вьетнама — полный план поездки" />
+	<meta
+		name="twitter:description"
 		content="Полный план двенадцатидневного мотопутешествия из Дананга (Đà Nẵng) через перевалы, сосновое нагорье, кофейные земли и побережье Вьетнама."
 	/>
 </svelte:head>

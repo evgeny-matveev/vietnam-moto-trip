@@ -97,8 +97,26 @@
 
 <svelte:head>
 	<title>К югу от границы, на запад от солнца — мотопутешествие по Вьетнаму</title>
+	<link rel="canonical" href="https://vietnam-moto-trip.vercel.app/" />
 	<meta
 		name="description"
+		content="Приключенческий маршрут на байках из Дананга (Đà Nẵng) через рыбацкие деревни, перевалы, Центральное нагорье и кофейные земли к морю и обратно."
+	/>
+	<meta
+		property="og:title"
+		content="К югу от границы, на запад от солнца — мотопутешествие по Вьетнаму"
+	/>
+	<meta
+		property="og:description"
+		content="Приключенческий маршрут на байках из Дананга (Đà Nẵng) через рыбацкие деревни, перевалы, Центральное нагорье и кофейные земли к морю и обратно."
+	/>
+	<meta property="og:url" content="https://vietnam-moto-trip.vercel.app/" />
+	<meta
+		name="twitter:title"
+		content="К югу от границы, на запад от солнца — мотопутешествие по Вьетнаму"
+	/>
+	<meta
+		name="twitter:description"
 		content="Приключенческий маршрут на байках из Дананга (Đà Nẵng) через рыбацкие деревни, перевалы, Центральное нагорье и кофейные земли к морю и обратно."
 	/>
 </svelte:head>
