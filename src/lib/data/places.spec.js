@@ -16,15 +16,12 @@ describe("places", () => {
     expect(new Set(places.map((place) => place.id)).size).toBe(places.length);
     expect(categoryIds).toEqual(new Set(["waterfall", "nature", "viewpoint", "culture", "history"]));
     for (const category of placeCategories) {
-      expect(category.icon, category.id).toMatch(/^\/images\/place-categories\/[a-z]+\.png$/);
-      expect(existsSync(join(process.cwd(), "static", category.icon.slice(1))), category.id).toBe(true);
+      expect(category.symbol.length, category.id).toBeGreaterThan(0);
       expect(category).not.toHaveProperty("color");
-      expect(category).not.toHaveProperty("symbol");
+      expect(category).not.toHaveProperty("icon");
     }
 
-    expect(placeCategories.find((category) => category.id === "nature")?.label).toBe(
-      "Природа и заповедники",
-    );
+    expect(placeCategories.find((category) => category.id === "nature")?.symbol).toBe("🌲︎");
 
     for (const place of places) {
       expect(place.id).toMatch(/^[a-z0-9-]+$/);

@@ -28,9 +28,7 @@
 	<div class="space-y-2">
 		<div class="flex flex-wrap items-center gap-2">
 			<Badge variant="secondary">
-				{#if category?.icon}
-					<img src={category.icon} alt="" class="size-4 object-contain" />
-				{/if}
+				<span class="font-emoji text-base" aria-hidden="true">{category?.symbol}</span>
 				{category?.label ?? place.category}
 			</Badge>
 			<Badge variant="outline">

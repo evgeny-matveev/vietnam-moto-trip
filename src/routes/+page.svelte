@@ -167,9 +167,9 @@
 						aria-pressed={activeCategoryIds.includes(category.id)}
 						title={category.label}
 						onclick={() => toggleCategory(category.id)}
-						class="focus-visible:ring-ring grid size-8 place-items-center rounded-full border outline-none transition-colors focus-visible:ring-3 aria-pressed:bg-foreground aria-pressed:text-background aria-[pressed=false]:text-muted-foreground aria-[pressed=false]:opacity-45"
+						class="font-emoji focus-visible:ring-ring grid size-8 place-items-center rounded-full border text-base outline-none transition-colors focus-visible:ring-3 aria-pressed:bg-foreground aria-pressed:text-background aria-[pressed=false]:text-muted-foreground aria-[pressed=false]:opacity-45"
 					>
-						<img src={category.icon} alt="" class="size-5 object-contain" />
+						{category.symbol}
 					</button>
 				{/each}
 			</fieldset>

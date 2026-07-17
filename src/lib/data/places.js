@@ -25,11 +25,11 @@ const official = {
 };
 
 export const placeCategories = [
-  { id: "waterfall", label: "Водопады", icon: "/images/place-categories/waterfall.png" },
-  { id: "nature", label: "Природа и заповедники", icon: "/images/place-categories/nature.png" },
-  { id: "viewpoint", label: "Виды и вершины", icon: "/images/place-categories/viewpoint.png" },
-  { id: "culture", label: "Культура и святыни", icon: "/images/place-categories/culture.png" },
-  { id: "history", label: "История и памятники", icon: "/images/place-categories/history.png" },
+  { id: "waterfall", label: "Водопады", symbol: "💧︎" },
+  { id: "nature", label: "Природа и заповедники", symbol: "🌲︎" },
+  { id: "viewpoint", label: "Виды и вершины", symbol: "⛰︎" },
+  { id: "culture", label: "Культура и святыни", symbol: "🛕︎" },
+  { id: "history", label: "История и памятники", symbol: "🏛︎" },
 ];
 
 const source = (label, url) => [{ label, url }];

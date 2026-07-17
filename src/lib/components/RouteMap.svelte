@@ -143,7 +143,7 @@
 		context.closePath();
 	}
 
-	async function registerMarkerImages() {
+	function registerMarkerImages() {
 		const marker = colorToken('--map-marker', '#172554');
 		const markerText = colorToken('--map-marker-text', '#ffffff');
 		const stayMarker = colorToken('--map-stay', '#0f766e');
@@ -157,8 +157,24 @@
 		for (const category of placeCategories) {
 			const id = `poi-${category.id}`;
 			if (map.hasImage(id)) continue;
-			const image = await map.loadImage(category.icon);
-			map.addImage(id, image.data, { pixelRatio: 2 });
+			map.addImage(
+				id,
+				imageData(30, 30, (context) => {
+					context.beginPath();
+					context.arc(15, 15, 12.5, 0, Math.PI * 2);
+					context.fillStyle = '#fffdf8';
+					context.fill();
+					context.strokeStyle = marker;
+					context.lineWidth = 1.5;
+					context.stroke();
+					context.fillStyle = marker;
+					context.font = '17px "Noto Emoji"';
+					context.textAlign = 'center';
+					context.textBaseline = 'middle';
+					context.fillText(category.symbol, 15, 15.5);
+				}),
+				{ pixelRatio: 2 }
+			);
 		}
 
 		for (const [category, number] of [
@@ -432,9 +448,10 @@
 
 			map.on('load', async () => {
 				await Promise.allSettled([
+					document.fonts.load('17px "Noto Emoji"'),
 					document.fonts.load('600 11px "Inter Variable"')
 				]);
-				await registerMarkerImages();
+				registerMarkerImages();
 				ready = true;
 				renderItinerary();
 			});
