@@ -6,7 +6,7 @@ import CreatorResources from "./CreatorResources.svelte";
 const resource = {
   platform: "YouTube",
   language: "Русский",
-  title: "Дорога в Đà Lạt (Далат)",
+  title: "Дорога в Далат (Đà Lạt)",
   creator: "Путешественник",
   url: "https://www.youtube.com/watch?v=example",
   thumbnail: "/images/video-thumbnails/missing-example.jpg",
@@ -18,7 +18,7 @@ describe("CreatorResources", () => {
     render(CreatorResources, { resources: [resource] });
 
     const link = page.getByRole("link", {
-      name: "Дорога в Đà Lạt (Далат) — Путешественник, открыть на YouTube",
+      name: "Дорога в Далат (Đà Lạt) — Путешественник, открыть на YouTube",
     });
     await expect.element(link).toHaveAttribute("href", resource.url);
     await expect.element(page.getByText(resource.note)).toBeVisible();

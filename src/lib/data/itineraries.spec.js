@@ -35,8 +35,8 @@ describe("the relaxed itinerary", () => {
     expect(itinerary.atAGlance).toEqual([
       "≈ 1 750 км",
       "в среднем 175 км / 5 ч",
-      "поход в горах Đà Lạt (Далата)",
-      "день отдыха в Nha Trang (Нячанге)",
+      "поход в горах Далата (Đà Lạt)",
+      "день отдыха в Нячанге (Nha Trang)",
     ]);
     expect(Math.round(totalDistance / 50) * 50).toBe(1750);
     expect(Math.round(totalDistance / ridingDays.length)).toBe(175);
@@ -57,19 +57,19 @@ describe("the relaxed itinerary", () => {
 
     expect(hikingDay.routeFile).toBeUndefined();
     expect(hikingDay.roads).toBe("Междугородних переездов нет");
-    expect(hikingDay.stops.join(" ")).toMatch(/Lang Biang.*9,7 км.*685 м/i);
-    expect(hikingDay.stops.join(" ")).toMatch(/Đa Phú.*4 км.*195 м/i);
-    expect(hikingDay.stops.join(" ")).toMatch(/Xuân Hương.*7 км.*50 м/i);
-    expect(hikingDay.stops.join(" ")).toMatch(/официальный маршрут Bidoup–Núi Bà/i);
+    expect(hikingDay.stops.join(" ")).toMatch(/Лангбианг.*Lang Biang.*9,7 км.*685 м/i);
+    expect(hikingDay.stops.join(" ")).toMatch(/Дафу.*Đa Phú.*4 км.*195 м/i);
+    expect(hikingDay.stops.join(" ")).toMatch(/Суанхыонг.*Xuân Hương.*7 км.*50 м/i);
+    expect(hikingDay.stops.join(" ")).toMatch(/официальный маршрут Бидуп–Нуйба.*Bidoup–Núi Bà/i);
     expect(hikingDay.stops.join(" ")).toMatch(/частные земли/i);
     expect(hikingDay.sources.map((source) => source.label).join(" ")).toMatch(/AllTrails/i);
     expect(hikingDay.sources.map((source) => source.label).join(" ")).toMatch(/Komoot/i);
     expect(hikingDay.sources.map((source) => source.label).join(" ")).toMatch(/Wikiloc/i);
     expect(restDay.routeFile).toBeUndefined();
     expect(restDay.title).toContain("Nha Trang");
-    expect(restDay.roads).toContain("База в Nha Trang");
+    expect(restDay.roads).toContain("База в Нячанге (Nha Trang)");
     expect(restDay.stops.join(" ")).toMatch(/Спокойное море/i);
-    expect(restDay.stops.join(" ")).toMatch(/Плохое море/i);
+    expect(restDay.stops.join(" ")).toMatch(/Неспокойное море/i);
     expect(restDay.note).toMatch(/Не пытайтесь уместить морскую и городскую программы/i);
   });
 
@@ -77,11 +77,11 @@ describe("the relaxed itinerary", () => {
     const lakeDay = itinerary.days[10];
     const finalDay = itinerary.days[11];
 
-    expect(lakeDay.title).toBe("Sa Huỳnh (Сахюинь) → озеро Phú Ninh (Фунин)");
+    expect(lakeDay.title).toBe("Сахюинь (Sa Huỳnh) → озеро Фунин (Phú Ninh)");
     expect(lakeDay.placeIds).toContain("phu-ninh-lake");
     expect(lakeDay.note).toMatch(/ночуйте рядом/i);
-    expect(finalDay.title).toBe("озеро Phú Ninh (Фунин) → Đà Nẵng (Дананг)");
-    expect(finalDay.roads).toMatch(/^озеро Phú Ninh/);
+    expect(finalDay.title).toBe("озеро Фунин (Phú Ninh) → Дананг (Đà Nẵng)");
+    expect(finalDay.roads).toMatch(/^озеро Фунин \(Phú Ninh\)/);
     expect(finalDay.placeIds).toContain("phu-ninh-lake");
   });
 

@@ -15,9 +15,9 @@ export const placePhotoManifest = {
     photos: localPhotos(
       "places/nha-trang-beach",
       [
-        "Песчаный пляж Nha Trang (Нячанга) и море",
-        "Береговая линия пляжа Nha Trang (Нячанга)",
-        "Люди играют в футбол на пляже Nha Trang (Нячанга)",
+        "Песчаный пляж Нячанга (Nha Trang) и море",
+        "Береговая линия пляжа Нячанга (Nha Trang)",
+        "Люди играют в футбол на пляже Нячанга (Nha Trang)",
       ],
       [
         commons("Nha_Trang_Beach_10.jpg"),
@@ -30,9 +30,9 @@ export const placePhotoManifest = {
     photos: localPhotos(
       "places/po-nagar",
       [
-        "Внутри тямских башен Po Nagar (Понагар)",
-        "Тямские башни Po Nagar (Понагар)",
-        "Фасад тямских башен Po Nagar (Понагар)",
+        "Внутри тямских башен Понагар (Po Nagar)",
+        "Тямские башни Понагар (Po Nagar)",
+        "Фасад тямских башен Понагар (Po Nagar)",
       ],
       [
         commons("Inside_the_Po_Nagar_Cham_Towers_(14449703300).jpg"),
@@ -45,9 +45,9 @@ export const placePhotoManifest = {
     photos: localPhotos(
       "places/long-son",
       [
-        "Пагода Long Sơn (Лонгшон)",
-        "Ступа и двор пагоды Long Sơn (Лонгшон)",
-        "Вид на пагоду Long Sơn (Лонгшон) в Nha Trang (Нячанге)",
+        "Пагода Лонгшон (Long Sơn)",
+        "Ступа и двор пагоды Лонгшон (Long Sơn)",
+        "Вид на пагоду Лонгшон (Long Sơn) в Нячанге (Nha Trang)",
       ],
       [
         commons("Long_Son_Pagoda_2.jpg"),
@@ -60,9 +60,9 @@ export const placePhotoManifest = {
     photos: localPhotos(
       "places/hon-chong",
       [
-        "Камни мыса Hòn Chồng (Хончонг) у Nha Trang (Нячанга)",
-        "Мыс Hòn Chồng (Хончонг), вид с пляжа Cô Tiên",
-        "Мыс Hòn Chồng (Хончонг), вид с холма",
+        "Камни мыса Хончонг (Hòn Chồng) у Нячанга (Nha Trang)",
+        "Мыс Хончонг (Hòn Chồng), вид с пляжа Cô Tiên",
+        "Мыс Хончонг (Hòn Chồng), вид с холма",
       ],
       [
         commons("2001-06-03_Hon-Chong_Nha-Trang.jpg"),
@@ -78,7 +78,7 @@ export const activityPhotoManifest = {
     photos: localPhotos(
       "activities/vinwonders-nha-trang",
       [
-        "VinWonders Nha Trang: вид на парк на острове Hòn Tre (Хонтре)",
+        "VinWonders Nha Trang: вид на парк на острове Хонтре (Hòn Tre)",
         "VinWonders Nha Trang: тематическая зона Tata World",
         "VinWonders Nha Trang: аттракцион в парке",
       ],

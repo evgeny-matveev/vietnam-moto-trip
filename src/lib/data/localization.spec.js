@@ -17,9 +17,9 @@ describe("Russian localization", () => {
 
   it("keeps representative established Russian place forms and translated metadata", () => {
     const publicCopy = `${JSON.stringify(itinerary)}\n${homePage}\n${guidePage}`;
-    expect(publicCopy).toContain("Đà Nẵng (Дананг)");
-    expect(publicCopy).toContain("Hội An (Хойан)");
-    expect(publicCopy).toContain("Nha Trang (Нячанг)");
+    expect(publicCopy).toContain("Дананг (Đà Nẵng)");
+    expect(publicCopy).toContain("Хойан (Hội An)");
+    expect(publicCopy).toContain("Нячанг (Nha Trang)");
     expect(publicCopy).not.toMatch(/Хо\s+ши\s+мин/i);
     expect(publicCopy).not.toContain("Quiet Roads Vietnam");
     expect(publicCopy).not.toContain("Highlands south, coast home");

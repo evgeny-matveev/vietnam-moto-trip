@@ -512,7 +512,7 @@
 		bind:this={container}
 		class="h-full w-full"
 		role="application"
-		aria-label="Интерактивная карта маршрута из Đà Nẵng (Дананга) через Центральное нагорье и побережье"
+		aria-label="Интерактивная карта маршрута из Дананга (Đà Nẵng) через Центральное нагорье и побережье"
 	></div>
 	{#if !ready && !error}
 		<div class="pointer-events-none absolute inset-0 grid place-items-center bg-muted text-sm text-muted-foreground">

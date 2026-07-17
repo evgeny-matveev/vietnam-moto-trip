@@ -74,7 +74,7 @@ describe("route downloads", () => {
     const namedFeatures = [
       {
         ...feature,
-        properties: { day: 1, title: "День 1: Đà Nẵng (Дананг) → Tam Thanh (Тамтхань)" },
+        properties: { day: 1, title: "День 1: Дананг (Đà Nẵng) → Тамтхань (Tam Thanh)" },
       },
     ];
 
@@ -82,7 +82,7 @@ describe("route downloads", () => {
     const kml = kmlFromFeatures(namedFeatures);
 
     expect(gpx).toContain("<name>Верхом на байках по югу Вьетнама</name>");
-    expect(gpx).toContain("<name>День 1: Đà Nẵng (Дананг) → Tam Thanh (Тамтхань)</name>");
+    expect(gpx).toContain("<name>День 1: Дананг (Đà Nẵng) → Тамтхань (Tam Thanh)</name>");
     expect(gpx).toContain('creator="Верхом на байках по югу Вьетнама"');
     expect(kml).toContain("<name>Верхом на байках по югу Вьетнама</name>");
   });

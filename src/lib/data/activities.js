@@ -6,11 +6,11 @@ const activityRecordsByDay = {
       id: "lak-lake-paddle",
       kind: "paddling",
       symbol: "🛶︎",
-      name: "Прогулка по озеру Lắk (Лак)",
+      name: "Прогулка по озеру Лак (Lắk)",
       time: "1–2 ч",
       detour: "у места ночёвки",
       summary:
-        "До выезда в сторону Đà Lạt (Далата) договоритесь на месте о прогулке на долблёной лодке или каяке.",
+        "До выезда в сторону Далата (Đà Lạt) договоритесь на месте о прогулке на долблёной лодке или каяке.",
       condition:
         "Выходите только в тихую погоду, подтвердив услугу на месте. Прогулка заменяет позднюю остановку у кофе или водопада; программы с катанием на слонах не выбирайте.",
       pricing: {
@@ -19,7 +19,7 @@ const activityRecordsByDay = {
       },
       sources: [
         {
-          label: "Vietnam Tourism — озеро Lắk (Лак)",
+          label: "Vietnam Tourism — озеро Лак (Lắk)",
           url: "https://vietnam.travel/node/1788",
         },
       ],
@@ -32,7 +32,7 @@ const activityRecordsByDay = {
       symbol: "🛶︎",
       name: "Каньонинг или рафтинг",
       time: "Целый день",
-      detour: "трансфер оператора из Đà Lạt (Далата)",
+      detour: "трансфер оператора из Далата (Đà Lạt)",
       summary: "Спуски по водопадам или рафтинг с гидом — энергичная альтернатива пешему дню.",
       condition:
         "Выберите одно занятие вместо горного похода. Заранее забронируйте лицензированного оператора и будьте готовы к отмене после ливня, при опасном течении или грозе.",
@@ -56,9 +56,9 @@ const activityRecordsByDay = {
       id: "datanla-adventure",
       kind: "adventure",
       symbol: "🎢︎",
-      name: "Рельсовые сани или верёвочный парк Datanla (Датанла)",
+      name: "Рельсовые сани или верёвочный парк Датанла (Datanla)",
       time: "2–4 ч",
-      detour: "около 5 км от центра Đà Lạt (Далата)",
+      detour: "около 5 км от центра Далата (Đà Lạt)",
       summary:
         "Рельсовые сани дадут лёгкий заряд адреналина, а лесная трасса потребует больше сил и займёт полдня.",
       condition:
@@ -69,11 +69,11 @@ const activityRecordsByDay = {
       },
       sources: [
         {
-          label: "Lâm Đồng (Ламдонг) — водопад Datanla (Датанла)",
+          label: "Ламдонг (Lâm Đồng) — водопад Датанла (Datanla)",
           url: "https://lamdong.gov.vn/sites/en/tourist/famous-landscape/SitePages/dalanta-waterfall.aspx",
         },
         {
-          label: "Dalattourist — Datanla (Датанла)",
+          label: "Dalattourist — Датанла (Datanla)",
           url: "https://dalattourist.com.vn/diem-den/khu-du-lich-datanla",
         },
       ],
@@ -86,7 +86,7 @@ const activityRecordsByDay = {
       symbol: "💦︎",
       name: "VinWonders Nha Trang",
       time: "Целый день",
-      detour: "канатная дорога на Hòn Tre (Хонтре)",
+      detour: "канатная дорога на Хонтре (Hòn Tre)",
       summary:
         "Аквапарк Tropical Paradise и большая зона аттракционов складываются в полноценный день на суше.",
       condition:
@@ -135,7 +135,7 @@ const activityRecordsByDay = {
       id: "phu-ninh-lake-paddle",
       kind: "paddling",
       symbol: "🛶︎",
-      name: "Каяк или лодка на озере Phú Ninh (Фунин)",
+      name: "Каяк или лодка на озере Фунин (Phú Ninh)",
       time: "1–2 ч",
       detour: "у места ночёвки",
       summary:
@@ -148,7 +148,7 @@ const activityRecordsByDay = {
       },
       sources: [
         {
-          label: "Quảng Nam Tourism — Phú Ninh (Фунин)",
+          label: "Quảng Nam Tourism — Фунин (Phú Ninh)",
           url: "https://quangnamtourism.com.vn/ho-phu-ninh/",
         },
       ],

@@ -80,9 +80,9 @@ describe("русский путеводитель", () => {
   });
 
   it("contains authoritative Russian forms and no former English brand copy", () => {
-    expect(guide).toContain("Đà Nẵng (Дананг)");
-    expect(guide).toContain("Hội An (Хойан)");
-    expect(guide).toContain("Nha Trang (Нячанг)");
+    expect(guide).toContain("Дананг (Đà Nẵng)");
+    expect(guide).toContain("Хойан (Hội An)");
+    expect(guide).toContain("Нячанг (Nha Trang)");
     expect(guide).not.toContain("Quiet Roads Vietnam");
     expect(guide).not.toContain("Highlands south, coast home");
   });

@@ -38,11 +38,11 @@ const source = (label, url) => [{ label, url }];
 const placeRecords = [
   {
     id: "marble-mountains",
-    name: "Ngũ Hành Sơn (Нгуханьшон, Мраморные горы)",
+    name: "Мраморные горы Нгуханьшон (Ngũ Hành Sơn)",
     category: "culture",
     coordinates: [108.2628, 16.004],
     whyWorthIt:
-      "Пять известняковых вершин скрывают пещеры и пагоды, а сверху открывается побережье у Đà Nẵng (Дананга).",
+      "Пять известняковых вершин скрывают пещеры и пагоды, а сверху открывается побережье у Дананга (Đà Nẵng).",
     visitMinutes: [90, 150],
     detourKm: 1,
     accessNote: "Приезжайте рано: в дождь каменные ступени становятся скользкими.",
@@ -50,7 +50,7 @@ const placeRecords = [
   },
   {
     id: "hoi-an",
-    name: "Старый город Hội An (Хойан)",
+    name: "Старый город Хойан (Hội An)",
     category: "history",
     coordinates: [108.327, 15.8805],
     whyWorthIt:
@@ -63,29 +63,29 @@ const placeRecords = [
   },
   {
     id: "an-bang",
-    name: "Пляж An Bàng (Анбанг)",
+    name: "Пляж Анбанг (An Bàng)",
     category: "nature",
     coordinates: [108.341, 15.914],
     whyWorthIt:
-      "Неспешная первая остановка у моря: кафе и широкий пляж к северу от Cửa Đại (Кыадай).",
+      "Неспешная первая остановка у моря: кафе и широкий пляж к северу от Кыадай (Cửa Đại).",
     visitMinutes: [30, 90],
     detourKm: 2,
-    sources: source("Vietnam Tourism — Hội An (Хойан)", official.hoiAn),
+    sources: source("Vietnam Tourism — Хойан (Hội An)", official.hoiAn),
   },
   {
     id: "cua-dai",
-    name: "Берег Cửa Đại (Кыадай)",
+    name: "Берег Кыадай (Cửa Đại)",
     category: "nature",
     coordinates: [108.3572, 15.9032],
     whyWorthIt:
-      "Устье реки отмечает место, где сельские окрестности Hội An (Хойана) выходят к прибрежной дороге.",
+      "Устье реки отмечает место, где сельские окрестности Хойана (Hội An) выходят к прибрежной дороге.",
     visitMinutes: [15, 45],
     detourKm: 0,
-    sources: source("Vietnam Tourism — Hội An (Хойан)", official.hoiAn),
+    sources: source("Vietnam Tourism — Хойан (Hội An)", official.hoiAn),
   },
   {
     id: "tam-thanh",
-    name: "Деревня муралов Tam Thanh (Тамтхань)",
+    name: "Деревня муралов Тамтхань (Tam Thanh)",
     category: "culture",
     coordinates: [108.5668, 15.565],
     whyWorthIt:
@@ -96,7 +96,7 @@ const placeRecords = [
   },
   {
     id: "phu-ninh-lake",
-    name: "Озеро Phú Ninh (Фунин) и горячие минеральные источники",
+    name: "Озеро Фунин (Phú Ninh) и горячие минеральные источники",
     category: "nature",
     coordinates: [108.464, 15.4969],
     whyWorthIt:
@@ -104,14 +104,14 @@ const placeRecords = [
     visitMinutes: [120, 240],
     detourKm: 0,
     accessNote:
-      "До поездки подтвердите бунгало или разрешённый кемпинг у воды; ближайший надёжный запасной вариант — Tam Kỳ (Тамки).",
+      "До поездки подтвердите бунгало или разрешённый кемпинг у воды; ближайший надёжный запасной вариант — Тамки (Tam Kỳ).",
     seasonNote:
       "Лодки, купание и кемпинг зависят от работы зоны отдыха, ветра и дождя; по умолчанию рассчитывайте на вечер на берегу.",
     sources: source("Туристический центр Quảng Nam (Куангнама)", official.phuNinh),
   },
   {
     id: "ba-to",
-    name: "Ba Tơ (Бато)",
+    name: "Бато (Ba Tơ)",
     category: "history",
     coordinates: [108.733, 14.766],
     whyWorthIt:
@@ -125,7 +125,7 @@ const placeRecords = [
   },
   {
     id: "vi-o-lac",
-    name: "Перевал Vi Ô Lắc (Виолак)",
+    name: "Перевал Виолак (Vi Ô Lắc)",
     category: "viewpoint",
     coordinates: [108.5261, 14.759],
     whyWorthIt:
@@ -140,42 +140,42 @@ const placeRecords = [
   },
   {
     id: "pa-sy",
-    name: "Водопад Pa Sỹ (Паси)",
+    name: "Водопад Паси (Pa Sỹ)",
     category: "waterfall",
     coordinates: [108.2567, 14.5971],
     whyWorthIt:
-      "Лесной водопад достаточно близко к Măng Đen (Мангдену), чтобы успеть к нему в день приезда.",
+      "Лесной водопад достаточно близко к Мангдену (Măng Đen), чтобы успеть к нему в день приезда.",
     visitMinutes: [60, 90],
     detourKm: 8,
-    sources: source("Путеводитель по Kon Tum (Контуму)", official.konTum),
+    sources: source("Путеводитель по Контуму (Kon Tum)", official.konTum),
   },
   {
     id: "dak-ke",
-    name: "Озеро Đăk Ke (Дакке)",
+    name: "Озеро Дакке (Đăk Ke)",
     category: "nature",
     coordinates: [108.2757, 14.5809],
     whyWorthIt:
-      "Спокойное озеро в обрамлении сосен — хороший выбор для лёгкого вечера в Măng Đen (Мангдене).",
+      "Спокойное озеро в обрамлении сосен — хороший выбор для лёгкого вечера в Мангдене (Măng Đen).",
     visitMinutes: [30, 60],
     detourKm: 3,
-    sources: source("Путеводитель по Kon Tum (Контуму)", official.konTum),
+    sources: source("Путеводитель по Контуму (Kon Tum)", official.konTum),
   },
   {
     id: "kon-pring",
-    name: "Деревня Kon Pring (Конпринг)",
+    name: "Деревня Конпринг (Kon Pring)",
     category: "culture",
     coordinates: [108.3031, 14.6003],
     whyWorthIt:
-      "Поселение народа ба-на на окраине Măng Đen (Мангдена), выросшее вокруг высокого общинного дома.",
+      "Поселение народа ба-на на окраине Мангдена (Măng Đen), выросшее вокруг высокого общинного дома.",
     visitMinutes: [45, 90],
     detourKm: 2,
     accessNote:
       "Ведите себя как гости и спрашивайте разрешения, прежде чем снимать людей или дома.",
-    sources: source("Путеводитель по Kon Tum (Контуму)", official.konTum),
+    sources: source("Путеводитель по Контуму (Kon Tum)", official.konTum),
   },
   {
     id: "kon-tum-cathedral",
-    name: "Деревянная церковь Kon Tum (Контум)",
+    name: "Деревянная церковь Контум (Kon Tum)",
     category: "culture",
     coordinates: [108.0132, 14.3451],
     whyWorthIt:
@@ -186,18 +186,18 @@ const placeRecords = [
   },
   {
     id: "kon-klor",
-    name: "Общинный дом и мост Kon Klor (Конклор)",
+    name: "Общинный дом и мост Конклор (Kon Klor)",
     category: "culture",
     coordinates: [108.0355, 14.347],
     whyWorthIt:
-      "Монументальная крыша общинного дома ба-на возвышается рядом с длинным подвесным мостом через реку Đăk Bla (Дакбла).",
+      "Монументальная крыша общинного дома ба-на возвышается рядом с длинным подвесным мостом через реку Дакбла (Đăk Bla).",
     visitMinutes: [30, 60],
     detourKm: 3,
     sources: source("Национальное управление туризма Вьетнама", official.konTum),
   },
   {
     id: "kon-ko-tu",
-    name: "Деревня Kon Kơ Tu (Конкоту)",
+    name: "Деревня Конкоту (Kon Kơ Tu)",
     category: "culture",
     coordinates: [108.0638, 14.3296],
     whyWorthIt:
@@ -205,22 +205,22 @@ const placeRecords = [
     visitMinutes: [45, 90],
     detourKm: 7,
     accessNote: "Это жилая деревня, а не декорация для туристов.",
-    sources: source("Путеводитель по Kon Tum (Контуму)", official.konTum),
+    sources: source("Путеводитель по Контуму (Kon Tum)", official.konTum),
   },
   {
     id: "bien-ho",
-    name: "Озеро Biển Hồ (Бьенхо)",
+    name: "Озеро Бьенхо (Biển Hồ)",
     category: "nature",
     coordinates: [107.996, 14.0469],
     whyWorthIt:
-      "«Глаза Pleiku (Плейку)» — озеро в древнем вулканическом кратере среди соснового леса.",
+      "«Глаза Плейку (Pleiku)» — озеро в древнем вулканическом кратере среди соснового леса.",
     visitMinutes: [30, 60],
     detourKm: 7,
     sources: source("Vietnam Tourism — Gia Lai (Зялай)", official.pleiku),
   },
   {
     id: "chu-dang-ya",
-    name: "Вулкан Chư Đăng Ya (Чы Данг Я)",
+    name: "Вулкан Чы Данг Я (Chư Đăng Ya)",
     category: "viewpoint",
     coordinates: [108.0544, 14.1295],
     whyWorthIt:
@@ -232,7 +232,7 @@ const placeRecords = [
   },
   {
     id: "lak-lake",
-    name: "Озеро Lắk (Лак)",
+    name: "Озеро Лак (Lắk)",
     category: "nature",
     coordinates: [108.1776, 12.4232],
     whyWorthIt:
@@ -243,11 +243,11 @@ const placeRecords = [
   },
   {
     id: "dray-sap",
-    name: "Водопад Dray Sáp (Драйсап)",
+    name: "Водопад Драйсап (Dray Sáp)",
     category: "waterfall",
     coordinates: [107.9789, 12.5739],
     whyWorthIt:
-      "Более тихое базальтовое ущелье в системе водопадов реки Sêrêpốk (Срепок), западнее прямого маршрута.",
+      "Более тихое базальтовое ущелье в системе водопадов реки Срепок (Sêrêpốk), западнее прямого маршрута.",
     visitMinutes: [60, 90],
     detourKm: 25,
     accessNote: "Это заметный крюк в четвёртый день: выбирайте его вместо городских остановок.",
@@ -255,46 +255,46 @@ const placeRecords = [
   },
   {
     id: "dray-nur",
-    name: "Водопад Dray Nur (Драйнур)",
+    name: "Водопад Драйнур (Dray Nur)",
     category: "waterfall",
     coordinates: [107.8904, 12.5405],
     whyWorthIt:
-      "Широкая мощная завеса воды обрушивается с базальтового края реки Sêrêpốk (Срепок).",
+      "Широкая мощная завеса воды обрушивается с базальтового края реки Срепок (Sêrêpốk).",
     visitMinutes: [60, 90],
     detourKm: 35,
-    accessNote: "В длинный ходовой день его нельзя бездумно объединять с Dray Sáp (Драйсапом).",
+    accessNote: "В длинный ходовой день его нельзя бездумно объединять с Драйсапом (Dray Sáp).",
     sources: source("Годовой отчёт Vietnam Tourism", official.highlands),
   },
   {
     id: "elephant-waterfall",
-    name: "Слоновий водопад Thác Voi (Тхаквой)",
+    name: "Слоновий водопад Тхаквой (Thác Voi)",
     category: "waterfall",
     coordinates: [108.3349, 11.8235],
     whyWorthIt:
-      "Мощный водопад у Nam Ban (Намбана), почти на самой линии подъезда к Đà Lạt (Далату) по ĐT725.",
+      "Мощный водопад у Намбана (Nam Ban), почти на самой линии подъезда к Далату (Đà Lạt) по ĐT725.",
     visitMinutes: [45, 75],
     detourKm: 2,
     accessNote:
       "Доступ меняется; прежде чем рассчитывать на нижнюю тропу, уточните обстановку на месте.",
-    sources: source("Vietnam Tourism — Đà Lạt (Далат)", official.daLat),
+    sources: source("Vietnam Tourism — Далат (Đà Lạt)", official.daLat),
   },
   {
     id: "ta-nung",
-    name: "Кофейные земли Tà Nung (Танунга)",
+    name: "Кофейные земли Танунга (Tà Nung)",
     category: "culture",
     coordinates: [108.3513, 11.9061],
     whyWorthIt:
-      "Кофейные фермы и небольшие обжарщики придают смысл медленному западному подъезду к Đà Lạt (Далату).",
+      "Кофейные фермы и небольшие обжарщики придают смысл медленному западному подъезду к Далату (Đà Lạt).",
     visitMinutes: [45, 90],
     detourKm: 0,
-    sources: source("Vietnam Tourism — Đà Lạt (Далат)", official.daLat),
+    sources: source("Vietnam Tourism — Далат (Đà Lạt)", official.daLat),
   },
   {
     id: "lang-biang",
-    name: "Гора Lang Biang (Лангбианг)",
+    name: "Гора Лангбианг (Lang Biang)",
     category: "viewpoint",
     coordinates: [108.4406, 12.0473],
-    whyWorthIt: "Серьёзная пешая цель: полноценное восхождение над плато Lang Biang (Лангбианг).",
+    whyWorthIt: "Серьёзная пешая цель: полноценное восхождение над плато Лангбианг (Lang Biang).",
     visitMinutes: [240, 270],
     detourKm: 12,
     accessNote:
@@ -310,7 +310,7 @@ const placeRecords = [
   },
   {
     id: "da-phu",
-    name: "Холмы Đa Phú (Дафу)",
+    name: "Холмы Дафу (Đa Phú)",
     category: "viewpoint",
     coordinates: [108.37, 12.0],
     whyWorthIt:
@@ -325,12 +325,12 @@ const placeRecords = [
         label: "Маршрут AllTrails",
         url: "https://www.alltrails.com/trail/vietnam/lam-d-ng/da-phu-hills-trail",
       },
-      { label: "Туристический портал Đà Lạt (Далата)", url: official.daPhu },
+      { label: "Туристический портал Далата (Đà Lạt)", url: official.daPhu },
     ],
   },
   {
     id: "tuyen-lam",
-    name: "Озеро Tuyền Lâm (Туенлам)",
+    name: "Озеро Туенлам (Tuyền Lâm)",
     category: "nature",
     coordinates: [108.4251, 11.8908],
     whyWorthIt:
@@ -340,7 +340,7 @@ const placeRecords = [
     accessNote:
       "Короткий маршрут уточняйте на месте. Не идите самостоятельно по полному западному кругу или GPX UTMB: отдельные участки проходят по частной земле и вне организованного старта могут быть небезопасны.",
     sources: [
-      { label: "Vietnam Tourism — Đà Lạt (Далат)", url: official.daLat },
+      { label: "Vietnam Tourism — Далат (Đà Lạt)", url: official.daLat },
       {
         label: "UTMB — предупреждение о доступе на маршрут",
         url: "https://vietnamhighlands.utmb.world/races/10Ktuyenlam",
@@ -349,11 +349,11 @@ const placeRecords = [
   },
   {
     id: "bidoup",
-    name: "Национальный парк Bidoup–Núi Bà (Бидуп–Нуйба)",
+    name: "Национальный парк Бидуп–Нуйба (Bidoup–Núi Bà)",
     category: "park",
     coordinates: [108.4727, 12.1516],
     whyWorthIt:
-      "Горный лес с исключительным биоразнообразием окружает верхний участок дороги Đà Lạt (Далат) — Nha Trang (Нячанг).",
+      "Горный лес с исключительным биоразнообразием окружает верхний участок дороги Далат (Đà Lạt) — Нячанг (Nha Trang).",
     visitMinutes: [30, 60],
     detourKm: 4,
     accessNote:
@@ -365,7 +365,7 @@ const placeRecords = [
   },
   {
     id: "khanh-le",
-    name: "Перевал Khánh Lê (Кханьле)",
+    name: "Перевал Кханьле (Khánh Lê)",
     category: "viewpoint",
     coordinates: [108.715, 12.1863],
     whyWorthIt: "Эффектный лесной спуск из прохлады плато в тропическую низменность.",
@@ -373,50 +373,50 @@ const placeRecords = [
     detourKm: 0,
     seasonNote:
       "Не спускайтесь в ливень или густой туман. Ограничения из-за оползней меняются — в день выезда проверьте официальное состояние дороги.",
-    sources: source("Рекомендации полиции Khánh Hòa (Кханьхоа)", official.khanhLe),
+    sources: source("Рекомендации полиции Кханьхоа (Khánh Hòa)", official.khanhLe),
   },
   {
     id: "nha-trang-beach",
-    name: "Пляж Nha Trang (Нячанг)",
+    name: "Пляж Нячанг (Nha Trang)",
     category: "nature",
     coordinates: [109.198, 12.238],
     whyWorthIt:
       "Шесть километров городского пляжа и набережной превращают вторую ночь в настоящую паузу.",
     visitMinutes: [60, 180],
     detourKm: 0,
-    sources: source("Vietnam Tourism — Nha Trang (Нячанг)", official.nhaTrang),
+    sources: source("Vietnam Tourism — Нячанг (Nha Trang)", official.nhaTrang),
   },
   {
     id: "po-nagar",
-    name: "Тямские башни Po Nagar (Понагар)",
+    name: "Тямские башни Понагар (Po Nagar)",
     category: "history",
     coordinates: [109.1952, 12.2654],
     whyWorthIt: "Действующий храмовый комплекс, построенный тямами между VII и XII веками.",
     visitMinutes: [45, 75],
     detourKm: 3,
-    sources: source("Vietnam Tourism — Nha Trang (Нячанг)", official.nhaTrangLocal),
+    sources: source("Vietnam Tourism — Нячанг (Nha Trang)", official.nhaTrangLocal),
   },
   {
     id: "long-son",
-    name: "Пагода Long Sơn (Лонгшон)",
+    name: "Пагода Лонгшон (Long Sơn)",
     category: "culture",
     coordinates: [109.1806, 12.2513],
     whyWorthIt:
-      "Историческая пагода у подножия холма Trại Thủy (Чайтхюи), над которой возвышается большой белый Будда Nha Trang (Нячанга).",
+      "Историческая пагода у подножия холма Чайтхюи (Trại Thủy), над которой возвышается большой белый Будда Нячанга (Nha Trang).",
     visitMinutes: [45, 75],
     detourKm: 2,
-    sources: source("Vietnam Tourism — Nha Trang (Нячанг)", official.nhaTrang),
+    sources: source("Vietnam Tourism — Нячанг (Nha Trang)", official.nhaTrang),
   },
   {
     id: "hon-chong",
-    name: "Мыс Hòn Chồng (Хончонг)",
+    name: "Мыс Хончонг (Hòn Chồng)",
     category: "nature",
     coordinates: [109.203, 12.273],
     whyWorthIt:
       "Небольшой гранитный мыс на северной окраине города с открытым видом на бухту и острова.",
     visitMinutes: [30, 60],
     detourKm: 4,
-    sources: source("Vietnam Tourism — Nha Trang (Нячанг)", official.nhaTrang),
+    sources: source("Vietnam Tourism — Нячанг (Nha Trang)", official.nhaTrang),
   },
   {
     id: "oceanographic-museum",
@@ -431,18 +431,18 @@ const placeRecords = [
   },
   {
     id: "mud-baths",
-    name: "Горячие минеральные и грязевые ванны Nha Trang (Нячанга)",
+    name: "Горячие минеральные и грязевые ванны Нячанга (Nha Trang)",
     category: "nature",
     coordinates: [109.177, 12.279],
     whyWorthIt:
       "Тёплые минеральные бассейны и грязевые ванны особенно хороши в плохую погоду или для восстановления.",
     visitMinutes: [120, 240],
     detourKm: 6,
-    sources: source("Vietnam Tourism — Nha Trang (Нячанг)", official.nhaTrang),
+    sources: source("Vietnam Tourism — Нячанг (Nha Trang)", official.nhaTrang),
   },
   {
     id: "hon-mun",
-    name: "Морская зона Hòn Mun (Хонмун)",
+    name: "Морская зона Хонмун (Hòn Mun)",
     category: "park",
     coordinates: [109.3049, 12.1667],
     whyWorthIt: "Охраняемый риф — лучший в бухте выбор для снорклинга в спокойную погоду.",
@@ -451,63 +451,63 @@ const placeRecords = [
     accessNote: "Добраться можно только на лодке; выбирайте действующего проверенного оператора.",
     seasonNote: "Отменяйте поездку при морских предупреждениях, сильной зыби или грозе.",
     sources: source(
-      "Vietnam Tourism — острова Nha Trang (Нячанга)",
+      "Vietnam Tourism — острова Нячанга (Nha Trang)",
       "https://vietnam.travel/things-to-do/where-to-go-when-island-hopping-around-nha-trang",
     ),
   },
   {
     id: "dai-lanh",
-    name: "Пляж Đại Lãnh (Дайлань)",
+    name: "Пляж Дайлань (Đại Lãnh)",
     category: "nature",
     coordinates: [109.369, 12.832],
     whyWorthIt:
-      "Широкая бухта под перевалом — идеальная первая пауза после выезда из Nha Trang (Нячанга).",
+      "Широкая бухта под перевалом — идеальная первая пауза после выезда из Нячанга (Nha Trang).",
     visitMinutes: [30, 75],
     detourKm: 1,
-    sources: source("Vietnam Tourism — Phú Yên (Фуйен)", official.phuYen),
+    sources: source("Vietnam Tourism — Фуйен (Phú Yên)", official.phuYen),
   },
   {
     id: "vung-ro",
-    name: "Бухта Vũng Rô (Вунгро)",
+    name: "Бухта Вунгро (Vũng Rô)",
     category: "history",
     coordinates: [109.4143, 12.8712],
     whyWorthIt:
       "Защищённая горами бухта, где рыбацкая жизнь соседствует с историей морского пути снабжения.",
     visitMinutes: [45, 90],
     detourKm: 12,
-    sources: source("Vietnam Tourism — Phú Yên (Фуйен)", official.phuYen),
+    sources: source("Vietnam Tourism — Фуйен (Phú Yên)", official.phuYen),
   },
   {
     id: "mui-dien",
-    name: "Мыс Mũi Điện (Муйдьен) и пляж Bãi Môn (Баймон)",
+    name: "Мыс Муйдьен (Mũi Điện) и пляж Баймон (Bãi Môn)",
     category: "nature",
     coordinates: [109.4491, 12.8939],
     whyWorthIt:
       "Лестница к маяку поднимается над уединённым пляжем у восточной оконечности Вьетнама.",
     visitMinutes: [90, 150],
     detourKm: 15,
-    sources: source("Vietnam Tourism — Phú Yên (Фуйен)", official.phuYen),
+    sources: source("Vietnam Tourism — Фуйен (Phú Yên)", official.phuYen),
   },
   {
     id: "ganh-da-dia",
-    name: "Базальтовые скалы Gành Đá Đĩa (Ганьдадиа)",
+    name: "Базальтовые скалы Ганьдадиа (Gành Đá Đĩa)",
     category: "nature",
     coordinates: [109.2938, 13.3542],
     whyWorthIt: "Сцепленные базальтовые колонны спускаются в море, словно тёмные каменные соты.",
     visitMinutes: [60, 90],
     detourKm: 12,
-    sources: source("Vietnam Tourism — Phú Yên (Фуйен)", official.phuYen),
+    sources: source("Vietnam Tourism — Фуйен (Phú Yên)", official.phuYen),
   },
   {
     id: "o-loan",
-    name: "Лагуна Ô Loan (Олоан)",
+    name: "Лагуна Олоан (Ô Loan)",
     category: "nature",
     coordinates: [109.2514, 13.2686],
     whyWorthIt:
       "Мелководная прибрежная лагуна с широкими водными панорамами и свежими местными моллюсками.",
     visitMinutes: [45, 90],
     detourKm: 8,
-    sources: source("Vietnam Tourism — Phú Yên (Фуйен)", official.phuYen),
+    sources: source("Vietnam Tourism — Фуйен (Phú Yên)", official.phuYen),
   },
   {
     id: "ql1d-viewpoint",
@@ -515,36 +515,36 @@ const placeRecords = [
     category: "viewpoint",
     coordinates: [109.245, 13.69],
     whyWorthIt:
-      "Череда поворотов над обрывами и безопасных площадок с видом на море между Sông Cầu (Шонгкау) и Quy Nhơn (Куинёном).",
+      "Череда поворотов над обрывами и безопасных площадок с видом на море между Шонгкау (Sông Cầu) и Куинёном (Quy Nhơn).",
     visitMinutes: [15, 30],
     detourKm: 0,
-    sources: source("Vietnam Tourism — Bình Định (Биньдинь)", official.binhDinh),
+    sources: source("Vietnam Tourism — Биньдинь (Bình Định)", official.binhDinh),
   },
   {
     id: "ghenh-rang",
-    name: "Парк Ghềnh Ráng (Геньранг)",
+    name: "Парк Геньранг (Ghềnh Ráng)",
     category: "nature",
     coordinates: [109.215, 13.744],
     whyWorthIt:
-      "Парк на мысе над Quy Nhơn (Куинёном): каменистые бухты и широкий вид вдоль городского пляжа.",
+      "Парк на мысе над Куинёном (Quy Nhơn): каменистые бухты и широкий вид вдоль городского пляжа.",
     visitMinutes: [45, 75],
     detourKm: 4,
-    sources: source("Vietnam Tourism — Bình Định (Биньдинь)", official.binhDinh),
+    sources: source("Vietnam Tourism — Биньдинь (Bình Định)", official.binhDinh),
   },
   {
     id: "twin-towers",
-    name: "Башни Tháp Đôi (Тхапдой)",
+    name: "Башни Тхапдой (Tháp Đôi)",
     category: "history",
     coordinates: [109.2111, 13.7863],
     whyWorthIt:
-      "Две богато украшенные тямские башни XI–XII веков сохранились среди современного Quy Nhơn (Куинёна).",
+      "Две богато украшенные тямские башни XI–XII веков сохранились среди современного Куинёна (Quy Nhơn).",
     visitMinutes: [30, 60],
     detourKm: 2,
-    sources: source("Vietnam Tourism — Bình Định (Биньдинь)", official.binhDinh),
+    sources: source("Vietnam Tourism — Биньдинь (Bình Định)", official.binhDinh),
   },
   {
     id: "banh-it",
-    name: "Тямские башни Bánh Ít (Баньит)",
+    name: "Тямские башни Баньит (Bánh Ít)",
     category: "history",
     coordinates: [109.1352, 13.8684],
     whyWorthIt: "Четыре разные тямские башни на вершине холма с широким видом в глубь страны.",
@@ -552,18 +552,18 @@ const placeRecords = [
     detourKm: 20,
     accessNote:
       "Это настоящий крюк: выбирайте башни вместо остановок на полуострове в десятый день.",
-    sources: source("Vietnam Tourism — Bình Định (Биньдинь)", official.binhDinh),
+    sources: source("Vietnam Tourism — Биньдинь (Bình Định)", official.binhDinh),
   },
   {
     id: "eo-gio",
-    name: "Бухта Eo Gió (Эозё)",
+    name: "Бухта Эозё (Eo Gió)",
     category: "nature",
     coordinates: [109.295, 13.89],
     whyWorthIt:
-      "Продуваемая ветром бухта и тропа над обрывом рядом с рыбацкой деревней Nhơn Lý (Нёнли).",
+      "Продуваемая ветром бухта и тропа над обрывом рядом с рыбацкой деревней Нёнли (Nhơn Lý).",
     visitMinutes: [60, 90],
     detourKm: 16,
-    sources: source("Vietnam Tourism — Bình Định (Биньдинь)", official.binhDinh),
+    sources: source("Vietnam Tourism — Биньдинь (Bình Định)", official.binhDinh),
   },
   {
     id: "ong-nui",
@@ -574,11 +574,11 @@ const placeRecords = [
       "Буддийский комплекс на склоне и гигантская сидящая статуя над прибрежной равниной.",
     visitMinutes: [60, 90],
     detourKm: 4,
-    sources: source("Vietnam Tourism — Bình Định (Биньдинь)", official.binhDinh),
+    sources: source("Vietnam Tourism — Биньдинь (Bình Định)", official.binhDinh),
   },
   {
     id: "sa-huynh",
-    name: "Пляж Sa Huỳnh (Сахюинь)",
+    name: "Пляж Сахюинь (Sa Huỳnh)",
     category: "nature",
     coordinates: [109.058, 14.681],
     whyWorthIt:
@@ -589,7 +589,7 @@ const placeRecords = [
   },
   {
     id: "go-co",
-    name: "Деревня Gò Cỏ (Гоко)",
+    name: "Деревня Гоко (Gò Cỏ)",
     category: "culture",
     coordinates: [109.0737, 14.7056],
     whyWorthIt:
@@ -600,47 +600,47 @@ const placeRecords = [
   },
   {
     id: "my-khe-quang-ngai",
-    name: "Пляж Mỹ Khê (Микхе), Quảng Ngãi (Куангнгай)",
+    name: "Пляж Микхе (Mỹ Khê), Куангнгай (Quảng Ngãi)",
     category: "nature",
     coordinates: [108.8953, 15.1906],
     whyWorthIt:
-      "Длинная дуга пляжа среди рыбацких поселений к северо-востоку от Quảng Ngãi (Куангнгая).",
+      "Длинная дуга пляжа среди рыбацких поселений к северо-востоку от Куангнгая (Quảng Ngãi).",
     visitMinutes: [30, 75],
     detourKm: 0,
-    sources: source("Туристический портал Quảng Ngãi (Куангнгая)", official.quangNgai),
+    sources: source("Туристический портал Куангнгая (Quảng Ngãi)", official.quangNgai),
   },
   {
     id: "son-my",
-    name: "Мемориал Sơn Mỹ (Шонми)",
+    name: "Мемориал Шонми (Sơn Mỹ)",
     category: "history",
     coordinates: [108.8727, 15.178],
-    whyWorthIt: "Мемориал и музей, сохраняющие память о трагедии в Mỹ Lai (Милай) 1968 года.",
+    whyWorthIt: "Мемориал и музей, сохраняющие память о трагедии в Милай (Mỹ Lai) 1968 года.",
     visitMinutes: [60, 90],
     detourKm: 4,
     accessNote: "Оставьте время для тишины: это не место для беглой фотопаузы.",
-    sources: source("Туристический портал Quảng Ngãi (Куангнгая)", official.quangNgai),
+    sources: source("Туристический портал Куангнгая (Quảng Ngãi)", official.quangNgai),
   },
   {
     id: "ba-lang-an",
-    name: "Мыс Bà Làng An (Баланган)",
+    name: "Мыс Баланган (Bà Làng An)",
     category: "nature",
     coordinates: [108.9439, 15.2353],
     whyWorthIt:
-      "Мыс из вулканической породы с рыбацкими деревнями и открытым видом в сторону Lý Sơn (Лишона).",
+      "Мыс из вулканической породы с рыбацкими деревнями и открытым видом в сторону Лишона (Lý Sơn).",
     visitMinutes: [45, 90],
     detourKm: 8,
-    sources: source("Туристический портал Quảng Ngãi (Куангнгая)", official.quangNgai),
+    sources: source("Туристический портал Куангнгая (Quảng Ngãi)", official.quangNgai),
   },
   {
     id: "thien-an",
-    name: "Пагода Thiên Ấn (Тхиенан)",
+    name: "Пагода Тхиенан (Thiên Ấn)",
     category: "culture",
     coordinates: [108.8219, 15.1501],
     whyWorthIt:
-      "Историческая пагода на невысокой горе над рекой Trà Khúc (Чакхук) и равниной Quảng Ngãi (Куангнгая).",
+      "Историческая пагода на невысокой горе над рекой Чакхук (Trà Khúc) и равниной Куангнгая (Quảng Ngãi).",
     visitMinutes: [45, 75],
     detourKm: 7,
-    sources: source("Туристический портал Quảng Ngãi (Куангнгая)", official.quangNgai),
+    sources: source("Туристический портал Куангнгая (Quảng Ngãi)", official.quangNgai),
   },
 ];
 

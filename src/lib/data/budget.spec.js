@@ -118,7 +118,7 @@ describe("the on-road budget", () => {
   it("keeps prepaid equipment and transport outside the road baseline", () => {
     expect(budgetExclusions).toContain("Покупка или аренда байка");
     expect(budgetExclusions).toContain("Обслуживание перед поездкой, шины и ремонт");
-    expect(budgetExclusions).toContain("Страховка и дорога в Đà Nẵng (Дананг) или обратно");
+    expect(budgetExclusions).toContain("Страховка и дорога в Дананг (Đà Nẵng) или обратно");
     expect(budgetExclusions).toContain(
       "Дополнительные занятия и необязательный отель после двенадцатого дня",
     );
