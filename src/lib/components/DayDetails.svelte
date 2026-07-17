@@ -60,7 +60,7 @@
 	{/if}
 
 	<div class="space-y-2">
-		<h3 class="text-sm font-medium">Выберите по ситуации</h3>
+		<h3 class="text-sm font-medium">Остановки дня</h3>
 		<ul class="space-y-2 text-sm leading-relaxed">
 			{#each day.stops as stop}
 				<li class="flex gap-2">
@@ -75,7 +75,7 @@
 
 	{#if day.weatherFallback}
 		<div class="rounded-md border border-sky-700/25 bg-sky-500/5 p-3 text-sm leading-relaxed">
-			<span class="font-medium">Если погода испортится:</span> {day.weatherFallback}
+			<span class="font-medium">Погодный вариант:</span> {day.weatherFallback}
 		</div>
 	{/if}
 

@@ -68,9 +68,9 @@ describe("the relaxed itinerary", () => {
     expect(restDay.routeFile).toBeUndefined();
     expect(restDay.title).toContain("Nha Trang");
     expect(restDay.roads).toContain("База в Нячанге (Nha Trang)");
-    expect(restDay.stops.join(" ")).toMatch(/Спокойное море/i);
-    expect(restDay.stops.join(" ")).toMatch(/Неспокойное море/i);
-    expect(restDay.note).toMatch(/Не пытайтесь уместить морскую и городскую программы/i);
+    expect(restDay.stops.join(" ")).toMatch(/Если море спокойно/i);
+    expect(restDay.stops.join(" ")).toMatch(/Если море неспокойно/i);
+    expect(restDay.note).toMatch(/два самостоятельных дня/i);
   });
 
   it("makes Phú Ninh Lake the Day 11 destination and Day 12 starting point", () => {
@@ -79,7 +79,7 @@ describe("the relaxed itinerary", () => {
 
     expect(lakeDay.title).toBe("Сахюинь (Sa Huỳnh) → озеро Фунин (Phú Ninh)");
     expect(lakeDay.placeIds).toContain("phu-ninh-lake");
-    expect(lakeDay.note).toMatch(/ночуйте рядом/i);
+    expect(lakeDay.note).toMatch(/ночь у воды/i);
     expect(finalDay.title).toBe("озеро Фунин (Phú Ninh) → Дананг (Đà Nẵng)");
     expect(finalDay.roads).toMatch(/^озеро Фунин \(Phú Ninh\)/);
     expect(finalDay.placeIds).toContain("phu-ninh-lake");
@@ -171,9 +171,23 @@ describe("the relaxed itinerary", () => {
     expect(day6).toMatch(/вместо горного похода/i);
     expect(day6).toMatch(/лицензированного оператора/i);
     expect(day6).toMatch(/ливня|опасном течении|гроз/i);
-    expect(day8).toMatch(/вместо островной или городской программы/i);
-    expect(day11).toMatch(/подтвердите работу|уточните на месте/i);
+    expect(day8).toMatch(/целый день на Хонтре/i);
+    expect(day11).toMatch(/зависят от работы сервиса|не ежедневные услуги/i);
     expect(activitiesFor(12)).toEqual([]);
+  });
+
+  it("keeps day copy descriptive rather than directive", () => {
+    const dayCopy = itinerary.days
+      .flatMap((day) => [
+        day.overview,
+        day.roadCharacter,
+        ...day.stops,
+        day.note,
+        day.weatherFallback,
+      ])
+      .join(" ");
+
+    expect(dayCopy).not.toMatch(/Главный выбор|Финиш дня|\*\*Погода|\*\*Безопасность|в седле/i);
   });
 
   it("gives every day three six-person stay choices in the requested order", () => {

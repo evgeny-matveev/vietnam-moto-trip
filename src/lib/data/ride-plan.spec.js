@@ -41,7 +41,7 @@ describe("русский путеводитель", () => {
       expect(section.length, `День ${day.day}`).toBeGreaterThan(1_500);
       expect(section).toContain(day.distance);
       expect(section).toMatch(/### (Дорога|Передвижение)/);
-      expect(section).toContain("### Посмотреть перед выездом");
+      expect(section).toContain("### Видео о маршруте");
     }
   });
 
@@ -53,6 +53,10 @@ describe("русский путеводитель", () => {
         normalizeWhitespace(guideOverview(day.day)),
       );
     }
+  });
+
+  it("does not use directive day-summary labels or horse-riding language", () => {
+    expect(guide).not.toMatch(/Главный выбор|Финиш дня|\*\*Безопасность|в седле/i);
   });
 
   it("keeps every creator resource and every accommodation price in the guide", () => {

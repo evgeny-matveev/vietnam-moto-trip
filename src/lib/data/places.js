@@ -25,12 +25,11 @@ const official = {
 };
 
 export const placeCategories = [
-  { id: "waterfall", label: "Водопады", symbol: "💧︎" },
-  { id: "park", label: "Парки и заповедники", symbol: "🌲︎" },
-  { id: "nature", label: "Природные места", symbol: "🍄︎" },
-  { id: "viewpoint", label: "Виды и вершины", symbol: "⛰︎" },
-  { id: "culture", label: "Культура и святыни", symbol: "🛕︎" },
-  { id: "history", label: "История и памятники", symbol: "🏛︎" },
+  { id: "waterfall", label: "Водопады", icon: "/images/place-categories/waterfall.png" },
+  { id: "nature", label: "Природа и заповедники", icon: "/images/place-categories/nature.png" },
+  { id: "viewpoint", label: "Виды и вершины", icon: "/images/place-categories/viewpoint.png" },
+  { id: "culture", label: "Культура и святыни", icon: "/images/place-categories/culture.png" },
+  { id: "history", label: "История и памятники", icon: "/images/place-categories/history.png" },
 ];
 
 const source = (label, url) => [{ label, url }];
@@ -54,11 +53,10 @@ const placeRecords = [
     category: "history",
     coordinates: [108.327, 15.8805],
     whyWorthIt:
-      "Старинный торговый порт из списка ЮНЕСКО: деревянные дома и планировка улиц хранят следы многовекового вьетнамского, китайского, японского и европейского влияния.",
+      "Старинный торговый порт, включённый в список Всемирного наследия ЮНЕСКО: деревянные дома и планировка улиц хранят следы многовекового вьетнамского, китайского, японского и европейского влияния.",
     visitMinutes: [90, 180],
     detourKm: 5,
-    accessNote:
-      "Паркуйтесь за пределами пешеходного центра и не ведите группу сквозь толпу старого города.",
+    accessNote: "Пешеходный центр отделён от байков и проходит пешком.",
     sources: source("Vietnam Tourism", official.hoiAn),
   },
   {
@@ -78,7 +76,7 @@ const placeRecords = [
     category: "nature",
     coordinates: [108.3572, 15.9032],
     whyWorthIt:
-      "Устье реки отмечает место, где сельские окрестности Хойана (Hội An) выходят к прибрежной дороге.",
+      "Устье реки — место, где сельские окрестности Хойана (Hội An) выходят к прибрежной дороге.",
     visitMinutes: [15, 45],
     detourKm: 0,
     sources: source("Vietnam Tourism — Хойан (Hội An)", official.hoiAn),
@@ -92,7 +90,7 @@ const placeRecords = [
       "Рыбацкая деревня, чьи переулки превратились в галерею муралов под открытым небом; сразу за домами начинается пляж.",
     visitMinutes: [45, 90],
     detourKm: 0,
-    sources: source("Туристический центр Quảng Nam (Куангнама)", official.tamThanh),
+    sources: source("Туристический центр провинции Куангнам (Quảng Nam)", official.tamThanh),
   },
   {
     id: "phu-ninh-lake",
@@ -104,10 +102,9 @@ const placeRecords = [
     visitMinutes: [120, 240],
     detourKm: 0,
     accessNote:
-      "До поездки подтвердите бунгало или разрешённый кемпинг у воды; ближайший надёжный запасной вариант — Тамки (Tam Kỳ).",
-    seasonNote:
-      "Лодки, купание и кемпинг зависят от работы зоны отдыха, ветра и дождя; по умолчанию рассчитывайте на вечер на берегу.",
-    sources: source("Туристический центр Quảng Nam (Куангнама)", official.phuNinh),
+      "Бунгало и разрешённый кемпинг находятся у воды; ближайший городской вариант — Тамки (Tam Kỳ).",
+    seasonNote: "Лодки, купание и кемпинг зависят от работы зоны отдыха, ветра и дождя.",
+    sources: source("Туристический центр провинции Куангнам (Quảng Nam)", official.phuNinh),
   },
   {
     id: "ba-to",
@@ -132,7 +129,7 @@ const placeRecords = [
       "Главный подъём второго дня: плавные лесные повороты и разрывы в облаках на старой дороге от моря в нагорье.",
     visitMinutes: [15, 30],
     detourKm: 0,
-    seasonNote: "В ливень и плотной облачности не останавливайтесь на открытых площадках.",
+    seasonNote: "Ливень и плотная облачность скрывают виды с открытых площадок.",
     sources: source(
       "Туристическая база Вьетнама",
       "https://csdl.vietnamtourism.gov.vn/dest/?item=75",
@@ -144,7 +141,7 @@ const placeRecords = [
     category: "waterfall",
     coordinates: [108.2567, 14.5971],
     whyWorthIt:
-      "Лесной водопад достаточно близко к Мангдену (Măng Đen), чтобы успеть к нему в день приезда.",
+      "До лесного водопада недалеко от Мангдена (Măng Đen), поэтому к нему можно успеть в день приезда.",
     visitMinutes: [60, 90],
     detourKm: 8,
     sources: source("Путеводитель по Контуму (Kon Tum)", official.konTum),
@@ -175,11 +172,11 @@ const placeRecords = [
   },
   {
     id: "kon-tum-cathedral",
-    name: "Деревянная церковь Контум (Kon Tum)",
+    name: "Деревянная церковь в Контуме (Kon Tum)",
     category: "culture",
     coordinates: [108.0132, 14.3451],
     whyWorthIt:
-      "Собор возрастом более ста лет соединяет формы римской церкви, архитектуру свайных домов ба-на и местные материалы.",
+      "Собор возрастом более ста лет сочетает формы римской церкви, архитектуру свайных домов ба-на и местные материалы.",
     visitMinutes: [30, 60],
     detourKm: 1,
     sources: source("Национальное управление туризма Вьетнама", official.konTum),
@@ -204,7 +201,7 @@ const placeRecords = [
       "Деревня ба-на за рекой, где общинная архитектура остаётся частью повседневной жизни нагорья.",
     visitMinutes: [45, 90],
     detourKm: 7,
-    accessNote: "Это жилая деревня, а не декорация для туристов.",
+    accessNote: "Жилая деревня с общинным домом и деревянными домами.",
     sources: source("Путеводитель по Контуму (Kon Tum)", official.konTum),
   },
   {
@@ -216,7 +213,7 @@ const placeRecords = [
       "«Глаза Плейку (Pleiku)» — озеро в древнем вулканическом кратере среди соснового леса.",
     visitMinutes: [30, 60],
     detourKm: 7,
-    sources: source("Vietnam Tourism — Gia Lai (Зялай)", official.pleiku),
+    sources: source("Vietnam Tourism — Зялай (Gia Lai)", official.pleiku),
   },
   {
     id: "chu-dang-ya",
@@ -227,8 +224,8 @@ const placeRecords = [
       "Потухший кратер, чья геометрия особенно ясно читается по возделанным склонам с гребня.",
     visitMinutes: [60, 90],
     detourKm: 15,
-    seasonNote: "Поднимайтесь только в сухой день, когда не приходится спешить.",
-    sources: source("Vietnam Tourism — Gia Lai (Зялай)", official.pleiku),
+    seasonNote: "После дождя открытые склоны становятся менее выразительной частью маршрута.",
+    sources: source("Vietnam Tourism — Зялай (Gia Lai)", official.pleiku),
   },
   {
     id: "lak-lake",
@@ -250,7 +247,7 @@ const placeRecords = [
       "Более тихое базальтовое ущелье в системе водопадов реки Срепок (Sêrêpốk), западнее прямого маршрута.",
     visitMinutes: [60, 90],
     detourKm: 25,
-    accessNote: "Это заметный крюк в четвёртый день: выбирайте его вместо городских остановок.",
+    accessNote: "Заметный крюк в четвёртый день, заменяющий городские остановки.",
     sources: source("Национальный отчёт по планированию туризма", official.highlands),
   },
   {
@@ -274,8 +271,7 @@ const placeRecords = [
       "Мощный водопад у Намбана (Nam Ban), почти на самой линии подъезда к Далату (Đà Lạt) по ĐT725.",
     visitMinutes: [45, 75],
     detourKm: 2,
-    accessNote:
-      "Доступ меняется; прежде чем рассчитывать на нижнюю тропу, уточните обстановку на месте.",
+    accessNote: "Доступ к нижней тропе меняется.",
     sources: source("Vietnam Tourism — Далат (Đà Lạt)", official.daLat),
   },
   {
@@ -284,7 +280,7 @@ const placeRecords = [
     category: "culture",
     coordinates: [108.3513, 11.9061],
     whyWorthIt:
-      "Кофейные фермы и небольшие обжарщики придают смысл медленному западному подъезду к Далату (Đà Lạt).",
+      "Кофейные фермы и небольшие обжарки — хороший повод не спешить на западном подъезде к Далату (Đà Lạt).",
     visitMinutes: [45, 90],
     detourKm: 0,
     sources: source("Vietnam Tourism — Далат (Đà Lạt)", official.daLat),
@@ -299,7 +295,7 @@ const placeRecords = [
     detourKm: 12,
     accessNote:
       "Обычный маршрут туда и обратно — около 9,7 км с набором 685 м. Вход платный; впереди каменистая тропа и крутой финальный подъём.",
-    seasonNote: "Не выходите в дождь: крутая верхняя часть тропы становится скользкой.",
+    seasonNote: "В дождь крутая верхняя часть тропы становится скользкой.",
     sources: [
       {
         label: "Маршрут AllTrails",
@@ -318,8 +314,8 @@ const placeRecords = [
     visitMinutes: [90, 120],
     detourKm: 10,
     accessNote:
-      "Рассчитывайте примерно на 4 км и набор 195 м. Начало крутое и местами каменистое, на гребне почти нет тени.",
-    seasonNote: "Лучше идти рано и в ясную погоду; если грунтовый подъезд размок, начинайте снизу.",
+      "Около 4 км и 195 м набора; начало крутое и местами каменистое, на гребне почти нет тени.",
+    seasonNote: "Ясная погода и сухой грунтовый подъезд лучше раскрывают этот маршрут.",
     sources: [
       {
         label: "Маршрут AllTrails",
@@ -333,12 +329,11 @@ const placeRecords = [
     name: "Озеро Туенлам (Tuyền Lâm)",
     category: "nature",
     coordinates: [108.4251, 11.8908],
-    whyWorthIt:
-      "Вода среди сосен и короткие размеченные тропы дают лёгкую альтернативу восхождению.",
+    whyWorthIt: "Вода среди сосен и короткие размеченные тропы — лёгкая замена восхождению.",
     visitMinutes: [90, 180],
     detourKm: 8,
     accessNote:
-      "Короткий маршрут уточняйте на месте. Не идите самостоятельно по полному западному кругу или GPX UTMB: отдельные участки проходят по частной земле и вне организованного старта могут быть небезопасны.",
+      "Короткие маршруты подтверждаются на месте; полный западный круг и GPX UTMB пересекают частные земли.",
     sources: [
       { label: "Vietnam Tourism — Далат (Đà Lạt)", url: official.daLat },
       {
@@ -350,14 +345,13 @@ const placeRecords = [
   {
     id: "bidoup",
     name: "Национальный парк Бидуп–Нуйба (Bidoup–Núi Bà)",
-    category: "park",
+    category: "nature",
     coordinates: [108.4727, 12.1516],
     whyWorthIt:
-      "Горный лес с исключительным биоразнообразием окружает верхний участок дороги Далат (Đà Lạt) — Нячанг (Nha Trang).",
+      "Верхний участок дороги между Далатом (Đà Lạt) и Нячангом (Nha Trang) проходит через горный лес с богатым биоразнообразием.",
     visitMinutes: [30, 60],
     detourKm: 4,
-    accessNote:
-      "Метка показывает территорию парка, но не приглашает сворачивать на неразмеченные тропы.",
+    accessNote: "Метка показывает территорию парка, а официальные маршруты проходят отдельно.",
     sources: source(
       "Официальный маршрут парка",
       "https://bidoupnuiba.gov.vn/tuyen-langbiang-1-ngay-2/",
@@ -372,7 +366,7 @@ const placeRecords = [
     visitMinutes: [15, 30],
     detourKm: 0,
     seasonNote:
-      "Не спускайтесь в ливень или густой туман. Ограничения из-за оползней меняются — в день выезда проверьте официальное состояние дороги.",
+      "Ливень и густой туман меняют характер перевала; ограничения из-за оползней зависят от текущего состояния дороги.",
     sources: source("Рекомендации полиции Кханьхоа (Khánh Hòa)", official.khanhLe),
   },
   {
@@ -443,13 +437,13 @@ const placeRecords = [
   {
     id: "hon-mun",
     name: "Морская зона Хонмун (Hòn Mun)",
-    category: "park",
+    category: "nature",
     coordinates: [109.3049, 12.1667],
-    whyWorthIt: "Охраняемый риф — лучший в бухте выбор для снорклинга в спокойную погоду.",
+    whyWorthIt: "Охраняемый риф — одно из лучших мест в бухте для снорклинга в спокойную погоду.",
     visitMinutes: [300, 480],
     detourKm: 0,
-    accessNote: "Добраться можно только на лодке; выбирайте действующего проверенного оператора.",
-    seasonNote: "Отменяйте поездку при морских предупреждениях, сильной зыби или грозе.",
+    accessNote: "Добраться можно только на лодке; поездки проводят действующие операторы.",
+    seasonNote: "Морские предупреждения, сильная зыбь и гроза отменяют выход в море.",
     sources: source(
       "Vietnam Tourism — острова Нячанга (Nha Trang)",
       "https://vietnam.travel/things-to-do/where-to-go-when-island-hopping-around-nha-trang",
@@ -461,7 +455,7 @@ const placeRecords = [
     category: "nature",
     coordinates: [109.369, 12.832],
     whyWorthIt:
-      "Широкая бухта под перевалом — идеальная первая пауза после выезда из Нячанга (Nha Trang).",
+      "Широкая бухта под перевалом — хорошее место для первой паузы после выезда из Нячанга (Nha Trang).",
     visitMinutes: [30, 75],
     detourKm: 1,
     sources: source("Vietnam Tourism — Фуйен (Phú Yên)", official.phuYen),
@@ -515,7 +509,7 @@ const placeRecords = [
     category: "viewpoint",
     coordinates: [109.245, 13.69],
     whyWorthIt:
-      "Череда поворотов над обрывами и безопасных площадок с видом на море между Шонгкау (Sông Cầu) и Куинёном (Quy Nhơn).",
+      "Череда поворотов над обрывами и площадок с видом на море между Шонгкау (Sông Cầu) и Куинёном (Quy Nhơn).",
     visitMinutes: [15, 30],
     detourKm: 0,
     sources: source("Vietnam Tourism — Биньдинь (Bình Định)", official.binhDinh),
@@ -550,8 +544,7 @@ const placeRecords = [
     whyWorthIt: "Четыре разные тямские башни на вершине холма с широким видом в глубь страны.",
     visitMinutes: [60, 90],
     detourKm: 20,
-    accessNote:
-      "Это настоящий крюк: выбирайте башни вместо остановок на полуострове в десятый день.",
+    accessNote: "Заметный крюк в десятый день, лежащий в стороне от полуострова.",
     sources: source("Vietnam Tourism — Биньдинь (Bình Định)", official.binhDinh),
   },
   {
@@ -567,7 +560,7 @@ const placeRecords = [
   },
   {
     id: "ong-nui",
-    name: "Пагода Ông Núi (Онгнуй)",
+    name: "Пагода Онгнуй (Ông Núi)",
     category: "culture",
     coordinates: [109.216, 14.061],
     whyWorthIt:
@@ -582,7 +575,7 @@ const placeRecords = [
     category: "nature",
     coordinates: [109.058, 14.681],
     whyWorthIt:
-      "Золотой песок, соляные промыслы и рыбацкая жизнь создают спокойное место для ночёвки у моря.",
+      "Золотой песок, соляные промыслы и рыбацкая жизнь делают это место хорошей тихой ночёвкой у моря.",
     visitMinutes: [60, 120],
     detourKm: 0,
     sources: source("Национальное управление туризма Вьетнама", official.saHuynh),
@@ -617,7 +610,7 @@ const placeRecords = [
     whyWorthIt: "Мемориал и музей, сохраняющие память о трагедии в Милай (Mỹ Lai) 1968 года.",
     visitMinutes: [60, 90],
     detourKm: 4,
-    accessNote: "Оставьте время для тишины: это не место для беглой фотопаузы.",
+    accessNote: "На мемориал обычно уходит 60–90 минут.",
     sources: source("Туристический портал Куангнгая (Quảng Ngãi)", official.quangNgai),
   },
   {

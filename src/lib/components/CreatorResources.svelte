@@ -7,8 +7,8 @@
 {#if resources.length}
 	<section class="space-y-2.5" aria-labelledby="creator-resources-title">
 		<div class="space-y-0.5">
-			<h3 id="creator-resources-title" class="text-sm font-medium">Посмотреть перед выездом</h3>
-			<p class="text-muted-foreground text-xs">Личные впечатления путешественников и местных авторов; это идеи для маршрута, а не официальные сведения о дорогах и безопасности.</p>
+			<h3 id="creator-resources-title" class="text-sm font-medium">Видео о маршруте</h3>
+			<p class="text-muted-foreground text-xs">Личные впечатления путешественников и местных авторов о дорогах, городах и побережье.</p>
 		</div>
 		<div class="grid gap-2 sm:grid-cols-2">
 			{#each resources as resource}
