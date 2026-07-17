@@ -109,7 +109,6 @@
 	<header class="flex flex-col gap-1 xl:flex-row xl:items-baseline xl:justify-between xl:gap-5">
 		<div class="flex min-w-0 items-baseline gap-3">
 			<p class="text-muted-foreground shrink-0 text-xs font-medium tracking-wide uppercase">Маршрут на 12 дней</p>
-			<h1 class="min-w-0 text-xl font-medium tracking-tight text-balance sm:text-2xl">К югу от границы, на запад от солнца</h1>
 		</div>
 		<ul
 			aria-label="Маршрут в цифрах"
@@ -168,9 +167,9 @@
 						aria-pressed={activeCategoryIds.includes(category.id)}
 						title={category.label}
 						onclick={() => toggleCategory(category.id)}
-						class="font-emoji focus-visible:ring-ring grid size-8 place-items-center rounded-full border text-base outline-none transition-colors focus-visible:ring-3 aria-pressed:bg-foreground aria-pressed:text-background aria-[pressed=false]:text-muted-foreground aria-[pressed=false]:opacity-45"
+						class="focus-visible:ring-ring grid size-8 place-items-center rounded-full border outline-none transition-colors focus-visible:ring-3 aria-pressed:bg-foreground aria-pressed:text-background aria-[pressed=false]:text-muted-foreground aria-[pressed=false]:opacity-45"
 					>
-						{category.symbol}
+						<img src={category.icon} alt="" class="size-5 object-contain" />
 					</button>
 				{/each}
 			</fieldset>

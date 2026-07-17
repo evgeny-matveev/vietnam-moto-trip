@@ -11,7 +11,10 @@ describe("Russian localization", () => {
   it("sets the document language and exact editorial identity", () => {
     expect(appHtml).toContain('<html lang="ru">');
     expect(itinerary.name).toBe("К югу от границы, на запад от солнца");
-    expect(homePage).toContain(">К югу от границы, на запад от солнца</h1>");
+    expect(homePage).toContain(
+      "<title>К югу от границы, на запад от солнца — мотопутешествие по Вьетнаму</title>",
+    );
+    expect(homePage).not.toContain(">К югу от границы, на запад от солнца</h1>");
     expect(siteHeader).toContain(">Верхом на байках по югу Вьетнама</a>");
   });
 

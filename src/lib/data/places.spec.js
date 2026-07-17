@@ -14,15 +14,17 @@ describe("places", () => {
   it("has unique, categorized and source-backed records", () => {
     const categoryIds = new Set(placeCategories.map((category) => category.id));
     expect(new Set(places.map((place) => place.id)).size).toBe(places.length);
-    expect(categoryIds).toEqual(
-      new Set(["waterfall", "park", "nature", "viewpoint", "culture", "history"]),
-    );
+    expect(categoryIds).toEqual(new Set(["waterfall", "nature", "viewpoint", "culture", "history"]));
     for (const category of placeCategories) {
-      expect(category.symbol.length, category.id).toBeGreaterThan(0);
+      expect(category.icon, category.id).toMatch(/^\/images\/place-categories\/[a-z]+\.png$/);
+      expect(existsSync(join(process.cwd(), "static", category.icon.slice(1))), category.id).toBe(true);
       expect(category).not.toHaveProperty("color");
+      expect(category).not.toHaveProperty("symbol");
     }
 
-    expect(placeCategories.find((category) => category.id === "nature")?.symbol).toBe("🍄︎");
+    expect(placeCategories.find((category) => category.id === "nature")?.label).toBe(
+      "Природа и заповедники",
+    );
 
     for (const place of places) {
       expect(place.id).toMatch(/^[a-z0-9-]+$/);

@@ -26,7 +26,9 @@
 
 			<div class="space-y-1">
 				<p class="text-muted-foreground flex items-center gap-1.5 text-[11px]">
-					<span class="font-emoji text-sm" aria-hidden="true">{category?.symbol}</span>
+					{#if category?.icon}
+						<img src={category.icon} alt="" class="size-4 object-contain" />
+					{/if}
 					{category?.label ?? place.category}
 				</p>
 				<h4 class="text-sm font-medium leading-snug">

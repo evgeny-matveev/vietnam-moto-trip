@@ -1,5 +1,7 @@
 <script>
 	import ArrowLeftIcon from '@lucide/svelte/icons/arrow-left';
+	import Clock3Icon from '@lucide/svelte/icons/clock-3';
+	import CompassIcon from '@lucide/svelte/icons/compass';
 	import ExternalLinkIcon from '@lucide/svelte/icons/external-link';
 	import PhotoGallery from '$lib/components/PhotoGallery.svelte';
 	import { Badge } from '$lib/components/ui/badge/index.js';
@@ -26,11 +28,13 @@
 	<div class="space-y-2">
 		<div class="flex flex-wrap items-center gap-2">
 			<Badge variant="secondary">
-				<span class="font-emoji text-base" aria-hidden="true">{category?.symbol}</span>
+				{#if category?.icon}
+					<img src={category.icon} alt="" class="size-4 object-contain" />
+				{/if}
 				{category?.label ?? place.category}
 			</Badge>
 			<Badge variant="outline">
-				<span class="font-emoji text-sm" aria-hidden="true">⏱️</span>
+				<Clock3Icon class="size-3.5" aria-hidden="true" />
 				{visitTime(place.visitMinutes)}
 			</Badge>
 		</div>
@@ -50,14 +54,14 @@
 	<div class="grid gap-3 text-sm sm:grid-cols-2">
 		<div class="rounded-md border p-3">
 			<div class="text-muted-foreground flex items-center gap-1.5">
-				<span class="font-emoji text-base" aria-hidden="true">🧭</span>
+				<CompassIcon class="size-4" aria-hidden="true" />
 				Примерный крюк
 			</div>
 			<p class="mt-1 font-medium">{place.detourKm === 0 ? 'На линии маршрута' : `${place.detourKm} км`}</p>
 		</div>
 		<div class="rounded-md border p-3">
 			<div class="text-muted-foreground flex items-center gap-1.5">
-				<span class="font-emoji text-base" aria-hidden="true">⏱️</span>
+				<Clock3Icon class="size-4" aria-hidden="true" />
 				Заложите времени
 			</div>
 			<p class="mt-1 font-medium">{visitTime(place.visitMinutes)}</p>

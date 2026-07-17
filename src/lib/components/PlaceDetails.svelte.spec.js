@@ -6,7 +6,7 @@ import PlaceDetails from "./PlaceDetails.svelte";
 const place = {
   id: "hon-mun",
   name: "Hòn Mun",
-  category: "park",
+	category: "nature",
   coordinates: [109.297, 12.168],
   whyWorthIt: "A protected marine area used for a conditions-dependent snorkelling day.",
   visitMinutes: [240, 360],
